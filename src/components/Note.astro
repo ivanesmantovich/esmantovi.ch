@@ -1,0 +1,129 @@
+---
+interface Props {
+  title?: string;
+  text?: string;
+  date?: string;
+}
+
+const { title = "", text = "", date = "" } = Astro.props;
+---
+
+<!-- TODO: Подкрутить типографию (line-height, letter-spacing и т.д) -->
+<div class="note">
+  <div class="yellow-part"></div>
+  <div class="dotted-line"></div>
+
+  <div class="note-content">
+    <div class="preview">
+      <h3 class="title">{title}</h3>
+      <p class="text">{text}</p>
+    </div>
+    <p class="date">{date}</p>
+  </div>
+</div>
+
+<style>
+  .note {
+    display: grid;
+    background-color: #fff;
+    border-radius: 32px;
+    overflow: hidden;
+    border: 1px solid rgba(0, 28, 70, 0.06);
+    transition:
+      box-shadow 0.12s ease-out,
+      transform 0.12s ease-out;
+  }
+
+  .note:hover {
+    cursor: pointer;
+    transform: translateY(-1px);
+    box-shadow:
+      0 4px 8px rgba(0, 0, 0, 0.06),
+      0 8px 16px rgba(0, 0, 0, 0.06);
+  }
+
+  .yellow-part {
+    background: linear-gradient(180deg, #fed500 0%, #fbbc00 100%);
+    border-bottom: 1.5px solid #eea000;
+    min-height: 20px;
+  }
+
+  .dotted-line {
+    margin-top: 0.3rem;
+    margin-left: 0.2rem;
+    margin-right: 0.2rem;
+    height: 5px;
+    background-image: radial-gradient(#dddddf 1.75px, transparent 1.75px);
+    background-size: 5px 5px;
+    background-position: center;
+    background-repeat: repeat-x;
+  }
+
+  .note-content {
+    display: grid;
+    padding: 0.8rem 1.2rem;
+    grid-template-rows: auto auto;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 0.5rem;
+  }
+
+  .preview {
+    display: contents;
+  }
+
+  .title {
+    margin: 0 0 0.2rem 0;
+    font-weight: 500;
+    grid-column: 1 / 3;
+  }
+
+  .text {
+    color: #8a8a8c;
+    overflow: hidden;
+  }
+
+  @media (width < 430px) {
+    .note {
+      min-width: 210px;
+    }
+
+    .text {
+      grid-column: 2 / 3;
+      grid-row: 2 / 3;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .date {
+      grid-column: 1 / 2;
+      grid-row: 2 / 3;
+    }
+  }
+
+  @media (width >= 430px) {
+    .note {
+      aspect-ratio: 1/1;
+      grid-template-rows: 1fr 5px 4fr;
+    }
+
+    .note-content {
+      grid-template-rows: 1fr auto;
+      grid-template-columns: 1fr;
+      padding: 1.2rem;
+    }
+
+    /* TODO: Разобраться почему не работает в хроме, зато работает здесь https://developer.mozilla.org/en-US/docs/Web/CSS/-webkit-line-clamp#examples */
+    .preview {
+      display: -webkit-box;
+      line-clamp: 4;
+      -webkit-line-clamp: 4;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .date {
+      color: #8a898e;
+      padding-top: 0.3rem;
+    }
+  }
+</style>
