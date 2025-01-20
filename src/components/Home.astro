@@ -1,0 +1,31 @@
+---
+import { getCollection } from "astro:content";
+import Note from "../components/Note.astro";
+
+const notes = await getCollection("notes");
+---
+
+<main class="home-page">
+  <section>
+    <h2>Notes</h2>
+    <div class="grid">
+      {
+        notes.map(
+          (note: {
+            data: { title: string; preview: string; date: string };
+          }) => {
+            const { data } = note;
+            return (
+              <Note title={data.title} text={data.preview} date={data.date} />
+            );
+          }
+        )
+      }
+    </div>
+  </section>
+
+  <section>
+    <h2>Lab</h2>
+    <div>🚧🚧🚧</div>
+  </section>
+</main>
