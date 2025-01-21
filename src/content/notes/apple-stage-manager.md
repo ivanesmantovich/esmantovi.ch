@@ -1,7 +1,7 @@
 ---
 title: 'Apple Stage Manager is Misunderstood'
 preview: 'Pieces of paper on a desk'
-date: '2024-03-20'
+date: '2025-01-20'
 ---
 
 # Lorem
