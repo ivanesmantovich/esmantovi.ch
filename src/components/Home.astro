@@ -3,6 +3,21 @@ import { getCollection } from "astro:content";
 import Note from "../components/Note.astro";
 
 const notes = await getCollection("notes");
+
+function formatDate(date: string) {
+  const noteDate = new Date(date);
+  const today = new Date();
+  const yesterday = new Date(today);
+  yesterday.setDate(yesterday.getDate() - 1);
+
+  if (noteDate.toDateString() === today.toDateString()) {
+    return "Today";
+  }
+  if (noteDate.toDateString() === yesterday.toDateString()) {
+    return "Yesterday";
+  }
+  return date.replace(/-/g, ".");
+}
 ---
 
 <main class="home-page">
@@ -10,16 +25,15 @@ const notes = await getCollection("notes");
     <h2>Notes</h2>
     <div class="grid">
       {
-        notes.map(
-          (note: {
-            data: { title: string; preview: string; date: string };
-          }) => {
-            const { data } = note;
-            return (
-              <Note title={data.title} text={data.preview} date={data.date} />
-            );
-          }
-        )
+        notes.map((note) => {
+          return (
+            <Note
+              title={note.data.title}
+              text={note.data.preview}
+              date={formatDate(note.data.date)}
+            />
+          );
+        })
       }
     </div>
   </section>
