@@ -1,3 +1,7 @@
+---
+import Header from "../components/Header.astro";
+---
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -8,6 +12,7 @@
     <title>Astro Basics</title>
   </head>
   <body>
+    <Header />
     <slot />
   </body>
 </html>
@@ -24,6 +29,7 @@
     margin: 0 auto;
     padding-left: 4%;
     padding-right: 4%;
+    padding-top: 5rem; /* Add padding for fixed header */
   }
 
   body {
