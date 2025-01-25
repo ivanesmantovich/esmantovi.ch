@@ -3,13 +3,14 @@ interface Props {
   title?: string;
   text?: string;
   date?: string;
+  slug?: string;
 }
 
-const { title = "", text = "", date = "" } = Astro.props;
+const { title = "", text = "", date = "", slug = "" } = Astro.props;
 ---
 
 <!-- TODO: Подкрутить типографию (line-height, letter-spacing и т.д) -->
-<div class="note">
+<a href={`/preview/notes/${slug}`} class="note">
   <div class="yellow-part"></div>
   <div class="dotted-line"></div>
 
@@ -20,7 +21,7 @@ const { title = "", text = "", date = "" } = Astro.props;
     </div>
     <p class="date">{date}</p>
   </div>
-</div>
+</a>
 
 <style>
   .note {
@@ -32,6 +33,8 @@ const { title = "", text = "", date = "" } = Astro.props;
     transition:
       box-shadow 0.12s ease-out,
       transform 0.12s ease-out;
+    text-decoration: none;
+    color: inherit;
   }
 
   .note:hover {

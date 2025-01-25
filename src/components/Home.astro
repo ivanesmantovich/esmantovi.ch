@@ -33,6 +33,7 @@ function formatDate(date: string) {
               title={note.data.title}
               text={note.data.preview}
               date={formatDate(note.data.date)}
+              slug={note.slug}
             />
           );
         })
