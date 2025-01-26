@@ -2,6 +2,7 @@
 import { getCollection } from "astro:content";
 import Layout from "../../../layouts/Layout.astro";
 import Note from "../../../components/Note.astro";
+import Home from "../../../components/Home.astro";
 
 export async function getStaticPaths() {
   const notes = await getCollection("notes");
@@ -15,5 +16,72 @@ const { note } = Astro.props;
 const { Content } = await note.render();
 ---
 
-<h1>{note.data.title}</h1>
-<Content />
+<Layout>
+  <Home transition:persist="home" transition:persist-props />
+  <div class="note-preview-overlay" id="overlay">
+    <div class="note-preview" id="preview">
+      <article class="note-preview-content">
+        <h1>{note.data.title}</h1>
+        <Content />
+      </article>
+    </div>
+  </div>
+</Layout>
+
+<script>
+  const overlay = document.getElementById("overlay");
+  const preview = document.getElementById("preview");
+
+  overlay?.addEventListener("click", (e) => {
+    if (e.target === overlay) {
+      window.location.href = "/";
+    }
+  });
+</script>
+
+<style>
+  .note-preview-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(245, 245, 247, 0.3);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    z-index: 1000;
+  }
+
+  .note-preview {
+    padding-top: 80px;
+    padding-bottom: 80px;
+    background-color: white;
+    border-radius: 16px;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 16px 0px;
+    width: 816px;
+    margin: 2.5em auto;
+    overflow: hidden;
+  }
+
+  .note-preview-content {
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  h2 {
+    margin-top: 52px;
+    margin-bottom: 16px;
+  }
+
+  @media screen and (width <= 1068px) {
+    .note-preview {
+      width: 692px;
+    }
+  }
+
+  @media screen and (width <= 734px) {
+    .note-preview {
+      width: 100%;
+    }
+  }
+</style>
