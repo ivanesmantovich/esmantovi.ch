@@ -124,18 +124,33 @@ function formatDate(date: string) {
 </main>
 
 <script>
-  // Save scroll position before navigation
-  document.addEventListener("astro:before-preparation", () => {
-    sessionStorage.setItem("homeScrollPosition", window.scrollY.toString());
-  });
+  // Clean up any existing listeners
+  function cleanup() {
+    document.removeEventListener(
+      "astro:before-preparation",
+      saveScrollPosition
+    );
+    document.removeEventListener("astro:after-swap", restoreScrollPosition);
+  }
 
-  // Restore scroll position after navigation
-  document.addEventListener("astro:after-swap", () => {
+  // Separate named functions so we can remove them later
+  function saveScrollPosition() {
+    sessionStorage.setItem("homeScrollPosition", window.scrollY.toString());
+  }
+
+  function restoreScrollPosition() {
     const savedPosition = sessionStorage.getItem("homeScrollPosition");
     if (savedPosition) {
       window.scrollTo({ top: parseInt(savedPosition), behavior: "instant" });
     }
-  });
+  }
+
+  // Clean up existing listeners before adding new ones
+  cleanup();
+
+  // Add new listeners
+  document.addEventListener("astro:before-preparation", saveScrollPosition);
+  document.addEventListener("astro:after-swap", restoreScrollPosition);
 </script>
 
 <style>
