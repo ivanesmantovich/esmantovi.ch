@@ -30,11 +30,10 @@ const { Content } = await note.render();
 
 <script>
   const overlay = document.getElementById("overlay");
-  const preview = document.getElementById("preview");
 
   overlay?.addEventListener("click", (e) => {
     if (e.target === overlay) {
-      window.location.href = "/";
+      history.back();
     }
   });
 </script>
