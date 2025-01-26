@@ -29,13 +29,19 @@ const { Content } = await note.render();
 </Layout>
 
 <script>
-  const overlay = document.getElementById("overlay");
+  function setupOverlay() {
+    const overlay = document.getElementById("overlay");
 
-  overlay?.addEventListener("click", (e) => {
-    if (e.target === overlay) {
-      history.back();
-    }
-  });
+    const handleClick = (e: MouseEvent) => {
+      if (e.target === overlay) {
+        history.back();
+      }
+    };
+
+    overlay?.addEventListener("click", handleClick);
+  }
+
+  document.addEventListener("astro:page-load", setupOverlay);
 </script>
 
 <style>
