@@ -123,7 +123,39 @@ function formatDate(date: string) {
   </section>
 </main>
 
+<script>
+  console.log("Home script");
+  const main = document.querySelector(".home-page");
+
+  // Save scroll position before navigation
+  document.addEventListener("astro:before-preparation", () => {
+    console.log("astro:before-preparation");
+    if (main) {
+      const scrollPosition = main.scrollTop;
+      console.log("saving scroll position", scrollPosition);
+      sessionStorage.setItem("homeScrollPosition", scrollPosition.toString());
+    }
+  });
+
+  // Restore scroll position after navigation
+  document.addEventListener("astro:after-swap", () => {
+    console.log("astro:after-swap");
+    const savedPosition = sessionStorage.getItem("homeScrollPosition");
+    console.log("restoring scroll position", savedPosition);
+    const main = document.querySelector(".home-page"); // Re-query the element after view transition
+    if (main && savedPosition) {
+      main.scrollTop = parseInt(savedPosition);
+    }
+  });
+</script>
+
 <style>
+  .home-page {
+    height: 100vh;
+    overflow-y: auto;
+    position: relative;
+  }
+
   .message {
     width: fit-content;
     margin: 2.5em auto 0;
