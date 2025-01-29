@@ -29,26 +29,38 @@ const { Content } = await note.render();
 </Layout>
 
 <script>
+  console.log("[slug] page script fired");
+  const handleClick = (e: MouseEvent) => {
+    console.log("handleClick");
+    if (e.target === document.getElementById("overlay")) {
+      history.back();
+    }
+  };
+
   function setupOverlay() {
     console.log("setupOverlay");
     const overlay = document.getElementById("overlay");
-
-    const handleClick = (e: MouseEvent) => {
-      console.log("handleClick");
-      if (e.target === overlay) {
-        history.back();
-      }
-    };
 
     // Remove existing event listener first to prevent duplicates
     overlay?.removeEventListener("click", handleClick);
     overlay?.addEventListener("click", handleClick);
   }
 
-  // Clean up and re-setup on each navigation
+  // Setup on view transitions navigation
   document.addEventListener("astro:page-load", setupOverlay);
-  // Also setup on initial page load
-  document.addEventListener("DOMContentLoaded", setupOverlay);
+
+  // Setup on initial page load
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", setupOverlay);
+  } else {
+    setupOverlay();
+  }
+
+  // Cleanup when leaving the page
+  document.addEventListener("astro:before-preparation", () => {
+    const overlay = document.getElementById("overlay");
+    overlay?.removeEventListener("click", handleClick);
+  });
 </script>
 
 <style>
