@@ -30,9 +30,11 @@ const { Content } = await note.render();
 
 <script>
   function setupOverlay() {
+    console.log("setupOverlay");
     const overlay = document.getElementById("overlay");
 
     const handleClick = (e: MouseEvent) => {
+      console.log("handleClick");
       if (e.target === overlay) {
         history.back();
       }
