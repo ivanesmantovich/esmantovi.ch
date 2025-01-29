@@ -40,10 +40,15 @@ const { Content } = await note.render();
       }
     };
 
+    // Remove existing event listener first to prevent duplicates
+    overlay?.removeEventListener("click", handleClick);
     overlay?.addEventListener("click", handleClick);
   }
 
+  // Clean up and re-setup on each navigation
   document.addEventListener("astro:page-load", setupOverlay);
+  // Also setup on initial page load
+  document.addEventListener("DOMContentLoaded", setupOverlay);
 </script>
 
 <style>
