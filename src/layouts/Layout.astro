@@ -27,6 +27,12 @@ import { ClientRouter } from "astro:transitions";
     box-sizing: border-box;
   }
 
+  /* Customize view transition duration */
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation-duration: 150ms;
+  }
+
   .home-page {
     max-width: 1024px;
     margin: 0 auto;
