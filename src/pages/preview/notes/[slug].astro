@@ -32,8 +32,6 @@ const { Content } = await note.render();
   import { navigate } from "astro:transitions/client";
 
   document.addEventListener("astro:page-load", () => {
-    console.log("[slug] page script fired");
-    // This runs on first page load and after every navigation.
     const overlay = document.getElementById("overlay");
 
     overlay?.addEventListener("click", (e) => {
