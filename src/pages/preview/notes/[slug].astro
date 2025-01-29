@@ -28,12 +28,13 @@ const { Content } = await note.render();
   </div>
 </Layout>
 
-<script>
+<script is:inline data-astro-rerun>
   console.log("[slug] page script fired");
   function setupOverlay() {
     const overlay = document.getElementById("overlay");
+    console.log("overlay", overlay);
 
-    const handleClick = (e: MouseEvent) => {
+    const handleClick = (e) => {
       console.log("handleClick");
       if (e.target === overlay) {
         history.back();
@@ -44,7 +45,7 @@ const { Content } = await note.render();
     overlay?.addEventListener("click", handleClick);
   }
 
-  document.addEventListener("astro:page-load", setupOverlay);
+  setupOverlay();
 </script>
 
 <style>
