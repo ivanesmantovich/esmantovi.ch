@@ -135,10 +135,12 @@ function formatDate(date: string) {
 
   // Separate named functions so we can remove them later
   function saveScrollPosition() {
+    console.log("saveScrollPosition");
     sessionStorage.setItem("homeScrollPosition", window.scrollY.toString());
   }
 
   function restoreScrollPosition() {
+    console.log("restoreScrollPosition");
     const savedPosition = sessionStorage.getItem("homeScrollPosition");
     if (savedPosition) {
       window.scrollTo({ top: parseInt(savedPosition), behavior: "instant" });
