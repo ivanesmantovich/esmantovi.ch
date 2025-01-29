@@ -30,37 +30,21 @@ const { Content } = await note.render();
 
 <script>
   console.log("[slug] page script fired");
-  const handleClick = (e: MouseEvent) => {
-    console.log("handleClick");
-    if (e.target === document.getElementById("overlay")) {
-      history.back();
-    }
-  };
-
   function setupOverlay() {
-    console.log("setupOverlay");
     const overlay = document.getElementById("overlay");
 
-    // Remove existing event listener first to prevent duplicates
+    const handleClick = (e: MouseEvent) => {
+      console.log("handleClick");
+      if (e.target === overlay) {
+        history.back();
+      }
+    };
+
     overlay?.removeEventListener("click", handleClick);
     overlay?.addEventListener("click", handleClick);
   }
 
-  // Setup on view transitions navigation
   document.addEventListener("astro:page-load", setupOverlay);
-
-  // Setup on initial page load
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", setupOverlay);
-  } else {
-    setupOverlay();
-  }
-
-  // Cleanup when leaving the page
-  document.addEventListener("astro:before-preparation", () => {
-    const overlay = document.getElementById("overlay");
-    overlay?.removeEventListener("click", handleClick);
-  });
 </script>
 
 <style>
@@ -74,7 +58,6 @@ const { Content } = await note.render();
     backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
     z-index: 1000;
-    overflow-y: scroll;
   }
 
   .note-preview {
