@@ -28,24 +28,20 @@ const { Content } = await note.render();
   </div>
 </Layout>
 
-<script is:inline data-astro-rerun>
-  console.log("[slug] page script fired");
-  function setupOverlay() {
+<script>
+  import { navigate } from "astro:transitions/client";
+
+  document.addEventListener("astro:page-load", () => {
+    console.log("[slug] page script fired");
+    // This runs on first page load and after every navigation.
     const overlay = document.getElementById("overlay");
-    console.log("overlay", overlay);
 
-    const handleClick = (e) => {
-      console.log("handleClick");
+    overlay?.addEventListener("click", (e) => {
       if (e.target === overlay) {
-        history.back();
+        navigate("/");
       }
-    };
-
-    overlay?.removeEventListener("click", handleClick);
-    overlay?.addEventListener("click", handleClick);
-  }
-
-  setupOverlay();
+    });
+  });
 </script>
 
 <style>
