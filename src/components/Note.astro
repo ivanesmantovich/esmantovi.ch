@@ -3,14 +3,14 @@ interface Props {
   title?: string;
   text?: string;
   date?: string;
-  slug?: string;
+  id?: string;
 }
 
-const { title = "", text = "", date = "", slug = "" } = Astro.props;
+const { title = "", text = "", date = "", id = "" } = Astro.props;
 ---
 
 <!-- TODO: Подкрутить типографию (line-height, letter-spacing и т.д) -->
-<a href={`/preview/notes/${slug}`} class="note" data-astro-prefetch>
+<a href={`/preview/notes/${id}`} class="note" data-astro-prefetch>
   <div class="yellow-part"></div>
   <div class="dotted-line"></div>
 
