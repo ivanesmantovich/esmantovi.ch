@@ -43,6 +43,12 @@ const { Content } = await render(note);
 </script>
 
 <style>
+  /* 1:1 Apple Newsroom behaviour */
+  /* Prevent body scroll when overlay exists */
+  :root:has(.note-preview-overlay) {
+    overflow: hidden;
+  }
+
   .note-preview-overlay {
     position: fixed;
     top: 0;
@@ -53,6 +59,7 @@ const { Content } = await render(note);
     backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
     z-index: 1000;
+    overflow-y: auto;
   }
 
   .note-preview {
@@ -63,7 +70,6 @@ const { Content } = await render(note);
     box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 16px 0px;
     width: 816px;
     margin: 2.5em auto;
-    overflow: hidden;
   }
 
   .note-preview-content {
