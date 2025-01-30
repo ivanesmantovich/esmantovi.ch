@@ -10,5 +10,4 @@ export default defineConfig({
     defaultStrategy: "hover",
     prefetchAll: true,
   },
-  trailingSlash: "never",
 });
