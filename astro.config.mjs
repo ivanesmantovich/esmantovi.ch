@@ -6,4 +6,8 @@ export default defineConfig({
   devToolbar: {
     enabled: false,
   },
+  prefetch: {
+    defaultStrategy: "hover",
+    prefetchAll: true,
+  },
 });
