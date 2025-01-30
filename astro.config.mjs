@@ -7,7 +7,7 @@ export default defineConfig({
     enabled: false,
   },
   prefetch: {
-    defaultStrategy: "hover",
+    defaultStrategy: "viewport",
     prefetchAll: true,
   },
 });
