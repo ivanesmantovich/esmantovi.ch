@@ -2,17 +2,18 @@
 import { getCollection } from "astro:content";
 import Layout from "../../../layouts/Layout.astro";
 import Home from "../../../components/Home.astro";
+import { render } from "astro:content";
 
 export async function getStaticPaths() {
   const notes = await getCollection("notes");
   return notes.map((note) => ({
-    params: { slug: note.slug },
+    params: { id: note.id },
     props: { note },
   }));
 }
 
 const { note } = Astro.props;
-const { Content } = await note.render();
+const { Content } = await render(note);
 ---
 
 <Layout>
