@@ -1,5 +1,5 @@
 ---
-title: 'Quote'
+title: 'Quote that is very long and profound but also interesting and cute, wow what a quote!'
 preview: 'Life is what happens while you are busy making other plans'
 date: '2024-03-20'
 ---
