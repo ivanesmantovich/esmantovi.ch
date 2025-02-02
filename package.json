@@ -10,5 +10,11 @@
   },
   "dependencies": {
     "astro": "^5.1.7"
+  },
+  "devDependencies": {
+    "postcss-html": "^1.8.0",
+    "stylelint": "^16.14.1",
+    "stylelint-config-clean-order": "^7.0.0",
+    "stylelint-config-html": "^1.1.0"
   }
 }
