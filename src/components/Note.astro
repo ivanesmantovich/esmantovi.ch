@@ -16,8 +16,10 @@ const { title = "", text = "", date = "", id = "" } = Astro.props;
 
   <div class="note-content">
     <h3 class="title">{title}</h3>
-    <p class="text">{text}</p>
-    <p class="date">{date}</p>
+    <div class="info">
+      <p class="text">{text}</p>
+      <p class="date">{date}</p>
+    </div>
   </div>
 </a>
 
@@ -92,12 +94,25 @@ const { title = "", text = "", date = "", id = "" } = Astro.props;
       min-width: 210px;
     }
 
-    .text {
-      text-overflow: ellipsis;
-      white-space: nowrap;
+    .yellow-part {
+      height: 25px;
     }
 
-    .date {
+    .info {
+      display: flex;
+      gap: 1em;
+      justify-content: space-between;
+
+      .date {
+        order: 1;
+        white-space: nowrap;
+      }
+
+      .text {
+        order: 2;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
     }
   }
 
@@ -114,6 +129,10 @@ const { title = "", text = "", date = "", id = "" } = Astro.props;
       position: relative;
       overflow: hidden;
       padding: 1.2rem;
+    }
+
+    .info {
+      display: contents;
     }
 
     .date {
