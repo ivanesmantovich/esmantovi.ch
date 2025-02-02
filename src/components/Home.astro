@@ -2,6 +2,7 @@
 import { getCollection } from "astro:content";
 import Note from "../components/Note.astro";
 import { formatDate } from "../utils/date";
+import Experiment from "./Experiment.astro";
 
 const notes = await getCollection("notes");
 ---
@@ -29,7 +30,11 @@ const notes = await getCollection("notes");
 
   <section>
     <h2>Lab</h2>
-    <div>🚧🚧🚧</div>
+    <div class="grid">
+      <Experiment title="Experiment 1"></Experiment>
+      <Experiment title="Experiment 2"></Experiment>
+      <Experiment title="Experiment 3 but it's a very long title, that is awesome"></Experiment>
+    </div>
   </section>
 
   <section>
@@ -126,16 +131,19 @@ const notes = await getCollection("notes");
 
 <style>
   .message {
-    width: fit-content;
-    margin: 2.5em auto 0;
-    color: #6e6e73;
-    user-select: none;
     cursor: default;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
+    user-select: none;
+
+    width: fit-content;
+    margin: 2.5em auto 0;
+
     font-size: 0.9em;
     font-weight: 600;
+    color: #6e6e73;
+
     animation: fadeOut 0.5s linear forwards;
     animation-play-state: paused;
   }
