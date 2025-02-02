@@ -36,6 +36,7 @@ const { title = "", text = "", date = "", id = "" } = Astro.props;
     text-decoration: none;
 
     background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
     transition:
       box-shadow 0.12s ease-out,
@@ -44,7 +45,7 @@ const { title = "", text = "", date = "", id = "" } = Astro.props;
 
   .note:hover {
     cursor: pointer;
-    transform: translateY(-1px);
+    transform: translateY(-2px);
     box-shadow:
       0 4px 8px rgba(0, 0, 0, 0.06),
       0 8px 16px rgba(0, 0, 0, 0.06);
