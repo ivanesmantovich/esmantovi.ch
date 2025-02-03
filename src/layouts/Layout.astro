@@ -1,6 +1,6 @@
 ---
-import Header from "../components/Header.astro";
 import { ClientRouter } from "astro:transitions";
+import Navigation from "../components/Navigation.astro";
 ---
 
 <!doctype html>
@@ -15,8 +15,8 @@ import { ClientRouter } from "astro:transitions";
     <ClientRouter />
   </head>
   <body>
-    <Header />
     <slot />
+    <Navigation />
   </body>
 </html>
 
@@ -36,7 +36,6 @@ import { ClientRouter } from "astro:transitions";
   .home-page {
     max-width: 1024px;
     margin: 0 auto;
-    padding-top: 5rem; /* Add padding for fixed header */
     padding-right: 4%;
     padding-left: 4%;
   }
