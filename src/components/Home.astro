@@ -1,10 +1,10 @@
 ---
-import { getCollection } from "astro:content";
-import Note from "../components/Note.astro";
-import { formatDate } from "../utils/date";
-import Experiment from "./Experiment.astro";
+import { getCollection } from 'astro:content'
+import Note from '../components/Note.astro'
+import { formatDate } from '../utils/date'
+import Experiment from './Experiment.astro'
 
-const notes = await getCollection("notes");
+const notes = await getCollection('notes')
 ---
 
 <main class="home-page">
@@ -22,7 +22,7 @@ const notes = await getCollection("notes");
               date={formatDate(note.data.date)}
               id={note.id}
             />
-          );
+          )
         })
       }
     </div>
@@ -31,12 +31,12 @@ const notes = await getCollection("notes");
   <section>
     <h2>Lab</h2>
     <div class="grid">
-      <Experiment title="Experiment 1"></Experiment>
-      <Experiment title="Experiment 2"></Experiment>
-      <Experiment title="Experiment 3 but it has a very long and awesome title"></Experiment>
-      <Experiment title="Experiment 4"></Experiment>
-      <Experiment title="Experiment 5"></Experiment>
-      <Experiment title="Experiment 6"></Experiment>
+      <Experiment title="Experiment 1" />
+      <Experiment title="Experiment 2" />
+      <Experiment title="Experiment 3 but it has a very long and awesome title" />
+      <Experiment title="Experiment 4" />
+      <Experiment title="Experiment 5" />
+      <Experiment title="Experiment 6" />
     </div>
   </section>
 
@@ -48,88 +48,76 @@ const notes = await getCollection("notes");
   <section>
     <h2>Lorem</h2>
     <p>
-      But I must explain to you how all this mistaken idea of denouncing
-      pleasure and praising pain was born and I will give you a complete account
-      of the system, and expound the actual teachings of the great explorer of
-      the truth, the master-builder of human happiness. No one rejects,
-      dislikes, or avoids pleasure itself, because it is pleasure, but because
-      those who do not know how to pursue pleasure rationally encounter
-      consequences that are extremely painful. Nor again is there anyone who
-      loves or pursues or desires to obtain pain of itself, because it is pain,
-      but because occasionally circumstances occur in which toil and pain can
-      procure him some great pleasure. To take a trivial example, which of us
-      ever undertakes laborious physical exercise, except to obtain some
-      advantage from it? But who has any right to find fault with a man who
-      chooses to enjoy a pleasure that has no annoying consequences, or one who
-      avoids a pain that produces no resultant pleasure?
+      But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain
+      was born and I will give you a complete account of the system, and expound the actual
+      teachings of the great explorer of the truth, the master-builder of human happiness. No one
+      rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do
+      not know how to pursue pleasure rationally encounter consequences that are extremely painful.
+      Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it
+      is pain, but because occasionally circumstances occur in which toil and pain can procure him
+      some great pleasure. To take a trivial example, which of us ever undertakes laborious physical
+      exercise, except to obtain some advantage from it? But who has any right to find fault with a
+      man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a
+      pain that produces no resultant pleasure?
     </p>
     <h3>Ipsum</h3>
     <p>
-      But I must explain to you how all this mistaken idea of denouncing
-      pleasure and praising pain was born and I will give you a complete account
-      of the system, and expound the actual teachings of the great explorer of
-      the truth, the master-builder of human happiness. No one rejects,
-      dislikes, or avoids pleasure itself, because it is pleasure, but because
-      those who do not know how to pursue pleasure rationally encounter
-      consequences that are extremely painful. Nor again is there anyone who
-      loves or pursues or desires to obtain pain of itself, because it is pain,
-      but because occasionally circumstances occur in which toil and pain can
-      procure him some great pleasure. To take a trivial example, which of us
-      ever undertakes laborious physical exercise, except to obtain some
-      advantage from it? But who has any right to find fault with a man who
-      chooses to enjoy a pleasure that has no annoying consequences, or one who
-      avoids a pain that produces no resultant pleasure?
+      But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain
+      was born and I will give you a complete account of the system, and expound the actual
+      teachings of the great explorer of the truth, the master-builder of human happiness. No one
+      rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do
+      not know how to pursue pleasure rationally encounter consequences that are extremely painful.
+      Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it
+      is pain, but because occasionally circumstances occur in which toil and pain can procure him
+      some great pleasure. To take a trivial example, which of us ever undertakes laborious physical
+      exercise, except to obtain some advantage from it? But who has any right to find fault with a
+      man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a
+      pain that produces no resultant pleasure?
     </p>
     <h3>Ipsum</h3>
     <p>
-      But I must explain to you how all this mistaken idea of denouncing
-      pleasure and praising pain was born and I will give you a complete account
-      of the system, and expound the actual teachings of the great explorer of
-      the truth, the master-builder of human happiness. No one rejects,
-      dislikes, or avoids pleasure itself, because it is pleasure, but because
-      those who do not know how to pursue pleasure rationally encounter
-      consequences that are extremely painful. Nor again is there anyone who
-      loves or pursues or desires to obtain pain of itself, because it is pain,
-      but because occasionally circumstances occur in which toil and pain can
-      procure him some great pleasure. To take a trivial example, which of us
-      ever undertakes laborious physical exercise, except to obtain some
-      advantage from it? But who has any right to find fault with a man who
-      chooses to enjoy a pleasure that has no annoying consequences, or one who
-      avoids a pain that produces no resultant pleasure?
+      But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain
+      was born and I will give you a complete account of the system, and expound the actual
+      teachings of the great explorer of the truth, the master-builder of human happiness. No one
+      rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do
+      not know how to pursue pleasure rationally encounter consequences that are extremely painful.
+      Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it
+      is pain, but because occasionally circumstances occur in which toil and pain can procure him
+      some great pleasure. To take a trivial example, which of us ever undertakes laborious physical
+      exercise, except to obtain some advantage from it? But who has any right to find fault with a
+      man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a
+      pain that produces no resultant pleasure?
     </p>
     <h3>Ipsum</h3>
     <p>
-      But I must explain to you how all this mistaken idea of denouncing
-      pleasure and praising pain was born and I will give you a complete account
-      of the system, and expound the actual teachings of the great explorer of
-      the truth, the master-builder of human happiness. No one rejects,
-      dislikes, or avoids pleasure itself, because it is pleasure, but because
-      those who do not know how to pursue pleasure rationally encounter
-      consequences that are extremely painful. Nor again is there anyone who
-      loves or pursues or desires to obtain pain of itself, because it is pain,
-      but because occasionally circumstances occur in which toil and pain can
-      procure him some great pleasure. To take a trivial example, which of us
-      ever undertakes laborious physical exercise, except to obtain some
-      advantage from it? But who has any right to find fault with a man who
-      chooses to enjoy a pleasure that has no annoying consequences, or one who
-      avoids a pain that produces no resultant pleasure?
+      But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain
+      was born and I will give you a complete account of the system, and expound the actual
+      teachings of the great explorer of the truth, the master-builder of human happiness. No one
+      rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do
+      not know how to pursue pleasure rationally encounter consequences that are extremely painful.
+      Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it
+      is pain, but because occasionally circumstances occur in which toil and pain can procure him
+      some great pleasure. To take a trivial example, which of us ever undertakes laborious physical
+      exercise, except to obtain some advantage from it? But who has any right to find fault with a
+      man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a
+      pain that produces no resultant pleasure?
     </p>
   </section>
 </main>
 
 <script>
   // Save scroll position before navigation
-  document.addEventListener("astro:before-preparation", () => {
-    sessionStorage.setItem("homeScrollPosition", window.scrollY.toString());
-  });
+  document.addEventListener('astro:before-preparation', () => {
+    sessionStorage.setItem('homeScrollPosition', window.scrollY.toString())
+  })
 
   // Restore scroll position after navigation
-  document.addEventListener("astro:after-swap", () => {
-    const savedPosition = sessionStorage.getItem("homeScrollPosition");
+  document.addEventListener('astro:after-swap', () => {
+    const savedPosition = sessionStorage.getItem('homeScrollPosition')
     if (savedPosition) {
-      window.scrollTo({ top: parseInt(savedPosition), behavior: "instant" });
+      window.scrollTo({ top: parseInt(savedPosition), behavior: 'instant' })
     }
-  });
+  })
 </script>
 
 <style>
@@ -165,5 +153,10 @@ const notes = await getCollection("notes");
     margin-top: 2.5em;
     margin-bottom: 0.8em;
     font-size: 1.5em;
+  }
+
+  p {
+    line-height: 1.5;
+    color: grey;
   }
 </style>

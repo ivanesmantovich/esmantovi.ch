@@ -1,20 +1,20 @@
 ---
-import { getCollection } from "astro:content";
-import Layout from "../../../layouts/Layout.astro";
-import Home from "../../../components/Home.astro";
-import { render } from "astro:content";
-import { formatDate } from "../../../utils/date";
+import { getCollection } from 'astro:content'
+import Layout from '../../../layouts/Layout.astro'
+import Home from '../../../components/Home.astro'
+import { render } from 'astro:content'
+import { formatDate } from '../../../utils/date'
 
 export async function getStaticPaths() {
-  const notes = await getCollection("notes");
+  const notes = await getCollection('notes')
   return notes.map((note) => ({
     params: { id: note.id },
     props: { note },
-  }));
+  }))
 }
 
-const { note } = Astro.props;
-const { Content } = await render(note);
+const { note } = Astro.props
+const { Content } = await render(note)
 ---
 
 <Layout>
@@ -22,11 +22,7 @@ const { Content } = await render(note);
   <div class="note-preview-overlay" id="overlay">
     <div class="note-preview" id="preview">
       <button class="close-button" aria-label="Close preview">
-        <svg
-          viewBox="0 0 20 20"
-          fill="currentColor"
-          xmlns="http://www.w3.org/2000/svg"
-        >
+        <svg viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
           <path
             d="M12.12,10l4.07-4.06a1.5,1.5,0,1,0-2.11-2.12L10,7.88,5.94,3.81A1.5,1.5,0,1,0,3.82,5.93L7.88,10,3.81,14.06a1.5,1.5,0,0,0,0,2.12,1.51,1.51,0,0,0,2.13,0L10,12.12l4.06,4.07a1.45,1.45,0,0,0,1.06.44,1.5,1.5,0,0,0,1.06-2.56Z"
             fill="currentColor"
@@ -44,24 +40,24 @@ const { Content } = await render(note);
 </Layout>
 
 <script>
-  import { navigate } from "astro:transitions/client";
+  import { navigate } from 'astro:transitions/client'
 
-  document.addEventListener("astro:page-load", () => {
-    const overlay = document.getElementById("overlay");
-    const closeButton = document.querySelector(".close-button");
+  document.addEventListener('astro:page-load', () => {
+    const overlay = document.getElementById('overlay')
+    const closeButton = document.querySelector('.close-button')
 
     const handleClose = () => {
-      navigate("/");
-    };
+      navigate('/')
+    }
 
-    overlay?.addEventListener("click", (e) => {
+    overlay?.addEventListener('click', (e) => {
       if (e.target === overlay) {
-        handleClose();
+        handleClose()
       }
-    });
+    })
 
-    closeButton?.addEventListener("click", handleClose);
-  });
+    closeButton?.addEventListener('click', handleClose)
+  })
 </script>
 
 <style>
@@ -73,50 +69,57 @@ const { Content } = await render(note);
 
   .note-preview-overlay {
     position: fixed;
+    z-index: 10;
     top: 0;
     left: 0;
+
+    overflow-y: auto;
+
     width: 100%;
     height: 100%;
+
     background-color: rgba(245, 245, 247, 0.3);
-    backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
-    z-index: 1000;
-    overflow-y: auto;
+    backdrop-filter: blur(24px);
   }
 
   .note-preview {
-    background-color: white;
-    border-radius: 16px;
-    box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 16px 0px;
     width: 816px;
     margin: 3.3em auto;
     padding-top: 24px;
+    border-radius: 16px;
+
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 16px 0px;
   }
 
   .note-preview-content {
-    padding-top: 20px;
-    padding-bottom: 80px;
     width: 80%;
     margin: 0 auto;
+    padding-top: 20px;
+    padding-bottom: 80px;
   }
 
   .note-preview-date {
-    font-size: 14px;
-    letter-spacing: -0.016em;
-    line-height: 1.28;
-    font-weight: 600;
     display: block;
-    color: #6e6e73;
+
     margin-bottom: 8px;
+
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.28;
+    color: #6e6e73;
+    letter-spacing: -0.016em;
   }
 
   .note-preview-title {
-    font-size: 32px;
-    letter-spacing: 0.004em;
-    line-height: 1.125;
-    font-weight: 700;
     display: block;
+
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1.125;
     color: rgb(29, 29, 31);
+    letter-spacing: 0.004em;
   }
 
   h2 {
@@ -126,6 +129,41 @@ const { Content } = await render(note);
 
   p {
     font-size: 24px;
+  }
+
+  .close-button {
+    cursor: pointer;
+
+    position: sticky;
+    top: 24px;
+    left: 0px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 36px;
+    height: 36px;
+    margin-left: 24px;
+    border: none;
+    border-radius: 50%;
+
+    color: rgb(110, 110, 115);
+
+    background-color: rgba(232, 232, 237, 0.8);
+    backdrop-filter: blur(3px);
+
+    transition: background-color 0.1s linear color 0.1s linear;
+  }
+
+  .close-button:hover {
+    color: rgba(0, 0, 0, 0.72);
+    background-color: #ececf0;
+  }
+
+  .close-button svg {
+    width: 17px;
+    height: 17px;
   }
 
   @media screen and (width <= 1068px) {
@@ -142,37 +180,8 @@ const { Content } = await render(note);
     }
 
     .note-preview-content {
-      max-width: 414px;
       width: 87.5%;
+      max-width: 414px;
     }
-  }
-
-  .close-button {
-    position: sticky;
-    top: 24px;
-    left: 0px;
-    margin-left: 24px;
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    background-color: rgba(232, 232, 237, 0.8);
-    color: rgb(110, 110, 115);
-    border: none;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    backdrop-filter: blur(3px);
-    transition: background-color 0.1s linear color 0.1s linear;
-  }
-
-  .close-button:hover {
-    background-color: #ececf0;
-    color: rgba(0, 0, 0, 0.72);
-  }
-
-  .close-button svg {
-    width: 17px;
-    height: 17px;
   }
 </style>
