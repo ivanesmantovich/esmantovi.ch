@@ -12,10 +12,10 @@
     pointer-events: none;
 
     position: fixed;
-    z-index: 1000;
+    z-index: 5;
     inset: auto 0 0 0;
 
-    height: 4vh;
+    height: 5vh;
   }
 
   .fog > div,
@@ -27,8 +27,12 @@
 
   .fog::before {
     content: "";
+
     z-index: 1;
+
+    -webkit-backdrop-filter: blur(0.5px);
     backdrop-filter: blur(0.5px);
+
     mask: linear-gradient(
       to bottom,
       rgba(0, 0, 0, 0) 0%,
@@ -40,6 +44,7 @@
 
   .fog > div:nth-of-type(1) {
     z-index: 2;
+    -webkit-backdrop-filter: blur(1px);
     backdrop-filter: blur(1px);
     mask: linear-gradient(
       to bottom,
@@ -52,6 +57,7 @@
 
   .fog > div:nth-of-type(2) {
     z-index: 3;
+    -webkit-backdrop-filter: blur(2px);
     backdrop-filter: blur(2px);
     mask: linear-gradient(
       to bottom,
@@ -64,6 +70,7 @@
 
   .fog > div:nth-of-type(3) {
     z-index: 4;
+    -webkit-backdrop-filter: blur(4px);
     backdrop-filter: blur(4px);
     mask: linear-gradient(
       to bottom,
@@ -76,6 +83,7 @@
 
   .fog > div:nth-of-type(4) {
     z-index: 5;
+    -webkit-backdrop-filter: blur(8px);
     backdrop-filter: blur(8px);
     mask: linear-gradient(
       to bottom,
@@ -88,6 +96,7 @@
 
   .fog > div:nth-of-type(5) {
     z-index: 6;
+    -webkit-backdrop-filter: blur(16px);
     backdrop-filter: blur(16px);
     mask: linear-gradient(
       to bottom,
@@ -100,6 +109,7 @@
 
   .fog > div:nth-of-type(6) {
     z-index: 7;
+    -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
     mask: linear-gradient(
       to bottom,
@@ -111,8 +121,12 @@
 
   .fog::after {
     content: "";
+
     z-index: 8;
+
+    -webkit-backdrop-filter: blur(64px);
     backdrop-filter: blur(64px);
+
     mask: linear-gradient(
       to bottom,
       rgba(0, 0, 0, 0) 87.5%,
