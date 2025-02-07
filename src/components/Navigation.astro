@@ -1,4 +1,4 @@
-<nav class="navigation">
+<nav>
   <a href="/navigation">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
       ><path
@@ -7,3 +7,47 @@
     >
   </a>
 </nav>
+
+<style>
+  nav {
+    position: fixed;
+    z-index: 100;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    display: flex;
+    gap: 1.5rem;
+
+    width: min-content;
+    margin: 0 auto;
+    margin-bottom: 32px;
+    border-radius: 32px;
+
+    background: rgba(0, 0, 0, 0.15);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    backdrop-filter: saturate(180%) blur(20px);
+  }
+
+  a {
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 58px;
+    height: 58px;
+    padding: 0.5rem;
+    border-radius: 32px;
+
+    font-weight: 500;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  svg {
+    width: 34px;
+    height: 34px;
+    fill: #ffffff;
+  }
+</style>

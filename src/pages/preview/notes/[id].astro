@@ -61,3 +61,133 @@ const { Content } = await render(note)
     closeButton?.addEventListener('click', handleClose)
   })
 </script>
+
+<style>
+  /* 1:1 Apple Newsroom behaviour */
+  /* Prevent body scroll when overlay exists */
+  :root:has(.note-preview-overlay) {
+    overflow: hidden;
+  }
+
+  #overlay {
+    z-index: 200;
+  }
+
+  .note-preview-overlay {
+    position: fixed;
+    z-index: 10;
+    top: 0;
+    left: 0;
+
+    overflow-y: auto;
+
+    width: 100%;
+    height: 100%;
+
+    background-color: rgba(245, 245, 247, 0.3);
+    -webkit-backdrop-filter: blur(24px);
+    backdrop-filter: blur(24px);
+  }
+
+  .note-preview {
+    width: 816px;
+    margin: 3.3em auto;
+    padding-top: 24px;
+    border-radius: 16px;
+
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 16px 0px;
+  }
+
+  .note-preview-content {
+    width: 80%;
+    margin: 0 auto;
+    padding-top: 20px;
+    padding-bottom: 80px;
+  }
+
+  .note-preview-date {
+    display: block;
+
+    margin-bottom: 8px;
+
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.28;
+    color: #6e6e73;
+    letter-spacing: -0.016em;
+  }
+
+  .note-preview-title {
+    display: block;
+
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1.125;
+    color: rgb(29, 29, 31);
+    letter-spacing: 0.004em;
+  }
+
+  h2 {
+    margin-top: 52px;
+    margin-bottom: 16px;
+  }
+
+  p {
+    font-size: 24px;
+  }
+
+  .close-button {
+    cursor: pointer;
+
+    position: sticky;
+    top: 24px;
+    left: 0px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 36px;
+    height: 36px;
+    margin-left: 24px;
+    border: none;
+    border-radius: 50%;
+
+    color: rgb(110, 110, 115);
+
+    background-color: rgba(232, 232, 237, 0.8);
+    backdrop-filter: blur(3px);
+
+    transition: background-color 0.1s linear color 0.1s linear;
+  }
+
+  .close-button:hover {
+    color: rgba(0, 0, 0, 0.72);
+    background-color: #ececf0;
+  }
+
+  .close-button svg {
+    width: 17px;
+    height: 17px;
+  }
+
+  @media screen and (width <= 1068px) {
+    .note-preview {
+      width: 692px;
+    }
+  }
+
+  @media screen and (width <= 734px) {
+    .note-preview {
+      width: 100%;
+      margin: 0;
+      border-radius: unset;
+    }
+
+    .note-preview-content {
+      width: 87.5%;
+      max-width: 414px;
+    }
+  }
+</style>
