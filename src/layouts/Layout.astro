@@ -1,7 +1,6 @@
 ---
 import { ClientRouter } from 'astro:transitions'
 import Navigation from '../components/Navigation.astro'
-import Fog from '../components/Fog.astro'
 ---
 
 <!doctype html>
@@ -18,7 +17,6 @@ import Fog from '../components/Fog.astro'
   <body>
     <slot />
     <Navigation />
-    <Fog />
   </body>
 </html>
 
@@ -29,9 +27,7 @@ import Fog from '../components/Fog.astro'
     padding: 0;
   }
 
-  /* Customize view transition duration */
-  ::view-transition-old(root),
-  ::view-transition-new(root) {
+  ::view-transition-group(*) {
     animation-duration: 170ms;
   }
 
