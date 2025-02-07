@@ -4,6 +4,7 @@ import Layout from '../../../layouts/Layout.astro'
 import Home from '../../../components/Home.astro'
 import { render } from 'astro:content'
 import { formatDate } from '../../../utils/date'
+import Fog from '../../../components/Fog.astro'
 
 export async function getStaticPaths() {
   const notes = await getCollection('notes')
@@ -35,6 +36,7 @@ const { Content } = await render(note)
         <h1 class="note-preview-title">{note.data.title}</h1>
         <Content />
       </article>
+      <Fog />
     </div>
   </div>
 </Layout>
@@ -65,6 +67,10 @@ const { Content } = await render(note)
   /* Prevent body scroll when overlay exists */
   :root:has(.note-preview-overlay) {
     overflow: hidden;
+  }
+
+  #overlay {
+    z-index: 200;
   }
 
   .note-preview-overlay {
