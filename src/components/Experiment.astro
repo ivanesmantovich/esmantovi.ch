@@ -1,101 +1,15 @@
 ---
 // Define the props interface for type safety
 interface Props {
-    title: string;
+  title: string
 }
 
 // Destructure the title prop
-const { title } = Astro.props;
+const { title } = Astro.props
 ---
 
 <div class="experiment">
-    <h3 class="title">{title}</h3>
-    <div class="margin-line"></div>
-    <div class="horizontal-lines"></div>
+  <h3 class="title">{title}</h3>
+  <div class="margin-line"></div>
+  <div class="horizontal-lines"></div>
 </div>
-
-<style>
-    .experiment {
-        position: relative;
-
-        overflow: hidden;
-        display: flex;
-        flex-direction: column;
-
-        aspect-ratio: 2 / 1;
-        width: 100%;
-        border: 1px solid rgba(0, 28, 70, 0.06);
-        border-radius: 32px;
-
-        background-color: #ffffff;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-
-        transition:
-            box-shadow 0.12s ease-out,
-            transform 0.12s ease-out;
-    }
-
-    .experiment:hover {
-        cursor: pointer;
-        transform: translateY(-2px);
-        box-shadow:
-            0 4px 8px rgba(0, 0, 0, 0.06),
-            0 8px 16px rgba(0, 0, 0, 0.06);
-    }
-
-    /* Title styling */
-    .title {
-        z-index: 2;
-
-        margin-top: 3.85rem;
-        margin-left: 3.5rem;
-        padding-right: 15px;
-
-        font-weight: 600;
-        line-height: 31px;
-    }
-
-    .margin-line {
-        position: absolute;
-        z-index: 2;
-        top: 0;
-        left: 0;
-
-        width: 100%;
-        height: 100%;
-
-        background-image:
-            /* Red margin line */
-            linear-gradient(
-                90deg,
-                transparent 2.8rem,
-                #fdb7b7E6 2.8rem,
-                #fdb7b7E6 calc(2.8rem + 1.5px),
-                transparent calc(2.8rem + 1.5px)
-            );
-    }
-
-    .horizontal-lines {
-        position: absolute;
-        top: 0;
-        left: 0;
-
-        width: 100%;
-        height: 100%;
-        margin-top: 85px;
-
-        background-image: repeating-linear-gradient(
-            180deg,
-            #afafb3,
-            #afafb3 1.5px,
-            transparent 1.5px,
-            transparent 31px
-        );
-    }
-
-    @media (width >= 430px) {
-        .experiment {
-            aspect-ratio: 1 / 1;
-        }
-    }
-</style>
