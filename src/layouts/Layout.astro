@@ -64,12 +64,12 @@ import Navigation from '../components/Navigation.astro'
   }
 
   ::view-transition-old(root) {
-    animation: fade-away 0.4s cubic-bezier(0.6, 0, 0.8, 1) forwards;
+    animation: fade-away 0.1s ease-in-out forwards;
   }
 
   ::view-transition-new(root) {
     opacity: 0;
-    animation: appear 0.6s 0.2s forwards;
+    animation: appear 0.15s 0.05s forwards;
   }
 
   @media (max-width: 1068px) {
