@@ -6,3 +6,139 @@
   <div></div>
   <div></div>
 </div>
+
+<style>
+  .fog {
+    pointer-events: none;
+
+    position: sticky;
+    z-index: 20;
+    inset: auto 0 0 0;
+
+    overflow: hidden;
+
+    height: 7vh;
+    /* To make sticky element not take up space */
+    margin-top: -7vh;
+    border-radius: 16px;
+  }
+
+  .fog > div,
+  .fog::before,
+  .fog::after {
+    position: absolute;
+    inset: 0;
+  }
+
+  .fog::before {
+    content: '';
+
+    z-index: 1;
+
+    -webkit-backdrop-filter: blur(0.5px);
+    backdrop-filter: blur(0.5px);
+
+    mask: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 1) 12.5%,
+      rgba(0, 0, 0, 1) 25%,
+      rgba(0, 0, 0, 0) 37.5%
+    );
+  }
+
+  .fog > div:nth-of-type(1) {
+    z-index: 2;
+    -webkit-backdrop-filter: blur(1px);
+    backdrop-filter: blur(1px);
+    mask: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0) 12.5%,
+      rgba(0, 0, 0, 1) 25%,
+      rgba(0, 0, 0, 1) 37.5%,
+      rgba(0, 0, 0, 0) 50%
+    );
+  }
+
+  .fog > div:nth-of-type(2) {
+    z-index: 3;
+    -webkit-backdrop-filter: blur(2px);
+    backdrop-filter: blur(2px);
+    mask: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0) 25%,
+      rgba(0, 0, 0, 1) 37.5%,
+      rgba(0, 0, 0, 1) 50%,
+      rgba(0, 0, 0, 0) 62.5%
+    );
+  }
+
+  .fog > div:nth-of-type(3) {
+    z-index: 4;
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+    mask: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0) 37.5%,
+      rgba(0, 0, 0, 1) 50%,
+      rgba(0, 0, 0, 1) 62.5%,
+      rgba(0, 0, 0, 0) 75%
+    );
+  }
+
+  .fog > div:nth-of-type(4) {
+    z-index: 5;
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    mask: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0) 50%,
+      rgba(0, 0, 0, 1) 62.5%,
+      rgba(0, 0, 0, 1) 75%,
+      rgba(0, 0, 0, 0) 87.5%
+    );
+  }
+
+  .fog > div:nth-of-type(5) {
+    z-index: 6;
+    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px);
+    mask: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0) 62.5%,
+      rgba(0, 0, 0, 1) 75%,
+      rgba(0, 0, 0, 1) 87.5%,
+      rgba(0, 0, 0, 0) 100%
+    );
+  }
+
+  .fog > div:nth-of-type(6) {
+    z-index: 7;
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
+    mask: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0) 75%,
+      rgba(0, 0, 0, 1) 87.5%,
+      rgba(0, 0, 0, 1) 100%
+    );
+  }
+
+  .fog::after {
+    content: '';
+
+    z-index: 8;
+
+    -webkit-backdrop-filter: blur(64px);
+    backdrop-filter: blur(64px);
+
+    mask: linear-gradient(to bottom, rgba(0, 0, 0, 0) 87.5%, rgba(0, 0, 0, 1) 100%);
+  }
+
+  /* TODO: Перенести этот брейкпойнт и .note-preview, .note-preview-content в глобальный стиль чтобы была связность и потом не забыть */
+  @media screen and (width <= 734px) {
+    .fog {
+      border-radius: unset;
+    }
+  }
+</style>
