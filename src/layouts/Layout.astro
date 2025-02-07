@@ -27,10 +27,6 @@ import Navigation from '../components/Navigation.astro'
     padding: 0;
   }
 
-  ::view-transition-group(*) {
-    animation-duration: 170ms;
-  }
-
   .home-page {
     max-width: 1024px;
     margin: 0 auto;
@@ -67,6 +63,15 @@ import Navigation from '../components/Navigation.astro'
     margin-bottom: 8px;
   }
 
+  ::view-transition-old(root) {
+    animation: fade-away 0.4s cubic-bezier(0.6, 0, 0.8, 1) forwards;
+  }
+
+  ::view-transition-new(root) {
+    opacity: 0;
+    animation: appear 0.6s 0.2s forwards;
+  }
+
   @media (max-width: 1068px) {
     body {
       font-size: 16px;
@@ -83,6 +88,32 @@ import Navigation from '../components/Navigation.astro'
   @media (min-width: 650px) {
     .grid {
       grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  @keyframes fade-away {
+    0% {
+      opacity: 1;
+      filter: blur(0px);
+      mix-blend-mode: plus-lighter;
+    }
+    100% {
+      opacity: 0;
+      filter: blur(4px);
+      mix-blend-mode: plus-lighter;
+    }
+  }
+
+  @keyframes appear {
+    0% {
+      opacity: 0;
+      filter: blur(4px);
+      mix-blend-mode: plus-lighter;
+    }
+    100% {
+      opacity: 1;
+      filter: blur(0px);
+      mix-blend-mode: plus-lighter;
     }
   }
 </style>
