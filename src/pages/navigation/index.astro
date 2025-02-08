@@ -1,0 +1,72 @@
+---
+import Home from '../../components/Home.astro'
+import Layout from '../../layouts/Layout.astro'
+---
+
+<Layout navigationOpened={true}>
+  <Home />
+  <div class="navigation-overlay" id="navigation-overlay">
+    <div class="navigation-content">
+      <h2 transition:name="home">Home</h2>
+      <h2 transition:name="notes">Notes</h2>
+      <h2 transition:name="projects">Projects</h2>
+      <h2 transition:name="about">About</h2>
+    </div>
+  </div>
+</Layout>
+
+<script>
+  import { navigate } from 'astro:transitions/client'
+
+  document.addEventListener('astro:page-load', () => {
+    const overlay = document.getElementById('navigation-overlay')
+
+    const handleClose = () => {
+      navigate('/')
+    }
+
+    overlay?.addEventListener('click', (e) => {
+      if (e.target === overlay) {
+        handleClose()
+      }
+    })
+  })
+</script>
+
+<style>
+  h2 {
+    font-weight: 400;
+  }
+
+  :root:has(.navigation-overlay) {
+    overflow: hidden;
+  }
+
+  .navigation-overlay {
+    position: fixed;
+    z-index: 200;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background-color: rgba(245, 245, 247, 0.3);
+    -webkit-backdrop-filter: blur(24px);
+    backdrop-filter: blur(24px);
+  }
+
+  .navigation-content {
+    position: absolute;
+    bottom: 200px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: min-content;
+    padding-top: 24px;
+    border-radius: 16px;
+
+    /* background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 16px 0px; */
+  }
+</style>
