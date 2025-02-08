@@ -105,7 +105,6 @@ const { title = '', text = '', date = '', id = '' } = Astro.props
     .info {
       display: flex;
       gap: 1em;
-      justify-content: space-between;
 
       .date {
         order: 1;
@@ -114,6 +113,7 @@ const { title = '', text = '', date = '', id = '' } = Astro.props
 
       .text {
         position: relative;
+        flex-grow: 1;
         order: 2;
       }
 
@@ -154,7 +154,6 @@ const { title = '', text = '', date = '', id = '' } = Astro.props
         padding-left: 100%;
 
         animation: marquee 12s linear infinite;
-        animation-delay: 2s;
       }
 
       .marquee span:hover {
