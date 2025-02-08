@@ -17,10 +17,10 @@ const { navigationOpened = false } = Astro.props
   {
     !navigationOpened && (
       <div class="navigation-items">
-        <h2 transition:name="home">Home</h2>
-        <h2 transition:name="notes">Notes</h2>
-        <h2 transition:name="projects">Projects</h2>
-        <h2 transition:name="about">About</h2>
+        <h2 class="home">Home</h2>
+        <h2 class="notes">Notes</h2>
+        <h2 class="projects">Projects</h2>
+        <h2 class="about">About</h2>
       </div>
     )
   }
@@ -70,6 +70,7 @@ const { navigationOpened = false } = Astro.props
   }
 
   .navigation-items {
+    z-index: 10000;
     position: absolute;
     bottom: 0;
     left: 0;
@@ -82,5 +83,21 @@ const { navigationOpened = false } = Astro.props
     font-size: 2px;
     font-weight: 400;
     color: transparent;
+  }
+
+  .home {
+    view-transition-name: home;
+  }
+
+  .notes {
+    view-transition-name: notes;
+  }
+
+  .projects {
+    view-transition-name: projects;
+  }
+
+  .about {
+    view-transition-name: about;
   }
 </style>
