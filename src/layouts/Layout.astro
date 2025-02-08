@@ -1,6 +1,12 @@
 ---
 import { ClientRouter } from 'astro:transitions'
 import Navigation from '../components/Navigation.astro'
+
+interface Props {
+  navigationOpened?: boolean
+}
+
+const { navigationOpened = false } = Astro.props
 ---
 
 <!doctype html>
@@ -16,7 +22,7 @@ import Navigation from '../components/Navigation.astro'
   </head>
   <body>
     <slot />
-    <Navigation />
+    <Navigation navigationOpened={navigationOpened} />
   </body>
 </html>
 
