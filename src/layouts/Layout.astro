@@ -86,9 +86,14 @@ const { navigationOpened = false } = Astro.props
     margin-bottom: 8px;
   }
 
-  /* ::view-transition-group(*) {
-    animation-duration: 0.5s;
-  } */
+  ::view-transition-old(navigation-content) {
+    animation: fade-away 0.2s ease-in-out forwards;
+  }
+
+  ::view-transition-new(navigation-content) {
+    opacity: 0;
+    animation: appear 0.3s 0.1s forwards;
+  }
 
   ::view-transition-group(overlay) {
     animation-duration: 0.3s;
@@ -96,7 +101,7 @@ const { navigationOpened = false } = Astro.props
 
   ::view-transition-group(navigation-content) {
     z-index: 10000;
-    animation-duration: 0.25s;
+    animation-duration: 0.3s;
     animation-timing-function: ease-out;
   }
 
