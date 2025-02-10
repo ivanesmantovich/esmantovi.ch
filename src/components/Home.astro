@@ -3,7 +3,13 @@ import { getCollection } from 'astro:content'
 import Note from '../components/Note.astro'
 import { formatDate } from '../utils/date'
 import Experiment from './Experiment.astro'
+import Navigation from './Navigation.astro'
 
+interface Props {
+  navigationOpened?: boolean
+}
+
+const { navigationOpened = false } = Astro.props
 const notes = await getCollection('notes')
 ---
 
@@ -103,6 +109,8 @@ const notes = await getCollection('notes')
       pain that produces no resultant pleasure?
     </p>
   </section>
+
+  <Navigation navigationOpened={navigationOpened} />
 </main>
 
 <script>
