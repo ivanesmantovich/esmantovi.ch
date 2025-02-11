@@ -92,7 +92,8 @@ const { navigationOpened = false } = Astro.props
 
   ::view-transition-new(navigation-content) {
     opacity: 0;
-    animation: appear 0.3s 0.1s forwards;
+    /* animation: appear 0.3s 0.1s forwards; */
+    animation: appear 0.3s forwards;
   }
 
   ::view-transition-group(overlay) {
