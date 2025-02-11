@@ -1,4 +1,6 @@
 ---
+import NavigationMenu from './NavigationMenu.astro'
+
 interface Props {
   navigationOpened?: boolean
 }
@@ -16,16 +18,7 @@ const { navigationOpened = false } = Astro.props
       >
     </a>
     <!-- TODO: Сделать абсолютом чтобы эти предметы были друг на друге, выплывали из одной начальной точки -->
-    {
-      !navigationOpened && (
-        <div class="navigation-content">
-          <h2 class="home">Home</h2>
-          <h2 class="notes">Notes</h2>
-          <h2 class="lab">Lab</h2>
-          <h2 class="about">About</h2>
-        </div>
-      )
-    }
+    {!navigationOpened && <NavigationMenu opened={false} />}
   </nav>
 </div>
 
@@ -43,6 +36,8 @@ const { navigationOpened = false } = Astro.props
   }
 
   nav {
+    position: relative;
+
     width: min-content;
     border-radius: 32px;
 
@@ -76,7 +71,7 @@ const { navigationOpened = false } = Astro.props
   .navigation-content {
     position: absolute;
     z-index: 10000;
-    bottom: 0;
+    top: 0;
     left: 0;
 
     width: 0px;
@@ -86,8 +81,12 @@ const { navigationOpened = false } = Astro.props
   }
 
   .navigation-content h2 {
-    font-size: 2px;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    font-size: 6px;
     font-weight: 400;
-    color: transparent;
+    /* color: transparent; */
   }
 </style>
