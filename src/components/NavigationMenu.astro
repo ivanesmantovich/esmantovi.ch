@@ -83,6 +83,10 @@ const { opened = false } = Astro.props
       text-decoration: none;
     }
 
+    a:hover {
+      color: #8f8e95;
+    }
+
     .icon-container {
       display: flex;
       align-items: center;
@@ -143,6 +147,8 @@ const { opened = false } = Astro.props
   }
 
   .navigation-menu.closed {
+    pointer-events: none;
+
     position: absolute;
     z-index: 10000;
     top: 30%;
@@ -150,6 +156,8 @@ const { opened = false } = Astro.props
 
     width: 0px;
     height: 0px;
+
+    opacity: 0;
 
     li {
       position: absolute;
