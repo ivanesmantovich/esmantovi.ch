@@ -86,14 +86,15 @@ const { navigationOpened = false } = Astro.props
     margin-bottom: 8px;
   }
 
-  ::view-transition-old(navigation-content) {
-    animation: fade-away 0.2s ease-in-out forwards;
+  /* NOTE: Disable root view transitions */
+  ::view-transition-group(root) {
+    animation: none;
   }
-
-  ::view-transition-new(navigation-content) {
-    opacity: 0;
-    /* animation: appear 0.3s 0.1s forwards; */
-    animation: appear 0.3s forwards;
+  ::view-transition-old(root) {
+    animation: none;
+  }
+  ::view-transition-new(root) {
+    animation: none;
   }
 
   ::view-transition-group(overlay) {
@@ -102,8 +103,15 @@ const { navigationOpened = false } = Astro.props
 
   ::view-transition-group(navigation-content) {
     z-index: 10000;
-    animation-duration: 0.3s;
-    animation-timing-function: ease-out;
+  }
+
+  ::view-transition-old(navigation-content) {
+    animation: navigation-content-disappear 0.4s ease-out forwards;
+  }
+
+  ::view-transition-new(navigation-content) {
+    opacity: 0.5;
+    animation: navigation-content-appear 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
   }
 
   @media (max-width: 1068px) {
@@ -125,7 +133,7 @@ const { navigationOpened = false } = Astro.props
     }
   }
 
-  @keyframes fade-away {
+  @keyframes blur-replace-out {
     0% {
       opacity: 1;
       filter: blur(0px);
@@ -138,7 +146,7 @@ const { navigationOpened = false } = Astro.props
     }
   }
 
-  @keyframes appear {
+  @keyframes blur-replace-in {
     0% {
       opacity: 0;
       filter: blur(4px);
@@ -147,6 +155,36 @@ const { navigationOpened = false } = Astro.props
     100% {
       opacity: 1;
       filter: blur(0px);
+      mix-blend-mode: plus-lighter;
+    }
+  }
+
+  @keyframes navigation-content-appear {
+    0% {
+      opacity: 0.5;
+      filter: blur(20px);
+      mix-blend-mode: plus-lighter;
+    }
+    65% {
+      filter: blur(10px);
+    }
+    100% {
+      opacity: 1;
+      filter: blur(0px);
+      mix-blend-mode: plus-lighter;
+    }
+  }
+
+  @keyframes navigation-content-disappear {
+    0% {
+      opacity: 1;
+      filter: blur(0px);
+      mix-blend-mode: plus-lighter;
+    }
+
+    100% {
+      opacity: 0.5;
+      filter: blur(20px);
       mix-blend-mode: plus-lighter;
     }
   }

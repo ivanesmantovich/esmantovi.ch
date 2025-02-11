@@ -17,7 +17,6 @@ const { navigationOpened = false } = Astro.props
         ></path></svg
       >
     </a>
-    <!-- TODO: Сделать абсолютом чтобы эти предметы были друг на друге, выплывали из одной начальной точки -->
     {!navigationOpened && <NavigationMenu opened={false} />}
   </nav>
 </div>
@@ -31,19 +30,13 @@ const { navigationOpened = false } = Astro.props
 
     display: flex;
 
+    width: min-content;
     padding-bottom: 36px;
     padding-left: 24px;
   }
 
   nav {
     position: relative;
-
-    width: min-content;
-    border-radius: 32px;
-
-    background: rgba(0, 0, 0, 0.15);
-    -webkit-backdrop-filter: saturate(180%) blur(20px);
-    backdrop-filter: saturate(180%) blur(20px);
   }
 
   a {
@@ -56,37 +49,20 @@ const { navigationOpened = false } = Astro.props
     height: 58px;
     padding: 0.5rem;
     border-radius: 32px;
+    border-radius: 32px;
 
     font-weight: 500;
     color: inherit;
     text-decoration: none;
+
+    background: rgba(0, 0, 0, 0.15);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    backdrop-filter: saturate(180%) blur(20px);
   }
 
   svg {
     width: 34px;
     height: 34px;
     fill: #ffffff;
-  }
-
-  .navigation-content {
-    position: absolute;
-    z-index: 10000;
-    top: 0;
-    left: 0;
-
-    width: 0px;
-    height: 0px;
-
-    view-transition-name: navigation-content;
-  }
-
-  .navigation-content h2 {
-    position: absolute;
-    top: 0;
-    left: 0;
-
-    font-size: 6px;
-    font-weight: 400;
-    /* color: transparent; */
   }
 </style>
