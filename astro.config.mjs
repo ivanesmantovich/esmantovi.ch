@@ -1,5 +1,5 @@
 // @ts-check
-import { defineConfig } from "astro/config";
+import { defineConfig } from 'astro/config'
 
 // https://astro.build/config
 export default defineConfig({
@@ -7,7 +7,10 @@ export default defineConfig({
     enabled: false,
   },
   prefetch: {
-    defaultStrategy: "viewport",
+    defaultStrategy: 'viewport',
     prefetchAll: true,
   },
-});
+  experimental: {
+    svg: true,
+  },
+})

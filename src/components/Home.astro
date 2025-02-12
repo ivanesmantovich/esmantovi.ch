@@ -3,7 +3,7 @@ import { getCollection } from 'astro:content'
 import Note from '../components/Note.astro'
 import { formatDate } from '../utils/date'
 import Experiment from './Experiment.astro'
-
+import Forward from '../assets/Forward.svg'
 const notes = await getCollection('notes')
 ---
 
@@ -28,7 +28,10 @@ const notes = await getCollection('notes')
   </section>
 
   <section>
-    <h2>Notes</h2>
+    <a href="/notes" class="clickable-header category-header">
+      <h2>Days</h2>
+      <Forward />
+    </a>
     <div class="grid">
       {
         notes.map((note) => {
@@ -43,11 +46,14 @@ const notes = await getCollection('notes')
         })
       }
     </div>
-    <a href="/notes">View all Notes</a>
+    <a href="/notes" class="view-link">View all Notes</a>
   </section>
 
   <section>
-    <h2>Experiments</h2>
+    <a href="/experiments" class="clickable-header category-header">
+      <h2>Experiments</h2>
+      <Forward />
+    </a>
     <div class="grid">
       <Experiment title="Experiment 1" />
       <Experiment title="Experiment 2" />
@@ -56,13 +62,14 @@ const notes = await getCollection('notes')
       <Experiment title="Experiment 5" />
       <Experiment title="Experiment 6" />
     </div>
-    <a href="/experiments">View all Experiments</a>
+    <a href="/experiments" class="view-link">View all Experiments</a>
   </section>
 
   <section>
     <h2>Resume</h2>
-    <div>🚧🚧🚧</div>
-    <a href="/resume">Download Resume</a>
+    <iframe id="resumeFrame" src="/resume-v1.pdf#toolbar=0&navpanes=0" frameborder="0"></iframe>
+    <p id="mobileResumePlaceholder">Inline PDFs are not supported on mobile.</p>
+    <a href="/resume-v1.pdf" class="view-link">View Resume PDF</a>
   </section>
 
   <div class="space"></div>
@@ -84,10 +91,12 @@ const notes = await getCollection('notes')
 </script>
 
 <style>
-  a {
+  .view-link {
     display: inline-block;
 
-    margin-top: 1.5em;
+    margin-top: 0.5em;
+    margin-left: -1em;
+    padding: 1em;
 
     font-size: 14px;
     font-weight: 500;
@@ -117,9 +126,38 @@ const notes = await getCollection('notes')
     animation-play-state: running;
   }
 
-  @keyframes fadeOut {
-    to {
-      opacity: 0;
+  #resumeFrame {
+    display: block;
+    aspect-ratio: 1 / 1.414;
+    width: 80%;
+    border: 2px solid #d5d5d5;
+  }
+
+  #mobileResumePlaceholder {
+    display: none;
+  }
+
+  .category-header {
+    display: flex;
+    gap: 0.5em;
+    align-items: end;
+
+    width: fit-content;
+
+    color: unset;
+    text-decoration: none;
+
+    h2 {
+      margin: 0;
+    }
+
+    svg {
+      box-sizing: content-box;
+      width: 20px;
+      height: 20px;
+      padding-bottom: 5px;
+
+      opacity: 0.5;
     }
   }
 
@@ -136,5 +174,21 @@ const notes = await getCollection('notes')
 
   .space {
     height: 50vh;
+  }
+
+  @media (width <= 734px) {
+    #resumeFrame {
+      display: none;
+    }
+
+    #mobileResumePlaceholder {
+      display: block;
+    }
+  }
+
+  @keyframes fadeOut {
+    to {
+      opacity: 0;
+    }
   }
 </style>
