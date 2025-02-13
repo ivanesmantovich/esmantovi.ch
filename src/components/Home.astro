@@ -4,14 +4,21 @@ import Note from '../components/Note.astro'
 import { formatDate } from '../utils/date'
 import Experiment from './Experiment.astro'
 import Forward from '../assets/Forward.svg'
+import { Image } from 'astro:assets'
+import pointingLeftOriginal from '../assets/pointing-left-original.png'
+import holdingSomething from '../assets/holding-something.webp'
+import me from '../assets/me-v6.webp'
+
 const notes = await getCollection('notes')
 ---
 
 <main class="home-page">
-  <p class="message">Trust the Process & Love Yourself</p>
-
   <section>
     <h2>About</h2>
+    <div class="portrait-container">
+      <Image src={holdingSomething} alt="Holding something" class="holdingSomething" />
+      <Image src={me} alt="Me" height={1834} width={1544} class="portrait" />
+    </div>
     <p>
       But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain
       was born and I will give you a complete account of the system, and expound the actual
@@ -25,12 +32,32 @@ const notes = await getCollection('notes')
       man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a
       pain that produces no resultant pleasure?
     </p>
+    <br />
+    <p>
+      On the other hand, we denounce with righteous indignation and dislike men who are so beguiled
+      and demoralized by the charms of pleasure of the moment, so blinded by desire, that they
+      cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those
+      who fail in their duty through weakness of will, which is the same as saying through shrinking
+      from toil and pain. These cases are perfectly simple and easy to distinguish. In a free hour,
+      when our power of choice is untrammelled and when nothing prevents our being able to do what
+      we like best, every pleasure is to be welcomed and every pain avoided. But in certain
+      circumstances and owing to the claims of duty or the obligations of business it will
+      frequently occur that pleasures have to be repudiated and annoyances accepted. The wise man
+      therefore always holds in these matters to this principle of selection: he rejects pleasures
+      to secure other greater pleasures, or else he endures pains to avoid worse pains.
+    </p>
   </section>
 
   <section>
     <a href="/notes" class="clickable-header category-header">
       <h2>Notes</h2>
-      <Forward />
+      <Image
+        src={pointingLeftOriginal}
+        alt="Hand pointing left"
+        class="pointing-left"
+        width={324}
+        height={104}
+      />
     </a>
     <div class="grid">
       {
@@ -46,13 +73,18 @@ const notes = await getCollection('notes')
         })
       }
     </div>
-    <a href="/notes" class="view-link">View all Notes</a>
   </section>
 
   <section>
     <a href="/experiments" class="clickable-header category-header">
       <h2>Experiments</h2>
-      <Forward />
+      <Image
+        src={pointingLeftOriginal}
+        alt="Hand pointing left"
+        class="pointing-left"
+        width={324}
+        height={104}
+      />
     </a>
     <div class="grid">
       <Experiment title="Experiment 1" />
@@ -62,7 +94,6 @@ const notes = await getCollection('notes')
       <Experiment title="Experiment 5" />
       <Experiment title="Experiment 6" />
     </div>
-    <a href="/experiments" class="view-link">View all Experiments</a>
   </section>
 
   <section>
@@ -72,7 +103,9 @@ const notes = await getCollection('notes')
     <a href="/resume-v1.pdf" class="view-link">View Resume PDF</a>
   </section>
 
-  <div class="space"></div>
+  <div class="screen">
+    <p class="message">Trust the Process & Love Yourself</p>
+  </div>
 </main>
 
 <script>
@@ -91,6 +124,50 @@ const notes = await getCollection('notes')
 </script>
 
 <style>
+  .pointing-left {
+    width: auto;
+    height: 26px;
+    object-fit: contain;
+    transition: transform 0.3s ease-out;
+  }
+
+  .portrait-container {
+    position: relative;
+
+    float: right;
+    overflow: hidden;
+    display: flex;
+
+    width: 60%;
+    padding-left: 12px;
+  }
+
+  .holdingSomething {
+    z-index: 2;
+
+    display: block;
+
+    width: 30%;
+    height: auto;
+    margin-top: 32%;
+
+    object-fit: contain;
+    filter: contrast(85%);
+  }
+
+  .portrait {
+    z-index: 1;
+
+    display: block;
+
+    width: 70%;
+    height: auto;
+    margin-left: -4%;
+    border: 0.5px solid grey;
+
+    object-fit: contain;
+  }
+
   .view-link {
     display: inline-block;
 
@@ -100,7 +177,7 @@ const notes = await getCollection('notes')
 
     font-size: 14px;
     font-weight: 500;
-    color: #3872e9;
+    color: #007aff;
     text-decoration: none;
   }
 
@@ -112,7 +189,6 @@ const notes = await getCollection('notes')
     user-select: none;
 
     width: fit-content;
-    margin: 2.5em auto 0;
 
     font-size: 0.9em;
     font-weight: 600;
@@ -161,6 +237,12 @@ const notes = await getCollection('notes')
     }
   }
 
+  .category-header:hover {
+    .pointing-left {
+      transform: translateX(-10px);
+    }
+  }
+
   h3 {
     margin-top: 2.5em;
     margin-bottom: 0.8em;
@@ -172,8 +254,11 @@ const notes = await getCollection('notes')
     color: grey;
   }
 
-  .space {
-    height: 50vh;
+  .screen {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
   }
 
   @media (width <= 734px) {
