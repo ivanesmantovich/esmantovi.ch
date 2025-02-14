@@ -17,7 +17,17 @@ const notes = await getCollection('notes')
     <h2>About</h2>
     <div class="portrait-container">
       <Image src={holdingSomething} alt="Holding something" class="holdingSomething" />
-      <Image src={me} alt="Me" height={1834} width={1544} class="portrait" />
+      <div class="portrait-hover-wrapper">
+        <div class="hover-point"></div>
+        <div class="hover-point"></div>
+        <div class="hover-point"></div>
+        <div class="hover-point"></div>
+        <div class="hover-point"></div>
+        <div class="hover-point"></div>
+        <div class="hover-point"></div>
+        <div class="hover-point"></div>
+        <Image src={me} alt="Me" height={1834} width={1544} class="portrait" />
+      </div>
     </div>
     <p>
       But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain
@@ -135,7 +145,6 @@ const notes = await getCollection('notes')
     position: relative;
 
     float: right;
-    overflow: hidden;
     display: flex;
 
     width: 60%;
@@ -155,17 +164,109 @@ const notes = await getCollection('notes')
     filter: contrast(85%);
   }
 
-  .portrait {
+  .portrait-hover-wrapper {
+    position: relative;
     z-index: 1;
 
-    display: block;
-
     width: 70%;
-    height: auto;
+    height: fit-content;
     margin-left: -4%;
-    border: 0.5px solid grey;
 
-    object-fit: contain;
+    .portrait {
+      display: block;
+
+      width: 100%;
+      height: auto;
+
+      object-fit: contain;
+      box-shadow: 0 0 50px rgba(0, 0, 0, 0.3);
+
+      transition: 0.5s ease;
+    }
+
+    .hover-point {
+      position: absolute;
+      z-index: 2;
+
+      width: calc(100% / 3);
+      height: calc(100% / 3);
+
+      background-color: transparent;
+    }
+
+    .hover-point:nth-child(1) {
+      top: 0;
+      left: 0;
+    }
+    .hover-point:nth-child(2) {
+      top: 0;
+      left: calc(100% / 3);
+    }
+    .hover-point:nth-child(3) {
+      top: 0;
+      right: 0;
+    }
+    .hover-point:nth-child(4) {
+      top: calc(100% / 3);
+      left: 0;
+    }
+    .hover-point:nth-child(5) {
+      top: calc(100% / 3);
+      right: 0;
+    }
+    .hover-point:nth-child(6) {
+      bottom: 0;
+      left: 0;
+    }
+    .hover-point:nth-child(7) {
+      bottom: 0;
+      left: calc(100% / 3);
+    }
+    .hover-point:nth-child(8) {
+      right: 0;
+      bottom: 0;
+    }
+
+    .hover-point:nth-child(1):hover ~ .portrait {
+      transform-origin: right top;
+      transform: perspective(1000px) rotateX(10deg) rotateY(-10deg) rotateZ(2deg);
+      box-shadow: 15px 15px 50px rgba(0, 0, 0, 0.3);
+    }
+    .hover-point:nth-child(2):hover ~ .portrait {
+      transform-origin: center top;
+      transform: perspective(1000px) rotateX(10deg);
+      box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
+    }
+    .hover-point:nth-child(3):hover ~ .portrait {
+      transform-origin: left top;
+      transform: perspective(1000px) rotateX(10deg) rotateY(10deg) rotateZ(-2deg);
+      box-shadow: -15px 15px 50px rgba(0, 0, 0, 0.3);
+    }
+    .hover-point:nth-child(4):hover ~ .portrait {
+      transform-origin: left center;
+      transform: perspective(1000px) rotateY(-10deg);
+      box-shadow: 15px 5px 50px rgba(0, 0, 0, 0.3);
+    }
+    .hover-point:nth-child(5):hover ~ .portrait {
+      transform-origin: right center;
+      transform: perspective(1000px) rotateY(10deg);
+      box-shadow: -15px 5px 50px rgba(0, 0, 0, 0.3);
+    }
+    .hover-point:nth-child(6):hover ~ .portrait {
+      transform-origin: right bottom;
+      transform: perspective(1000px) rotateX(-10deg) rotateY(-10deg) rotateZ(-2deg);
+      box-shadow: 15px -15px 50px rgba(0, 0, 0, 0.3);
+    }
+    .hover-point:nth-child(7):hover ~ .portrait {
+      transform-origin: center bottom;
+      transform: perspective(1000px) rotateX(-10deg);
+      box-shadow: 0 -15px 50px rgba(0, 0, 0, 0.3);
+    }
+    .hover-point:nth-child(8):hover ~ .portrait {
+      transform-origin: left bottom;
+      transform: perspective(1000px) rotateX(-10deg) rotateY(10deg) rotateZ(2deg);
+      box-shadow: -15px -15px 50px rgba(0, 0, 0, 0.3);
+    }
   }
 
   .view-link {
@@ -268,6 +369,10 @@ const notes = await getCollection('notes')
 
     #mobileResumePlaceholder {
       display: block;
+    }
+
+    .portrait-container {
+      padding-left: 0;
     }
   }
 
