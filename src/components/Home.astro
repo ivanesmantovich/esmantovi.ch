@@ -152,6 +152,8 @@ const notes = await getCollection('notes')
   }
 
   .holdingSomething {
+    pointer-events: none;
+
     z-index: 2;
 
     display: block;
@@ -273,17 +275,21 @@ const notes = await getCollection('notes')
 
   .holdingSomething:has(+ .portrait-hover-wrapper > .hover-point:nth-child(1):hover) {
     transform-origin: right top;
-    transform: perspective(1000px) rotateX(10deg) rotateY(-10deg) rotateZ(2deg) translateX(8px);
+    transform: perspective(1000px) rotateX(10deg) rotateY(-10deg) rotateZ(2deg) translateX(4%);
   }
 
   .holdingSomething:has(+ .portrait-hover-wrapper > .hover-point:nth-child(2):hover) {
     transform-origin: center top;
-    transform: perspective(1000px) rotateX(10deg) translateX(-10px);
+    transform: perspective(1000px) rotateX(10deg) translateX(-6%);
   }
 
   .holdingSomething:has(+ .portrait-hover-wrapper > .hover-point:nth-child(3):hover) {
     transform-origin: left top;
-    transform: perspective(1000px) rotateX(10deg) rotateY(10deg) rotateZ(-2deg) translateX(10px);
+    transform: perspective(1000px) rotateX(10deg) rotateY(10deg) rotateZ(-2deg) translateX(5%);
+
+    @media (width <= 734px) {
+      transform: perspective(1000px) rotateX(10deg) rotateY(10deg) rotateZ(-2deg) translateX(4%);
+    }
   }
 
   .holdingSomething:has(+ .portrait-hover-wrapper > .hover-point:nth-child(4):hover) {
@@ -293,17 +299,33 @@ const notes = await getCollection('notes')
 
   .holdingSomething:has(+ .portrait-hover-wrapper > .hover-point:nth-child(5):hover) {
     transform-origin: right center;
-    transform: perspective(1000px) rotateY(10deg) translateX(-20px);
+    transform: perspective(1000px) rotateY(10deg) translateX(-14%);
+
+    @media (width <= 1068px) {
+      transform: perspective(1000px) rotateY(10deg) translateX(-12%);
+    }
+
+    @media (width <= 850px) {
+      transform: perspective(1000px) rotateY(10deg) translateX(-10%);
+    }
   }
 
   .holdingSomething:has(+ .portrait-hover-wrapper > .hover-point:nth-child(6):hover) {
     transform-origin: right bottom;
-    transform: perspective(1000px) rotateX(-10deg) rotateY(-10deg) rotateZ(-2deg) translateX(15px);
+    transform: perspective(1000px) rotateX(-10deg) rotateY(-10deg) rotateZ(-2deg) translateX(10%);
+
+    @media (width <= 734px) {
+      transform: perspective(1000px) rotateX(-10deg) rotateY(-10deg) rotateZ(-2deg) translateX(8%);
+    }
   }
 
   .holdingSomething:has(+ .portrait-hover-wrapper > .hover-point:nth-child(7):hover) {
     transform-origin: center bottom;
-    transform: perspective(1000px) rotateX(-10deg) translateX(-10px);
+    transform: perspective(1000px) rotateX(-10deg) translateX(-5%);
+
+    @media (width <= 734px) {
+      transform: perspective(1000px) rotateX(-10deg) translateX(-4%);
+    }
   }
 
   .holdingSomething:has(+ .portrait-hover-wrapper > .hover-point:nth-child(8):hover) {
