@@ -12,7 +12,9 @@ const { title = '', text = '', date = '', id = '' } = Astro.props
 <!-- TODO: Подкрутить типографию (line-height, letter-spacing и т.д) -->
 <a href={`/preview/notes/${id}/`} class="note" data-astro-prefetch>
   <div class="yellow-part"></div>
-  <div class="dotted-line"></div>
+  <div class="dotted-line-container">
+    <div class="dotted-line"></div>
+  </div>
 
   <div class="note-content">
     <h3 class="title">{title}</h3>
@@ -29,7 +31,6 @@ const { title = '', text = '', date = '', id = '' } = Astro.props
     display: flex;
     flex-direction: column;
 
-    border: 1px solid rgba(0, 28, 70, 0.06);
     border-radius: 32px;
 
     color: inherit;
@@ -57,6 +58,11 @@ const { title = '', text = '', date = '', id = '' } = Astro.props
     background: linear-gradient(180deg, #fed500 0%, #fbbc00 100%);
   }
 
+  .dotted-line-container {
+    border-right: 1px solid rgba(0, 28, 70, 0.06);
+    border-left: 1px solid rgba(0, 28, 70, 0.06);
+  }
+
   .dotted-line {
     flex-shrink: 0;
 
@@ -77,7 +83,12 @@ const { title = '', text = '', date = '', id = '' } = Astro.props
     flex-grow: 1;
 
     padding: 0.8rem 1.2rem;
-    padding-top: 0.5rem;
+    padding-top: 0.3rem;
+    border-right: 1px solid rgba(0, 28, 70, 0.06);
+    border-bottom: 1px solid rgba(0, 28, 70, 0.06);
+    border-left: 1px solid rgba(0, 28, 70, 0.06);
+    border-bottom-right-radius: 32px;
+    border-bottom-left-radius: 32px;
   }
 
   .title {
@@ -175,6 +186,7 @@ const { title = '', text = '', date = '', id = '' } = Astro.props
       position: relative;
       overflow: hidden;
       padding: 1.2rem;
+      padding-top: calc(1.2rem - 10px);
     }
 
     .info {
