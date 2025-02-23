@@ -50,16 +50,6 @@ const { title = '', text = '', date = '', id = '' } = Astro.props
       opacity 0.12s ease-out;
   }
 
-  .note:hover {
-    cursor: pointer;
-    transform: translateY(-2px);
-    box-shadow:
-      0.3px 0.5px 0.7px hsl(var(--shadow-color) / 0.36),
-      0.8px 1.6px 2px -0.8px hsl(var(--shadow-color) / 0.36),
-      2.1px 4.1px 5.2px -1.7px hsl(var(--shadow-color) / 0.36),
-      5px 10px 12.6px -2.5px hsl(var(--shadow-color) / 0.36);
-  }
-
   .yellow-part {
     flex-shrink: 0;
     border-bottom: 1.5px solid #eea000;
@@ -110,6 +100,18 @@ const { title = '', text = '', date = '', id = '' } = Astro.props
     /* Prevent Safari from auto-adjusting text size */
     -webkit-text-size-adjust: none;
     text-size-adjust: none;
+  }
+
+  @media (pointer: fine) {
+    .note:hover {
+      cursor: pointer;
+      transform: translateY(-2px);
+      box-shadow:
+        0.3px 0.5px 0.7px hsl(var(--shadow-color) / 0.36),
+        0.8px 1.6px 2px -0.8px hsl(var(--shadow-color) / 0.36),
+        2.1px 4.1px 5.2px -1.7px hsl(var(--shadow-color) / 0.36),
+        5px 10px 12.6px -2.5px hsl(var(--shadow-color) / 0.36);
+    }
   }
 
   @media (width < 430px) {
