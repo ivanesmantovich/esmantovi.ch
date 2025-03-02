@@ -36,17 +36,24 @@ const { Content } = await render(note)
             stroke-linecap="round"></path>
         </svg>
       </button>
-      <button class="fullscreen-button" aria-label="Fullscreen">
-        <FullscreenFilled width={24} height={24} />
+      <button class="icon-button fullscreen-button" aria-label="Fullscreen">
+        <FullscreenFilled width={24} height={24} class="fullscreen-icon" />
       </button>
       <article class="note-preview-content">
         <span class="note-preview-date">{formatDate(note.data.date)}</span>
         <h1 class="note-preview-title">{note.data.title}</h1>
-        <div class="link-buttons">
-          <a href="https://news.ycombinator.com/item?id=35162222" class="link-button filled">
+        <p class="note-preview-description">{note.data.preview}</p>
+        <div class="link-buttons-container">
+          <a
+            href="https://news.ycombinator.com/item?id=35162222"
+            class="icon-button link-button filled"
+          >
             <LogoHN width={24} height={24} />
           </a>
-          <a href="https://news.ycombinator.com/item?id=35162222" class="link-button filled">
+          <a
+            href="https://news.ycombinator.com/item?id=35162222"
+            class="icon-button link-button filled"
+          >
             <GlobeFilled width={24} height={24} />
           </a>
         </div>
@@ -146,7 +153,7 @@ const { Content } = await render(note)
     letter-spacing: 0.004em;
   }
 
-  .link-buttons {
+  .link-buttons-container {
     display: flex;
     gap: 8px;
     align-items: center;
@@ -155,31 +162,34 @@ const { Content } = await render(note)
     padding-top: 16px;
   }
 
-  .link-button {
+  .icon-button {
     cursor: pointer;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    padding: 6px;
     border: none;
-    border-radius: 50%;
 
     background-color: transparent;
   }
 
-  .link-button svg {
+  .icon-button svg {
     color: rgb(110, 110, 115);
     transition: color 0.3s cubic-bezier(0.4, 0, 0.25, 1) 0ms;
   }
 
-  .link-button.filled svg {
+  .icon-button.filled svg {
     fill: currentColor;
   }
 
-  .link-button:hover svg {
+  .icon-button:hover svg {
     color: rgb(29, 29, 31);
+  }
+
+  .link-button {
+    padding: 6px;
+    border-radius: 50%;
   }
 
   h2 {
@@ -227,29 +237,18 @@ const { Content } = await render(note)
   }
 
   .fullscreen-button {
-    cursor: pointer;
-
     position: absolute;
     top: 0px;
     right: 0px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
     padding: 12px;
-    border: none;
-
-    background-color: transparent;
   }
 
   .fullscreen-button svg {
-    color: rgb(110, 110, 115);
-    transition: color 0.3s cubic-bezier(0.4, 0, 0.25, 1) 0ms;
+    transition: transform 0.2s cubic-bezier(0.65, 0, 0.35, 1);
   }
 
   .fullscreen-button:hover svg {
-    color: rgb(29, 29, 31);
+    transform: scale(1.15);
   }
 
   @media screen and (width <= 1068px) {
