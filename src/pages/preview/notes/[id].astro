@@ -27,7 +27,7 @@ const { Content } = await render(note)
   <Home />
   <div class="note-preview-overlay" id="overlay">
     <div class="note-preview" id="preview">
-      <button class="close-button" aria-label="Close preview">
+      <button id="closeButton" class="close-button" aria-label="Close preview">
         <svg viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
           <path
             d="M12.12,10l4.07-4.06a1.5,1.5,0,1,0-2.11-2.12L10,7.88,5.94,3.81A1.5,1.5,0,1,0,3.82,5.93L7.88,10,3.81,14.06a1.5,1.5,0,0,0,0,2.12,1.51,1.51,0,0,0,2.13,0L10,12.12l4.06,4.07a1.45,1.45,0,0,0,1.06.44,1.5,1.5,0,0,0,1.06-2.56Z"
@@ -36,9 +36,10 @@ const { Content } = await render(note)
             stroke-linecap="round"></path>
         </svg>
       </button>
-      <button class="icon-button fullscreen-button" aria-label="Fullscreen">
+      <button id="fullscreenButton" class="icon-button fullscreen-button" aria-label="Fullscreen">
         <FullscreenFilled width={24} height={24} class="fullscreen-icon" />
       </button>
+
       <article class="note-preview-content">
         <span class="note-preview-date">{formatDate(note.data.date)}</span>
         <h1 class="note-preview-title">{note.data.title}</h1>
@@ -68,11 +69,18 @@ const { Content } = await render(note)
   import { navigate } from 'astro:transitions/client'
 
   document.addEventListener('astro:page-load', () => {
+    const pathname = window.location.pathname
+    const noteId = pathname.split('/').filter(Boolean)[2]
     const overlay = document.getElementById('overlay')
-    const closeButton = document.querySelector('.close-button')
+    const closeButton = document.getElementById('closeButton')
+    const fullscreenButton = document.getElementById('fullscreenButton')
 
     const handleClose = () => {
       navigate('/')
+    }
+
+    const handleFullscreen = () => {
+      navigate(`/notes/${noteId}`)
     }
 
     overlay?.addEventListener('click', (e) => {
@@ -82,6 +90,7 @@ const { Content } = await render(note)
     })
 
     closeButton?.addEventListener('click', handleClose)
+    fullscreenButton?.addEventListener('click', handleFullscreen)
   })
 </script>
 
@@ -134,8 +143,6 @@ const { Content } = await render(note)
   .note-preview-date {
     display: block;
 
-    margin-bottom: 8px;
-
     font-size: 14px;
     font-weight: 600;
     line-height: 1.28;
@@ -146,11 +153,18 @@ const { Content } = await render(note)
   .note-preview-title {
     display: block;
 
+    padding-top: 6px;
+
     font-size: 32px;
     font-weight: 700;
     line-height: 1.125;
     color: rgb(29, 29, 31);
     letter-spacing: 0.004em;
+  }
+
+  .note-preview-description {
+    padding-top: 6px;
+    font-size: 1rem;
   }
 
   .link-buttons-container {
@@ -159,7 +173,7 @@ const { Content } = await render(note)
     align-items: center;
 
     margin-left: -6px;
-    padding-top: 16px;
+    padding-top: 24px;
   }
 
   .icon-button {
@@ -190,15 +204,6 @@ const { Content } = await render(note)
   .link-button {
     padding: 6px;
     border-radius: 50%;
-  }
-
-  h2 {
-    margin-top: 52px;
-    margin-bottom: 16px;
-  }
-
-  p {
-    font-size: 24px;
   }
 
   .close-button {
