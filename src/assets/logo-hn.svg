@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512">
+  <defs>
+    <mask id="yMask">
+      <rect width="100%" height="100%" fill="white"/>
+      <path fill="black" d="M281.67 282.83v84H235v-84l-77-140h55l46.32 97.54 44.33-97.54h52.73z"/>
+    </mask>
+  </defs>
+  <rect x="32" y="32" width="448" height="448" rx="50" ry="50" mask="url(#yMask)" />
+</svg>
