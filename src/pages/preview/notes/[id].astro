@@ -5,6 +5,11 @@ import Home from '../../../components/Home.astro'
 import { render } from 'astro:content'
 import { formatDate } from '../../../utils/date'
 import Fog from '../../../components/Fog.astro'
+import Fullscreen from '../../../assets/fullscreen.svg'
+import FullscreenFilled from '../../../assets/fullscreen-filled.svg'
+import LogoHN from '../../../assets/logo-hn.svg'
+import GlobeMinimal from '../../../assets/globe-minimal.svg'
+import GlobeFilled from '../../../assets/globe-filled.svg'
 
 export async function getStaticPaths() {
   const notes = await getCollection('notes')
@@ -31,9 +36,20 @@ const { Content } = await render(note)
             stroke-linecap="round"></path>
         </svg>
       </button>
+      <button class="fullscreen-button" aria-label="Fullscreen">
+        <FullscreenFilled width={24} height={24} />
+      </button>
       <article class="note-preview-content">
         <span class="note-preview-date">{formatDate(note.data.date)}</span>
         <h1 class="note-preview-title">{note.data.title}</h1>
+        <div class="link-buttons">
+          <a href="https://news.ycombinator.com/item?id=35162222" class="link-button filled">
+            <LogoHN width={24} height={24} />
+          </a>
+          <a href="https://news.ycombinator.com/item?id=35162222" class="link-button filled">
+            <GlobeFilled width={24} height={24} />
+          </a>
+        </div>
         <Content />
       </article>
       <Fog />
@@ -90,6 +106,8 @@ const { Content } = await render(note)
   }
 
   .note-preview {
+    position: relative;
+
     width: 816px;
     margin: 3.3em auto;
     padding-top: 24px;
@@ -126,6 +144,42 @@ const { Content } = await render(note)
     line-height: 1.125;
     color: rgb(29, 29, 31);
     letter-spacing: 0.004em;
+  }
+
+  .link-buttons {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+
+    margin-left: -6px;
+    padding-top: 16px;
+  }
+
+  .link-button {
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 6px;
+    border: none;
+    border-radius: 50%;
+
+    background-color: transparent;
+  }
+
+  .link-button svg {
+    color: rgb(110, 110, 115);
+    transition: color 0.3s cubic-bezier(0.4, 0, 0.25, 1) 0ms;
+  }
+
+  .link-button.filled svg {
+    fill: currentColor;
+  }
+
+  .link-button:hover svg {
+    color: rgb(29, 29, 31);
   }
 
   h2 {
@@ -170,6 +224,32 @@ const { Content } = await render(note)
   .close-button svg {
     width: 17px;
     height: 17px;
+  }
+
+  .fullscreen-button {
+    cursor: pointer;
+
+    position: absolute;
+    top: 0px;
+    right: 0px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 12px;
+    border: none;
+
+    background-color: transparent;
+  }
+
+  .fullscreen-button svg {
+    color: rgb(110, 110, 115);
+    transition: color 0.3s cubic-bezier(0.4, 0, 0.25, 1) 0ms;
+  }
+
+  .fullscreen-button:hover svg {
+    color: rgb(29, 29, 31);
   }
 
   @media screen and (width <= 1068px) {
