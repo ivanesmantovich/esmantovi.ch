@@ -150,7 +150,7 @@ const notes = await getCollection('notes')
     float: right;
     display: flex;
 
-    width: 60%;
+    width: 55%;
     padding-left: 12px;
   }
 
@@ -429,7 +429,7 @@ const notes = await getCollection('notes')
     height: 100vh;
   }
 
-  @media (width <= 734px) {
+  @media (pointer: coarse) {
     #resumeFrame {
       display: none;
     }
@@ -437,8 +437,11 @@ const notes = await getCollection('notes')
     #mobileResumePlaceholder {
       display: block;
     }
+  }
 
+  @media (width <= 734px) {
     .portrait-container {
+      width: 65%;
       padding-left: 0;
     }
   }
