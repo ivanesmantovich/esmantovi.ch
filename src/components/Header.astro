@@ -1,0 +1,60 @@
+<header>
+  <nav>
+    <a class="home-link" href="/">Ivan Esmantovich</a>
+    <span class="separator"></span>
+    <a href="/notes">Notes</a>
+    <a href="/experiments">Experiments</a>
+  </nav>
+</header>
+
+<style>
+  header {
+    --shadow-color: 0deg 0% 62%;
+
+    padding: 12px 16px;
+    background-color: #fafafa;
+    /* box-shadow:
+      inset 0px -0.6px 0.8px hsl(var(--shadow-color) / 0.11),
+      inset 0px -1px 1.4px -0.4px hsl(var(--shadow-color) / 0.27),
+      inset 0px -2.2px 3px -0.8px hsl(var(--shadow-color) / 0.42); */
+    box-shadow:
+      inset 0px -0.6px 0.8px hsl(var(--shadow-color) / 0.08),
+      inset 0px -1px 1.4px -0.4px hsl(var(--shadow-color) / 0.2),
+      inset 0px -2.2px 3px -0.8px hsl(var(--shadow-color) / 0.31);
+  }
+
+  nav {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+  }
+
+  nav a {
+    padding: 4px;
+    border-radius: 4px;
+
+    font-weight: 500;
+    color: #242426;
+    text-decoration: none;
+
+    transition: background-color 0.1s ease-in-out;
+  }
+
+  nav a:hover {
+    background-color: #e6e6e6;
+  }
+
+  nav a.home-link {
+    font-weight: 600;
+  }
+
+  .home-link {
+    padding-right: 16px;
+  }
+
+  .separator {
+    width: 1px;
+    height: 20px;
+    border-right: 1px solid #e6e6e6;
+  }
+</style>
