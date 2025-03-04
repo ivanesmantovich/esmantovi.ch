@@ -13,7 +13,7 @@ const notes = await getCollection('notes')
 ---
 
 <main class="home-page">
-  <section>
+  <section class="section about">
     <h2>About</h2>
     <div class="portrait-container">
       <Image src={holdingSomething} alt="Holding something" class="holdingSomething" />
@@ -30,42 +30,36 @@ const notes = await getCollection('notes')
       </div>
     </div>
     <p>Hello!</p>
-    <br />
     <p>
-      I'm Ivan, software engineer, who likes to <a class="inline-link" href="#projects">code</a>,
-      <a class="inline-link" href="#experiments">experiment with web technologies</a> and
+      I'm Ivan, software engineer, who likes to <a class="inline-link" href="#experiments"
+        >experiment with web technologies</a
+      > and
       <a class="inline-link" href="#notes">write about it</a>.
     </p>
-    <br />
     <p>
       I'm currently working as a frontend developer at <a
         class="inline-link"
         href="https://kontur.ru"
         target="_blank"
         rel="noopener noreferrer">Kontur</a
-      >.
+      >, where i lead UX/UI engineering for <a
+        class="inline-link"
+        href="https://kontur.ru/talk"
+        target="_blank"
+        rel="noopener noreferrer">Kontur.Talk</a
+      >, building the bridge between creative design and technical implementation, with a focus on
+      performance, maintainability and accessibility.
     </p>
-    <br />
-    <p>I like running, playing badminton and cooking.</p>
-    <br />
-    <p>
-      On the other hand, we denounce with righteous indignation and dislike men who are so beguiled
-      and demoralized by the charms of pleasure of the moment, so blinded by desire, that they
-      cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those
-      who fail in their duty through weakness of will, which is the same as saying through shrinking
-      from toil and pain. These cases are perfectly simple and easy to distinguish. In a free hour,
-      when our power of choice is untrammelled and when nothing prevents our being able to do what
-      we like best, every pleasure is to be welcomed and every pain avoided. But in certain
-      circumstances and owing to the claims of duty or the obligations of business it will
-      frequently occur that pleasures have to be repudiated and annoyances accepted. The wise man
-      therefore always holds in these matters to this principle of selection: he rejects pleasures
-      to secure other greater pleasures, or else he endures pains to avoid worse pains.
-    </p>
-    <br />
-    <p>I'm currently based in Sochi 🌅</p>
+    <p>I also like lifting weights, running, playing badminton and cooking.</p>
+    <p class="marginless">I'm currently based in Sochi 🌅</p>
     <p>
       I was born in <a href="notes/norilsk" class="inline-link">Norilsk</a> and lived there for 15 years
       ❄️
+    </p>
+    <p>
+      You can write to me at <a href="mailto:mail@esmantovi.ch" class="inline-link"
+        >mail@esmantovi.ch</a
+      >
     </p>
   </section>
 
@@ -153,6 +147,15 @@ const notes = await getCollection('notes')
 </script>
 
 <style>
+  .section.about p {
+    margin-bottom: 1.5em;
+    line-height: 1.5em;
+  }
+
+  .section.about p.marginless {
+    margin-bottom: 0;
+  }
+
   .pointing-left {
     width: auto;
     height: 26px;
@@ -361,6 +364,7 @@ const notes = await getCollection('notes')
 
   .inline-link:hover {
     text-decoration-color: color(display-p3 0.392 0.392 0.392);
+    opacity: initial;
   }
 
   .view-link {
