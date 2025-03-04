@@ -1,0 +1,99 @@
+---
+import { formatDate } from '../utils/date'
+import LogoHN from '../assets/logo-hn.svg'
+import GlobeFilled from '../assets/globe-filled.svg'
+
+interface Props {
+  date: string
+  title: string
+  preview: string
+}
+
+const { date, title, preview } = Astro.props
+---
+
+<span class="note-preview-date">{formatDate(date)}</span>
+<h1 class="note-preview-title">{title}</h1>
+<p class="note-preview-description">{preview}</p>
+<div class="link-buttons-container">
+  <a href="https://news.ycombinator.com/item?id=35162222" class="icon-button link-button filled">
+    <LogoHN width={24} height={24} />
+  </a>
+  <a href="https://news.ycombinator.com/item?id=35162222" class="icon-button link-button filled">
+    <GlobeFilled width={24} height={24} />
+  </a>
+</div>
+
+<style>
+  .note-preview-date {
+    display: block;
+
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.28;
+    color: #6e6e73;
+    letter-spacing: -0.016em;
+  }
+
+  .note-preview-title {
+    display: block;
+
+    padding-top: 6px;
+
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1.125;
+    color: rgb(29, 29, 31);
+    letter-spacing: 0.004em;
+  }
+
+  .note-preview-description {
+    padding-top: 6px;
+
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.47;
+    color: grey;
+    letter-spacing: -0.022em;
+  }
+
+  .link-buttons-container {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+
+    margin-left: -6px;
+    padding-top: 12px;
+  }
+
+  .icon-button {
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: none;
+
+    background-color: transparent;
+  }
+
+  .icon-button svg {
+    color: rgb(110, 110, 115);
+    transition: color 0.3s cubic-bezier(0.4, 0, 0.25, 1) 0ms;
+  }
+
+  .icon-button.filled svg {
+    fill: currentColor;
+  }
+
+  .icon-button:hover svg {
+    color: rgb(29, 29, 31);
+  }
+
+  .link-button {
+    padding: 6px;
+    border-radius: 50%;
+    text-decoration: none;
+  }
+</style>

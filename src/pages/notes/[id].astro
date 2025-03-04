@@ -1,9 +1,8 @@
 ---
 import { getCollection } from 'astro:content'
-import { formatDate } from '../../utils/date'
 import { render } from 'astro:content'
-import LogoHN from '../../assets/logo-hn.svg'
-import GlobeFilled from '../../assets/globe-filled.svg'
+import Layout from '../../layouts/Layout.astro'
+import NoteInfo from '../../components/NoteInfo.astro'
 
 export async function getStaticPaths() {
   const notes = await getCollection('notes')
@@ -17,17 +16,19 @@ const { note } = Astro.props
 const { Content } = await render(note)
 ---
 
-<article class="note-preview-content">
-  <span class="note-preview-date">{formatDate(note.data.date)}</span>
-  <h1 class="note-preview-title">{note.data.title}</h1>
-  <p class="note-preview-description">{note.data.preview}</p>
-  <div class="link-buttons-container">
-    <a href="https://news.ycombinator.com/item?id=35162222" class="icon-button link-button filled">
-      <LogoHN width={24} height={24} />
-    </a>
-    <a href="https://news.ycombinator.com/item?id=35162222" class="icon-button link-button filled">
-      <GlobeFilled width={24} height={24} />
-    </a>
-  </div>
-  <Content />
-</article>
+<Layout>
+  <article class="note-content">
+    <NoteInfo date={note.data.date} title={note.data.title} preview={note.data.preview} />
+    <Content />
+  </article>
+</Layout>
+
+<style>
+  .note-content {
+    max-width: 1024px;
+    margin: 0 auto;
+    padding-top: 80px;
+    padding-right: 4%;
+    padding-left: 4%;
+  }
+</style>

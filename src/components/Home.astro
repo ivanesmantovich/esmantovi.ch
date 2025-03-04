@@ -147,6 +147,20 @@ const notes = await getCollection('notes')
 </script>
 
 <style>
+  .home-page {
+    max-width: 1024px;
+    margin: 0 auto;
+    padding-right: 4%;
+    padding-left: 4%;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
+    margin-bottom: 8px;
+  }
+
   .section.about p {
     margin-bottom: 1.5em;
     line-height: 1.5em;
@@ -461,6 +475,19 @@ const notes = await getCollection('notes')
 
     #mobileResumePlaceholder {
       display: block;
+    }
+  }
+
+  @media (width >= 430px) {
+    .grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+    }
+  }
+
+  @media (width >= 650px) {
+    .grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
     }
   }
 

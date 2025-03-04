@@ -1,0 +1,10 @@
+article p {
+  line-height: 1.47;
+  color: grey;
+  letter-spacing: -0.022em;
+}
+
+article h2 {
+  margin-top: 3rem;
+  margin-bottom: 16px;
+}
