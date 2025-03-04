@@ -3,6 +3,12 @@ import { ClientRouter } from 'astro:transitions'
 import '../styles/global.css'
 import '../styles/typography.css'
 import Header from '../components/Header.astro'
+
+interface Props {
+  previewOpened?: boolean
+}
+
+const { previewOpened = false } = Astro.props
 ---
 
 <!doctype html>
@@ -17,7 +23,7 @@ import Header from '../components/Header.astro'
     <ClientRouter />
   </head>
   <body>
-    <Header />
+    <Header previewOpened={previewOpened} />
     <slot />
   </body>
 </html>
