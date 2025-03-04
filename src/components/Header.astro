@@ -1,4 +1,12 @@
-<header>
+---
+interface Props {
+  previewOpened?: boolean
+}
+
+const { previewOpened = false } = Astro.props
+---
+
+<header class={previewOpened ? 'preview-opened' : ''}>
   <nav>
     <a class="home-link" href="/">Ivan Esmantovich</a>
     <span class="separator"></span>
@@ -22,6 +30,10 @@
       inset 0px -1px 1.4px -0.4px hsl(var(--shadow-color) / 0.2),
       inset 0px -2.2px 3px -0.8px hsl(var(--shadow-color) / 0.31);
     view-transition-name: header;
+  }
+
+  header.preview-opened {
+    view-transition-name: none;
   }
 
   nav {

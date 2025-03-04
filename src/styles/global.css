@@ -35,11 +35,13 @@ p {
 }
 
 /* MARK: View transitions */
-::view-transition-old(root) {
+::view-transition-old(root),
+::view-transition-old(header):only-child {
   animation: blur-replace-out 0.2s ease-in-out forwards;
 }
 
-::view-transition-new(root) {
+::view-transition-new(root),
+::view-transition-new(header):only-child {
   opacity: 0;
   animation: blur-replace-in 0.3s 0.1s forwards;
 }

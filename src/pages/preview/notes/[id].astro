@@ -19,7 +19,7 @@ const { note } = Astro.props
 const { Content } = await render(note)
 ---
 
-<Layout>
+<Layout previewOpened={true}>
   <Home />
   <div class="note-preview-overlay" id="overlay">
     <div class="note-preview" id="preview">
