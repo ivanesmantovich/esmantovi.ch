@@ -126,6 +126,24 @@ const notes = await getCollection('notes')
     <a href="/resume-v1.pdf" class="view-link">View Resume PDF</a>
   </section>
 
+  <section class="site">
+    <h2>About this site</h2>
+    <p>
+      This site is built with <a href="https://astro.build" class="inline-link">Astro</a> and deployed
+      via <a href="https://pages.cloudflare.com" class="inline-link">Cloudflare Pages</a>.
+    </p>
+    <p>JavaScript is used only for tweaking View Transitions; site works without it.</p>
+    <p>
+      I use <a href="https://ditherit.com" class="inline-link">dithering</a> to reduce image sizes.
+    </p>
+    <p class="source">
+      The source code is available on <a
+        href="https://github.com/ivanesmantovich/esmantovi.ch"
+        class="inline-link">GitHub</a
+      >.
+    </p>
+  </section>
+
   <div class="screen">
     <p class="message">Trust the Process & Love Yourself</p>
   </div>
@@ -161,13 +179,17 @@ const notes = await getCollection('notes')
     margin-bottom: 8px;
   }
 
-  .section.about p {
+  section.about p {
     margin-bottom: 1.5em;
     line-height: 1.5em;
   }
 
-  .section.about p.marginless {
+  section.about p.marginless {
     margin-bottom: 0;
+  }
+
+  section.site p.source {
+    margin-top: 1.5em;
   }
 
   .pointing-left {
