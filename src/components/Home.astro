@@ -191,7 +191,7 @@ const notes = await getCollection('notes')
         bubbleContainer.appendChild(bubble)
         setTimeout(() => {
           bubbleContainer.removeChild(bubble)
-        }, 6000)
+        }, 7000)
       }
     })
   }
@@ -249,6 +249,7 @@ const notes = await getCollection('notes')
   }
 
   #offering-hand {
+    cursor: pointer;
     height: auto;
     width: 500px;
     max-width: 80vw;
@@ -621,9 +622,9 @@ const notes = await getCollection('notes')
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     scale: 0;
     transition:
-      opacity 6s ease-in,
-      transform 6s ease-in-out,
-      scale 6s ease-out;
+      opacity 7s ease-in,
+      transform 7s ease-in-out,
+      scale 7s ease-in-out;
 
     opacity: 0;
     transform: translateY(-100px);
