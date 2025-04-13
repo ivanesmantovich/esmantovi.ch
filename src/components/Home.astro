@@ -191,7 +191,7 @@ const notes = await getCollection('notes')
         bubbleContainer.appendChild(bubble)
         setTimeout(() => {
           bubbleContainer.removeChild(bubble)
-        }, 5000)
+        }, 6000)
       }
     })
   }
@@ -619,15 +619,19 @@ const notes = await getCollection('notes')
     user-select: none;
     word-break: break-word;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    scale: 0;
     transition:
-      opacity 5s ease-in,
-      transform 5s ease-in-out;
+      opacity 6s ease-in,
+      transform 6s ease-in-out,
+      scale 6s ease-out;
 
     opacity: 0;
     transform: translateY(-100px);
+    scale: 0.5;
 
     @starting-style {
       opacity: 1;
+      scale: 1;
       transform: translateY(0);
     }
   }
