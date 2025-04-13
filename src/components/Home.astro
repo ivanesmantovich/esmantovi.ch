@@ -171,7 +171,12 @@ const notes = await getCollection('notes')
       console.log('clicked')
       const bubbleContainer = document.getElementById('bubble-container')
       if (bubbleContainer) {
-        const quotes = [
+        const bubbles = [
+          '<span class="emoji">🔮</span>',
+          '<span class="emoji">💿</span>',
+          '<span class="emoji">🌞</span>',
+          '<span class="emoji">🌅</span>',
+          '<span class="emoji">🏕️🐌</span>',
           'Trust the Process & Love Yourself',
           'The mind is everything. What you think you become',
           'Let go of what has passed. Let go of what may come. Let go of what is happening now',
@@ -182,7 +187,7 @@ const notes = await getCollection('notes')
         ]
         const bubble = document.createElement('span')
         bubble.classList.add('bubble')
-        bubble.textContent = quotes[Math.floor(Math.random() * quotes.length)]
+        bubble.innerHTML = bubbles[Math.floor(Math.random() * bubbles.length)]
         bubbleContainer.appendChild(bubble)
         setTimeout(() => {
           bubbleContainer.removeChild(bubble)
@@ -625,5 +630,9 @@ const notes = await getCollection('notes')
       opacity: 1;
       transform: translateY(0);
     }
+  }
+
+  .emoji {
+    font-size: 40px;
   }
 </style>
