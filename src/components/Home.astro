@@ -16,56 +16,58 @@ import Resume from './Resume.astro'
 const notes = await getCollection('notes')
 ---
 
-<main class="home-page">
-  <section class="section about">
-    <h2>About</h2>
-    <div class="portrait-container">
-      <Image src={holdingSomething} alt="Holding something" class="holdingSomething" />
-      <div class="portrait-hover-wrapper">
-        <div class="hover-point"></div>
-        <div class="hover-point"></div>
-        <div class="hover-point"></div>
-        <div class="hover-point"></div>
-        <div class="hover-point"></div>
-        <div class="hover-point"></div>
-        <div class="hover-point"></div>
-        <div class="hover-point"></div>
-        <Image src={me} alt="Me" height={1834} width={1544} class="portrait" />
+<main>
+  <div class="about-container">
+    <section class="about">
+      <h2>About</h2>
+      <div class="portrait-container">
+        <Image src={holdingSomething} alt="Holding something" class="holdingSomething" />
+        <div class="portrait-hover-wrapper">
+          <div class="hover-point"></div>
+          <div class="hover-point"></div>
+          <div class="hover-point"></div>
+          <div class="hover-point"></div>
+          <div class="hover-point"></div>
+          <div class="hover-point"></div>
+          <div class="hover-point"></div>
+          <div class="hover-point"></div>
+          <Image src={me} alt="Me" height={1834} width={1544} class="portrait" />
+        </div>
       </div>
-    </div>
-    <p>Hello!</p>
-    <p>
-      I'm Ivan, software engineer, who likes to <a class="inline-link" href="#experiments"
-        >experiment with web technologies</a
-      > and
-      <a class="inline-link" href="#notes">write about it</a>.
-    </p>
-    <p>
-      I'm currently working as a frontend developer at <a
-        class="inline-link"
-        href="https://kontur.ru"
-        target="_blank"
-        rel="noopener noreferrer">Kontur</a
-      >, where i lead UX/UI engineering for <a
-        class="inline-link"
-        href="https://kontur.ru/talk"
-        target="_blank"
-        rel="noopener noreferrer">Kontur.Talk</a
-      >, building the bridge between creative design and technical implementation, with a focus on
-      performance, maintainability and accessibility.
-    </p>
-    <p>I also like lifting weights, running, playing badminton and cooking.</p>
-    <p class="marginless">I'm currently based in Sochi 🌅</p>
-    <p>
-      I was born in <a href="notes/norilsk" class="inline-link">Norilsk</a> and lived there for 15 years
-      ❄️
-    </p>
-    <p>
-      You can write to me at <a href="mailto:mail@esmantovi.ch" class="inline-link"
-        >mail@esmantovi.ch</a
-      >
-    </p>
-  </section>
+      <p>Hello!</p>
+      <p>
+        I'm Ivan, software engineer, who likes to <a class="inline-link" href="#experiments"
+          >experiment with web technologies</a
+        > and
+        <a class="inline-link" href="#notes">write about it</a>.
+      </p>
+      <p>
+        I'm currently working as a frontend developer at <a
+          class="inline-link"
+          href="https://kontur.ru"
+          target="_blank"
+          rel="noopener noreferrer">Kontur</a
+        >, where i lead UX/UI engineering for <a
+          class="inline-link"
+          href="https://kontur.ru/talk"
+          target="_blank"
+          rel="noopener noreferrer">Kontur.Talk</a
+        >, building the bridge between creative design and technical implementation, with a focus on
+        performance, maintainability and accessibility.
+      </p>
+      <p>I also like lifting weights, running, playing badminton and cooking.</p>
+      <p class="marginless">I'm currently based in Sochi 🌅</p>
+      <p>
+        I was born in <a href="notes/norilsk" class="inline-link">Norilsk</a> and lived there for 15
+        years ❄️
+      </p>
+      <p>
+        You can write to me at <a href="mailto:mail@esmantovi.ch" class="inline-link"
+          >mail@esmantovi.ch</a
+        >
+      </p>
+    </section>
+  </div>
 
   <section>
     <a href="/notes" class="clickable-header category-header">
@@ -116,11 +118,6 @@ const notes = await getCollection('notes')
       <Experiment title="Experiment 5" category="View Transitions" />
       <Experiment title="Experiment 6" category="CSS" />
     </div>
-  </section>
-
-  <section>
-    <h2 id="projects">Projects</h2>
-    <p>🚧🚧🚧</p>
   </section>
 
   <section>
@@ -200,13 +197,6 @@ const notes = await getCollection('notes')
 </script>
 
 <style>
-  .home-page {
-    max-width: 1024px;
-    margin: 0 auto;
-    padding-right: 4%;
-    padding-left: 4%;
-  }
-
   .grid {
     display: grid;
     grid-template-columns: minmax(0, 1fr);
@@ -214,13 +204,37 @@ const notes = await getCollection('notes')
     margin-bottom: 8px;
   }
 
-  section.about p {
-    margin-bottom: 1.5em;
-    line-height: 1.5em;
+  .about-container {
+    background-color: #fff;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid #d5d5d5;
   }
 
-  section.about p.marginless {
-    margin-bottom: 0;
+  section {
+    max-width: 1024px;
+    margin: 0 auto;
+    padding-right: 4%;
+    padding-left: 4%;
+  }
+
+  section.about {
+    h2 {
+      margin-top: 0;
+    }
+
+    p {
+      margin-bottom: 1.5em;
+      line-height: 1.5em;
+    }
+
+    p.marginless {
+      margin-bottom: 0;
+    }
+
+    p:last-child {
+      margin-bottom: 0;
+    }
   }
 
   .pointing-left {
