@@ -12,6 +12,24 @@ body {
   color: rgb(29, 29, 31);
 }
 
+/* Improve media defaults */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* Inherit fonts for form controls */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
 h2 {
   font-size: 1.5em;
 }
