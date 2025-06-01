@@ -9,6 +9,7 @@ import pointingLeftOriginal from '../assets/pointing-left-original.png'
 import holdingSomething from '../assets/holding-something.webp'
 import hand from '../assets/hand.webp'
 import me from '../assets/me-v7.webp'
+import cheers from '../assets/cheers.webp'
 
 const notes = await getCollection('notes')
 ---
@@ -133,8 +134,7 @@ const notes = await getCollection('notes')
       This site is built with <a href="https://astro.build" class="inline-link">Astro</a> and deployed
       via <a href="https://pages.cloudflare.com" class="inline-link">Cloudflare Pages</a>.
     </p>
-    <p>JavaScript is used only for tweaking View Transitions; site works without it.</p>
-    <p class="source">
+    <p>
       The source code is available on <a
         href="https://github.com/ivanesmantovich/esmantovi.ch"
         class="inline-link">GitHub</a
@@ -184,9 +184,10 @@ const notes = await getCollection('notes')
           'Within you there is a stillness and sanctuary to which you can retreat at any time',
           'There is more to life than increasing its speed',
           "Love says 'I am everything.' Wisdom says 'I am nothing.' Between the two, my life flows",
+          '<img class="bubble-image" src="cheers.webp" alt="cheers" />',
         ]
         const bubble = document.createElement('span')
-        bubble.classList.add('bubble')
+        bubble.classList.add('bubble', 'fly-away')
         bubble.innerHTML = bubbles[Math.floor(Math.random() * bubbles.length)]
         bubbleContainer.appendChild(bubble)
         setTimeout(() => {
@@ -219,10 +220,6 @@ const notes = await getCollection('notes')
 
   section.about p.marginless {
     margin-bottom: 0;
-  }
-
-  section.site p.source {
-    margin-top: 1.5em;
   }
 
   .pointing-left {
@@ -620,7 +617,9 @@ const notes = await getCollection('notes')
     user-select: none;
     word-break: break-word;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    scale: 0;
+  }
+
+  .fly-away {
     transition:
       opacity 7s ease-in,
       transform 7s ease-in-out,
@@ -635,6 +634,28 @@ const notes = await getCollection('notes')
       scale: 1;
       transform: translateY(0);
     }
+  }
+
+  .bubble:has(.bubble-image) {
+    height: fit-content;
+    padding: 6px;
+    background-color: white;
+    border: none;
+    border-radius: 0;
+    --shadow-color: 0deg 0% 0%;
+    box-shadow:
+      0.3px 0.5px 0.7px hsl(var(--shadow-color) / 0.11),
+      0.8px 1.6px 2px -0.8px hsl(var(--shadow-color) / 0.11),
+      2.1px 4.1px 5.2px -1.7px hsl(var(--shadow-color) / 0.11),
+      5px 10px 12.6px -2.5px hsl(var(--shadow-color) / 0.11);
+  }
+
+  .bubble-image {
+    width: 160px;
+    height: 160px;
+    border-radius: 24px;
+    border: 1px solid #444;
+    border-radius: 0;
   }
 
   .emoji {
