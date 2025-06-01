@@ -70,15 +70,17 @@ const notes = await getCollection('notes')
   </div>
 
   <section>
-    <a href="/notes" class="clickable-header category-header">
+    <a href="/notes" class="category-header">
       <h2 id="notes">Notes</h2>
-      <Image
-        src={pointingLeftOriginal}
-        alt="Hand pointing left"
-        class="pointing-left"
-        width={324}
-        height={104}
-      />
+      <div class="pointing-left-container">
+        <Image
+          src={pointingLeftOriginal}
+          alt="Hand pointing left"
+          class="pointing-left"
+          width={324}
+          height={104}
+        />
+      </div>
     </a>
     <div class="grid">
       {
@@ -97,15 +99,17 @@ const notes = await getCollection('notes')
   </section>
 
   <section>
-    <a href="/experiments" class="clickable-header category-header">
+    <a href="/experiments" class="category-header">
       <h2 id="experiments">Experiments</h2>
-      <Image
-        src={pointingLeftOriginal}
-        alt="Hand pointing left"
-        class="pointing-left"
-        width={324}
-        height={104}
-      />
+      <div class="pointing-left-container">
+        <Image
+          src={pointingLeftOriginal}
+          alt="Hand pointing left"
+          class="pointing-left"
+          width={324}
+          height={104}
+        />
+      </div>
     </a>
     <div class="grid">
       <Experiment title="Experiment 1" category="Three JS" />
@@ -218,9 +222,26 @@ const notes = await getCollection('notes')
     padding-left: 4%;
   }
 
+  section h2:first-of-type,
+  .category-header {
+    font-size: 32px;
+    margin-top: 3rem;
+    margin-bottom: 24px;
+
+    @media (width <= 1068px) {
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+
+    @media (width <= 734px) {
+      font-size: 24px;
+      margin-bottom: 16px;
+    }
+  }
+
   section.about {
     h2 {
-      margin-top: 0;
+      margin-top: 0 !important;
     }
 
     p {
@@ -550,7 +571,6 @@ const notes = await getCollection('notes')
   .category-header {
     display: flex;
     gap: 0.5em;
-    align-items: end;
 
     width: fit-content;
 
@@ -558,16 +578,19 @@ const notes = await getCollection('notes')
     text-decoration: none;
 
     h2 {
-      margin: 0;
+      margin: 0 !important;
     }
 
-    svg {
-      box-sizing: content-box;
-      width: 20px;
-      height: 20px;
-      padding-bottom: 5px;
+    img {
+      margin-top: 9px;
 
-      opacity: 0.5;
+      @media (width <= 1068px) {
+        margin-top: 6px;
+      }
+
+      @media (width <= 734px) {
+        margin-top: 4px;
+      }
     }
   }
 

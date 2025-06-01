@@ -31,10 +31,6 @@ select {
   font: inherit;
 }
 
-h2 {
-  font-size: 1.5em;
-}
-
 p {
   text-wrap: pretty;
 }
