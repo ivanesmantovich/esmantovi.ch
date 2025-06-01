@@ -22,11 +22,14 @@ const { text, color } = Astro.props
       0 10px 13px rgba(0, 0, 0, 0.1);
     cursor: pointer;
     font-size: 1rem;
-    margin-top: 1rem;
-    padding: 0.6rem 2rem;
+    margin-top: 1.5rem;
+    padding: 0.3rem 2rem;
     position: relative;
     transition: all ease 0.3s;
     font-weight: 500;
+    transform-origin: center;
+    backface-visibility: hidden;
+    will-change: transform;
   }
   .aqua-button:hover {
     box-shadow:
@@ -39,7 +42,7 @@ const { text, color } = Astro.props
     background: linear-gradient(rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
     border-radius: 125px;
     content: '';
-    height: 25px;
+    height: 68%;
     left: 4%;
     position: absolute;
     top: 1px;
