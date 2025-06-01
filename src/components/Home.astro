@@ -10,6 +10,8 @@ import holdingSomething from '../assets/holding-something.webp'
 import hand from '../assets/hand.webp'
 import me from '../assets/me-v7.webp'
 import cheers from '../assets/cheers.webp'
+import AquaButton from './AquaButton.astro'
+import AquaButtonSecond from './AquaButtonSecond.astro'
 
 const notes = await getCollection('notes')
 ---
@@ -114,6 +116,8 @@ const notes = await getCollection('notes')
       <Experiment title="Experiment 5" category="View Transitions" />
       <Experiment title="Experiment 6" category="CSS" />
     </div>
+    <AquaButton text="Download PDF" color="gray" />
+    <!-- <AquaButtonSecond text="Download PDF" color="blue" /> -->
   </section>
 
   <section>
@@ -125,7 +129,9 @@ const notes = await getCollection('notes')
     <h2>Resume</h2>
     <iframe id="resumeFrame" src="/resume-v1.pdf#toolbar=0&navpanes=0" frameborder="0"></iframe>
     <p id="mobileResumePlaceholder">Inline PDFs are not supported on mobile.</p>
-    <a href="/resume-v1.pdf" class="view-link">View Resume PDF</a>
+    <!-- <a href="/resume-v1.pdf" class="view-link">View Resume PDF</a> -->
+    <!-- <AquaButton text="Download PDF" color="gray" /> -->
+    <AquaButtonSecond text="Download PDF" color="blue" />
   </section>
 
   <section class="site">

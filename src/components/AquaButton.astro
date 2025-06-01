@@ -1,0 +1,61 @@
+---
+// Define the props interface for type safety
+interface Props {
+  text: string
+  color: 'blue' | 'gray'
+}
+
+// Destructure the title prop
+const { text, color } = Astro.props
+---
+
+<button class:list={['aqua-button', color === 'blue' ? 'blue' : 'gray']}>{text}</button>
+
+<style>
+  .aqua-button {
+    -webkit-appearance: none;
+    border: 1px solid #ccc;
+    border-radius: 125px;
+    box-shadow:
+      inset 0 13px 25px rgba(255, 255, 255, 0.5),
+      0 3px 5px rgba(0, 0, 0, 0.2),
+      0 10px 13px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    font-size: 1rem;
+    margin-top: 1rem;
+    padding: 0.6rem 2rem;
+    position: relative;
+    transition: all ease 0.3s;
+    font-weight: 500;
+  }
+  .aqua-button:hover {
+    box-shadow:
+      inset 0 13px 25px rgba(255, 255, 255, 0.8),
+      0 3px 5px rgba(0, 0, 0, 0.2),
+      0 10px 13px rgba(0, 0, 0, 0.2);
+    transform: scale(1.02);
+  }
+  .aqua-button:before {
+    background: linear-gradient(rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+    border-radius: 125px;
+    content: '';
+    height: 25px;
+    left: 4%;
+    position: absolute;
+    top: 1px;
+    transition: all ease 0.3s;
+    width: 92%;
+  }
+
+  .aqua-button.blue {
+    background: #4a90e2;
+    border-color: #3672b6;
+    color: #fff;
+  }
+
+  .aqua-button.gray {
+    background: #d0d0d0;
+    border-color: #b8b8b8;
+    color: #444;
+  }
+</style>
