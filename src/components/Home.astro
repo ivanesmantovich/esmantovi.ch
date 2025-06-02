@@ -127,7 +127,7 @@ const notes = await getCollection('notes')
   <section>
     <h2>Resume</h2>
     <Resume />
-    <AquaButton text="Download PDF" color="gray" />
+    <AquaButton text="Download" color="gray" />
   </section>
 
   <section class="site">
@@ -362,6 +362,8 @@ const notes = await getCollection('notes')
 
       object-fit: contain;
       box-shadow: 0 0 50px rgba(0, 0, 0, 0.3);
+
+      border: 0.5px solid #80808057;
 
       transition: 0.5s ease;
     }
