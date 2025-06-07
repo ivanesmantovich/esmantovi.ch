@@ -1,0 +1,19 @@
+---
+import AquaButton from '../AquaButton.astro'
+import Resume from '../Resume.astro'
+---
+
+<section class="resume-section">
+  <h2>Resume</h2>
+  <Resume />
+  <AquaButton text="Print" color="gray" id="print-button" />
+</section>
+
+<script>
+  const printButton = document.getElementById('print-button')
+  if (printButton) {
+    printButton.addEventListener('click', () => {
+      window.location.href = '/resume'
+    })
+  }
+</script>

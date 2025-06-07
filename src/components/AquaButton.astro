@@ -3,13 +3,14 @@
 interface Props {
   text: string
   color: 'blue' | 'gray'
+  id?: string
 }
 
 // Destructure the title prop
-const { text, color } = Astro.props
+const { text, color, id } = Astro.props
 ---
 
-<button class:list={['aqua-button', color === 'blue' ? 'blue' : 'gray']}>{text}</button>
+<button id={id} class:list={['aqua-button', color === 'blue' ? 'blue' : 'gray']}>{text}</button>
 
 <style>
   .aqua-button {

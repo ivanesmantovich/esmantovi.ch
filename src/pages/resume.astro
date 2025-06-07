@@ -1,0 +1,73 @@
+---
+import Layout from '../layouts/Layout.astro'
+import ResumeComponent from '../components/Resume.astro'
+---
+
+<Layout hideHeader>
+  <div class="resume-container">
+    <button class="print-button">Print</button>
+    <ResumeComponent />
+  </div>
+</Layout>
+
+<style>
+  body {
+    margin: 0;
+  }
+
+  .resume-container {
+    position: relative;
+    max-width: 1000px;
+    margin: 2rem auto;
+  }
+
+  .print-button {
+    cursor: pointer;
+
+    position: sticky;
+    z-index: 10;
+    top: 1rem;
+
+    float: right;
+
+    margin: 1rem;
+    margin-bottom: 0;
+    padding: 0.5rem 2rem;
+    border: none;
+    border: 0.5px solid rgba(255, 255, 255, 0.7);
+    border-radius: 18px;
+
+    font-size: 1rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.9);
+
+    background: rgba(20, 20, 20, 0.75);
+    backdrop-filter: blur(10px);
+  }
+
+  .print-button:hover {
+    background: rgba(20, 20, 20, 0.85);
+  }
+
+  @media (width < 768px) {
+    .resume-container {
+      margin: 0;
+    }
+  }
+
+  @media print {
+    .print-button {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  const printButton = document.querySelector('.print-button')
+
+  if (printButton) {
+    printButton.addEventListener('click', () => {
+      window.print()
+    })
+  }
+</script>

@@ -3,71 +3,17 @@ import { getCollection } from 'astro:content'
 import Note from '../components/Note.astro'
 import { formatDate } from '../utils/date'
 import Experiment from './Experiment.astro'
-import Forward from '../assets/Forward.svg'
 import { Image } from 'astro:assets'
 import pointingLeftOriginal from '../assets/pointing-left-original.png'
-import holdingSomething from '../assets/holding-something.webp'
 import hand from '../assets/hand.webp'
-import me from '../assets/me-v7.webp'
-import cheers from '../assets/cheers.webp'
-import AquaButton from './AquaButton.astro'
-import Resume from './Resume.astro'
+import ResumeSection from './sections/ResumeSection.astro'
+import AboutSection from './sections/AboutSection.astro'
 
 const notes = await getCollection('notes')
 ---
 
 <main>
-  <div class="about-container">
-    <section class="about">
-      <h2>About</h2>
-      <div class="portrait-container">
-        <Image src={holdingSomething} alt="Holding something" class="holdingSomething" />
-        <div class="portrait-hover-wrapper">
-          <div class="hover-point"></div>
-          <div class="hover-point"></div>
-          <div class="hover-point"></div>
-          <div class="hover-point"></div>
-          <div class="hover-point"></div>
-          <div class="hover-point"></div>
-          <div class="hover-point"></div>
-          <div class="hover-point"></div>
-          <Image src={me} alt="Me" height={1834} width={1544} class="portrait" />
-        </div>
-      </div>
-      <p>Hello!</p>
-      <p>
-        I'm Ivan, software engineer, who likes to <a class="inline-link" href="#experiments"
-          >experiment with web technologies</a
-        > and
-        <a class="inline-link" href="#notes">write about it</a>.
-      </p>
-      <p>
-        I'm currently working as a frontend developer at <a
-          class="inline-link"
-          href="https://kontur.ru"
-          target="_blank"
-          rel="noopener noreferrer">Kontur</a
-        >, where i lead UX/UI engineering for <a
-          class="inline-link"
-          href="https://kontur.ru/talk"
-          target="_blank"
-          rel="noopener noreferrer">Kontur.Talk</a
-        >, building the bridge between creative design and technical implementation, with a focus on
-        performance, maintainability and accessibility.
-      </p>
-      <p>I also like lifting weights, running, playing badminton and cooking.</p>
-      <p class="marginless">I'm currently based in Sochi 🌅</p>
-      <p>
-        I was born in <a href="notes/norilsk" class="inline-link">Norilsk</a> and lived there for 15
-        years ❄️
-      </p>
-      <p>
-        You can write to me at <a href="mailto:mail@esmantovi.ch" class="inline-link"
-          >mail@esmantovi.ch</a
-        >
-      </p>
-    </section>
-  </div>
+  <AboutSection />
 
   <section>
     <a href="/notes" class="category-header">
@@ -124,19 +70,15 @@ const notes = await getCollection('notes')
     </div>
   </section>
 
-  <section>
-    <h2>Resume</h2>
-    <Resume />
-    <AquaButton text="Download" color="gray" />
-  </section>
+  <ResumeSection />
 
   <section class="site">
     <h2>About this site</h2>
-    <p>
+    <p class="body-text">
       This site is built with <a href="https://astro.build" class="inline-link">Astro</a> and deployed
       via <a href="https://pages.cloudflare.com" class="inline-link">Cloudflare Pages</a>.
     </p>
-    <p>
+    <p class="body-text marginless">
       The source code is available on <a
         href="https://github.com/ivanesmantovich/esmantovi.ch"
         class="inline-link">GitHub</a
@@ -208,56 +150,6 @@ const notes = await getCollection('notes')
     margin-bottom: 8px;
   }
 
-  .about-container {
-    padding-top: 3rem;
-    padding-bottom: 3rem;
-    border-bottom: 1px solid #d5d5d5;
-    background-color: #fff;
-  }
-
-  section {
-    max-width: 1024px;
-    margin: 0 auto;
-    padding-right: 4%;
-    padding-left: 4%;
-  }
-
-  section h2:first-of-type,
-  .category-header {
-    margin-top: 3rem;
-    margin-bottom: 24px;
-    font-size: 32px;
-
-    @media (width <= 1068px) {
-      margin-bottom: 20px;
-      font-size: 28px;
-    }
-
-    @media (width <= 734px) {
-      margin-bottom: 16px;
-      font-size: 24px;
-    }
-  }
-
-  section.about {
-    h2 {
-      margin-top: 0 !important;
-    }
-
-    p {
-      margin-bottom: 1.5em;
-      line-height: 1.5em;
-    }
-
-    p.marginless {
-      margin-bottom: 0;
-    }
-
-    p:last-child {
-      margin-bottom: 0;
-    }
-  }
-
   .pointing-left {
     width: auto;
     height: 26px;
@@ -321,211 +213,6 @@ const notes = await getCollection('notes')
     width: 100%;
     /* background-color: pink; */
     padding-right: 35px;
-  }
-
-  .portrait-container {
-    position: relative;
-
-    float: right;
-    display: flex;
-
-    width: 55%;
-    padding-left: 12px;
-  }
-
-  .holdingSomething {
-    pointer-events: none;
-
-    z-index: 2;
-
-    display: block;
-
-    width: 30%;
-    height: auto;
-    margin-top: 32%;
-
-    object-fit: contain;
-    filter: contrast(85%);
-
-    transition: 0.5s ease;
-  }
-
-  .portrait-hover-wrapper {
-    position: relative;
-    z-index: 1;
-
-    width: 70%;
-    height: fit-content;
-    margin-left: -4%;
-
-    .portrait {
-      display: block;
-
-      width: 100%;
-      height: auto;
-      border: 0.5px solid #80808057;
-
-      object-fit: contain;
-      box-shadow: 0 0 50px rgba(0, 0, 0, 0.3);
-
-      transition: 0.5s ease;
-    }
-
-    .hover-point {
-      position: absolute;
-      z-index: 2;
-
-      width: calc(100% / 3);
-      height: calc(100% / 3);
-
-      background-color: transparent;
-    }
-
-    .hover-point:nth-child(1) {
-      top: 0;
-      left: 0;
-    }
-    .hover-point:nth-child(2) {
-      top: 0;
-      left: calc(100% / 3);
-    }
-    .hover-point:nth-child(3) {
-      top: 0;
-      right: 0;
-    }
-    .hover-point:nth-child(4) {
-      top: calc(100% / 3);
-      left: 0;
-    }
-    .hover-point:nth-child(5) {
-      top: calc(100% / 3);
-      right: 0;
-    }
-    .hover-point:nth-child(6) {
-      bottom: 0;
-      left: 0;
-    }
-    .hover-point:nth-child(7) {
-      bottom: 0;
-      left: calc(100% / 3);
-    }
-    .hover-point:nth-child(8) {
-      right: 0;
-      bottom: 0;
-    }
-
-    .hover-point:nth-child(1):hover ~ .portrait {
-      transform-origin: right top;
-      transform: perspective(1000px) rotateX(10deg) rotateY(-10deg) rotateZ(2deg);
-      box-shadow: 15px 15px 50px rgba(0, 0, 0, 0.3);
-    }
-    .hover-point:nth-child(2):hover ~ .portrait {
-      transform-origin: center top;
-      transform: perspective(1000px) rotateX(10deg);
-      box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
-    }
-    .hover-point:nth-child(3):hover ~ .portrait {
-      transform-origin: left top;
-      transform: perspective(1000px) rotateX(10deg) rotateY(10deg) rotateZ(-2deg);
-      box-shadow: -15px 15px 50px rgba(0, 0, 0, 0.3);
-    }
-    .hover-point:nth-child(4):hover ~ .portrait {
-      transform-origin: left center;
-      transform: perspective(1000px) rotateY(-10deg);
-      box-shadow: 15px 5px 50px rgba(0, 0, 0, 0.3);
-    }
-    .hover-point:nth-child(5):hover ~ .portrait {
-      transform-origin: right center;
-      transform: perspective(1000px) rotateY(10deg);
-      box-shadow: -15px 5px 50px rgba(0, 0, 0, 0.3);
-    }
-    .hover-point:nth-child(6):hover ~ .portrait {
-      transform-origin: right bottom;
-      transform: perspective(1000px) rotateX(-10deg) rotateY(-10deg) rotateZ(-2deg);
-      box-shadow: 15px -15px 50px rgba(0, 0, 0, 0.3);
-    }
-    .hover-point:nth-child(7):hover ~ .portrait {
-      transform-origin: center bottom;
-      transform: perspective(1000px) rotateX(-10deg);
-      box-shadow: 0 -15px 50px rgba(0, 0, 0, 0.3);
-    }
-    .hover-point:nth-child(8):hover ~ .portrait {
-      transform-origin: left bottom;
-      transform: perspective(1000px) rotateX(-10deg) rotateY(10deg) rotateZ(2deg);
-      box-shadow: -15px -15px 50px rgba(0, 0, 0, 0.3);
-    }
-  }
-
-  .holdingSomething:has(+ .portrait-hover-wrapper > .hover-point:nth-child(1):hover) {
-    transform-origin: right top;
-    transform: perspective(1000px) rotateX(10deg) rotateY(-10deg) rotateZ(2deg) translateX(4%);
-  }
-
-  .holdingSomething:has(+ .portrait-hover-wrapper > .hover-point:nth-child(2):hover) {
-    transform-origin: center top;
-    transform: perspective(1000px) rotateX(10deg) translateX(-6%);
-  }
-
-  .holdingSomething:has(+ .portrait-hover-wrapper > .hover-point:nth-child(3):hover) {
-    transform-origin: left top;
-    transform: perspective(1000px) rotateX(10deg) rotateY(10deg) rotateZ(-2deg) translateX(5%);
-
-    @media (width <= 734px) {
-      transform: perspective(1000px) rotateX(10deg) rotateY(10deg) rotateZ(-2deg) translateX(4%);
-    }
-  }
-
-  .holdingSomething:has(+ .portrait-hover-wrapper > .hover-point:nth-child(4):hover) {
-    transform-origin: left center;
-    transform: perspective(1000px) rotateY(-10deg);
-  }
-
-  .holdingSomething:has(+ .portrait-hover-wrapper > .hover-point:nth-child(5):hover) {
-    transform-origin: right center;
-    transform: perspective(1000px) rotateY(10deg) translateX(-14%);
-
-    @media (width <= 1068px) {
-      transform: perspective(1000px) rotateY(10deg) translateX(-12%);
-    }
-
-    @media (width <= 850px) {
-      transform: perspective(1000px) rotateY(10deg) translateX(-10%);
-    }
-  }
-
-  .holdingSomething:has(+ .portrait-hover-wrapper > .hover-point:nth-child(6):hover) {
-    transform-origin: right bottom;
-    transform: perspective(1000px) rotateX(-10deg) rotateY(-10deg) rotateZ(-2deg) translateX(10%);
-
-    @media (width <= 734px) {
-      transform: perspective(1000px) rotateX(-10deg) rotateY(-10deg) rotateZ(-2deg) translateX(8%);
-    }
-  }
-
-  .holdingSomething:has(+ .portrait-hover-wrapper > .hover-point:nth-child(7):hover) {
-    transform-origin: center bottom;
-    transform: perspective(1000px) rotateX(-10deg) translateX(-5%);
-
-    @media (width <= 734px) {
-      transform: perspective(1000px) rotateX(-10deg) translateX(-4%);
-    }
-  }
-
-  .holdingSomething:has(+ .portrait-hover-wrapper > .hover-point:nth-child(8):hover) {
-    transform-origin: left bottom;
-    transform: perspective(1000px) rotateX(-10deg) rotateY(10deg) rotateZ(2deg);
-  }
-
-  .inline-link {
-    color: inherit;
-    text-decoration-color: color(display-p3 0.732 0.732 0.732);
-    text-underline-offset: max(0.1em, 2.5px);
-    transition: text-decoration-color 0.2s ease-in-out;
-  }
-
-  .inline-link:hover {
-    text-decoration-color: color(display-p3 0.392 0.392 0.392);
-    opacity: initial;
   }
 
   .view-link {
@@ -605,11 +292,6 @@ const notes = await getCollection('notes')
     }
   }
 
-  p {
-    line-height: 1.5;
-    color: #737373;
-  }
-
   @media (pointer: coarse) {
     #resumeFrame {
       display: none;
@@ -630,13 +312,6 @@ const notes = await getCollection('notes')
   @media (width >= 650px) {
     .grid {
       grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-  }
-
-  @media (width <= 734px) {
-    .portrait-container {
-      width: 65%;
-      padding-left: 0;
     }
   }
 

@@ -6,9 +6,10 @@ import Header from '../components/Header.astro'
 
 interface Props {
   previewOpened?: boolean
+  hideHeader?: boolean
 }
 
-const { previewOpened = false } = Astro.props
+const { previewOpened = false, hideHeader = false } = Astro.props
 ---
 
 <!doctype html>
@@ -23,7 +24,7 @@ const { previewOpened = false } = Astro.props
     <ClientRouter />
   </head>
   <body>
-    <Header previewOpened={previewOpened} />
+    {!hideHeader && <Header previewOpened={previewOpened} />}
     <slot />
   </body>
 </html>
