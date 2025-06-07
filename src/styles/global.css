@@ -36,6 +36,55 @@ p {
   text-wrap: pretty;
 }
 
+section {
+  max-width: 1024px;
+  margin: 0 auto;
+  padding-right: 4%;
+  padding-left: 4%;
+}
+
+section h2:first-of-type,
+.category-header {
+  margin-top: 3rem;
+  margin-bottom: 24px;
+  font-size: 32px;
+
+  @media (width <= 1068px) {
+    margin-bottom: 20px;
+    font-size: 28px;
+  }
+
+  @media (width <= 734px) {
+    margin-bottom: 16px;
+    font-size: 24px;
+  }
+}
+
+.body-text {
+  line-height: 1.5em;
+  color: #737373;
+}
+
+.body-text + .body-text {
+  margin-top: 1.5em;
+}
+
+.body-text.marginless {
+  margin-top: 0;
+}
+
+.inline-link {
+  color: inherit;
+  text-decoration-color: color(display-p3 0.732 0.732 0.732);
+  text-underline-offset: max(0.1em, 2.5px);
+  transition: text-decoration-color 0.2s ease-in-out;
+}
+
+.inline-link:hover {
+  text-decoration-color: color(display-p3 0.392 0.392 0.392);
+  opacity: initial;
+}
+
 .overlay {
   pointer-events: none;
 

@@ -1,26 +1,52 @@
-<article>
-  <h3 class="name">Ivan Esmantovich</h3>
-  <p>
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore soluta dolor repellat at, modi
-    corporis ipsa aut? Aperiam consequatur iusto porro molestias veritatis? Exercitationem delectus
-    harum ea laudantium. Quisquam, voluptatem!
-  </p>
+<article class="surface">
+  <div class="page page-1">
+    <h3 class="name">Ivan Esmantovich</h3>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore soluta dolor repellat at,
+      modi corporis ipsa aut? Aperiam consequatur iusto porro molestias veritatis? Exercitationem
+      delectus harum ea laudantium. Quisquam, voluptatem!
+    </p>
 
-  <p>
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore soluta dolor repellat at, modi
-    corporis ipsa aut? Aperiam consequatur iusto porro molestias veritatis? Exercitationem delectus
-    harum ea laudantium. Quisquam, voluptatem!
-  </p>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore soluta dolor repellat at,
+      modi corporis ipsa aut? Aperiam consequatur iusto porro molestias veritatis? Exercitationem
+      delectus harum ea laudantium. Quisquam, voluptatem!
+    </p>
+  </div>
+
+  <div class="page page-2">
+    <h3 class="name">Ivan Esmantovich</h3>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore soluta dolor repellat at,
+      modi corporis ipsa aut? Aperiam consequatur iusto porro molestias veritatis? Exercitationem
+      delectus harum ea laudantium. Quisquam, voluptatem!
+    </p>
+
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, ratione perferendis? Voluptatem
+      voluptates dignissimos itaque esse incidunt iure impedit corporis nesciunt, porro illo, eum
+      odio reprehenderit non ipsum minus magni!
+    </p>
+  </div>
 </article>
 
 <style>
-  article {
+  .surface {
+    padding: 2rem;
+    background-color: #959595;
+  }
+
+  .page {
     --shadow-color: 0deg 0% 63%;
 
     padding: 2.5rem 2rem;
-    border: 0.5px solid oklch(92.8% 0.006 264.531);
+    border: 2px solid #f0f0f0;
     background-color: #fff;
     box-shadow: rgba(0, 0, 0, 0.08) 8px 8px 16px 0px;
+  }
+
+  .page + .page {
+    margin-top: 1.25rem;
   }
 
   p + p {
@@ -31,5 +57,56 @@
     margin-bottom: 0.5rem;
     font-size: 2rem;
     font-weight: 600;
+  }
+
+  @media (width < 768px) {
+    .surface {
+      padding: 0.35rem;
+      background-color: #eae9ee;
+    }
+
+    .page + .page {
+      margin-top: 0.5rem;
+    }
+  }
+
+  /* Print styles */
+  @media print {
+    .surface {
+      padding: 0;
+      background-color: transparent;
+    }
+
+    .page {
+      margin: 0;
+      padding: 1rem;
+      border: none;
+
+      background-color: transparent;
+      box-shadow: none;
+
+      page-break-inside: avoid;
+    }
+
+    .page + .page {
+      margin-top: 0;
+
+      page-break-before: always;
+    }
+
+    /* Ensure page-1 starts on first page */
+    .page-1 {
+      page-break-before: auto;
+    }
+
+    /* Force each subsequent page to start on a new page */
+    .page-2 {
+      page-break-before: always;
+    }
+
+    /* If you add more pages, continue the pattern */
+    .page-3 {
+      page-break-before: always;
+    }
   }
 </style>
