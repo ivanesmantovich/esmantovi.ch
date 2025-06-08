@@ -1,7 +1,7 @@
 ---
 import { Image } from 'astro:assets'
 import holdingSomething from '../../assets/holding-something.webp'
-import me from '../../assets/selfie-dithered.webp'
+import portrait from '../../assets/portrait-grays2-contrast22.webp'
 ---
 
 <div class="about-container">
@@ -18,12 +18,12 @@ import me from '../../assets/selfie-dithered.webp'
         <div class="hover-point"></div>
         <div class="hover-point"></div>
         <div class="hover-point"></div>
-        <Image
-          src={me}
-          alt="Picture of Ivan Esmantovich"
-          height={576}
-          width={768}
+        <img
           class="portrait"
+          src={portrait.src}
+          width={portrait.width}
+          height={portrait.height}
+          alt="Photo of Ivan Esmantovich"
         />
       </div>
     </div>
