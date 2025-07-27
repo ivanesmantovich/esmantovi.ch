@@ -1,0 +1,68 @@
+<section class="cv-section">
+  <h2>Résumé</h2>
+  <ul class="cv-list body-text">
+    <li class="cv-list-item">
+      <span class="cv-item-title">Status</span><span class="status-value"
+        ><span class="light light-available"></span>Open for new roles</span
+      >
+    </li>
+    <li class="cv-list-item">
+      <span class="cv-item-title">Contact methods</span><span
+        ><a href="mailto:mail@esmantovi.ch">mail@esmantovi.ch</a> or <a href="t.me/esmantovich"
+          >t.me/esmantovich</a
+        ></span
+      >
+    </li>
+    <li class="cv-list-item">
+      <span class="cv-item-title">Selected projects</span><span>Work in progress...</span>
+    </li>
+    <li class="cv-list-item">
+      <span class="cv-item-title">Résumé link</span><span
+        ><a href={'/resume'}>esmantovi.ch/resume</a></span
+      >
+    </li>
+  </ul>
+</section>
+
+<style>
+  .cv-list {
+    list-style: none;
+  }
+
+  .cv-list a {
+    color: #077aff;
+    text-decoration: none;
+  }
+
+  .cv-list-item {
+    display: grid;
+    grid-column-gap: 1.4em;
+    grid-template-columns: minmax(9.45em, auto) 1fr;
+  }
+
+  .cv-list-item + .cv-list-item {
+    margin-top: 3px;
+  }
+
+  .cv-item-title {
+    font-weight: 500;
+  }
+
+  .status-value {
+    display: flex;
+    align-items: center;
+  }
+
+  .light {
+    display: inline-block;
+
+    width: 12px;
+    height: 12px;
+    margin-right: 8px;
+    border-radius: 50%;
+  }
+
+  .light-available {
+    background-color: #29c93f;
+  }
+</style>

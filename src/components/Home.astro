@@ -6,6 +6,7 @@ import { Image } from 'astro:assets'
 import pointingLeftOriginal from '../assets/pointing-left-original.png'
 import hand from '../assets/hand.webp'
 import ResumeSection from './sections/ResumeSection.astro'
+import CvSection from './sections/CvSection.astro'
 import AboutSection from './sections/AboutSection.astro'
 import Thought from './Thought.astro'
 
@@ -73,7 +74,9 @@ const notes = await getCollection('notes')
     </div>
   </section>
 
-  <section class="site">
+  <CvSection />
+
+  <section class="site-section">
     <h2>About this site</h2>
     <p class="body-text">
       This site is built with <a href="https://astro.build" class="inline-link">Astro</a> and deployed
