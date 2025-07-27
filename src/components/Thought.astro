@@ -1,0 +1,37 @@
+---
+// Define the props interface for type safety
+interface Props {
+  text: string
+  date: string
+}
+
+// Destructure the title prop
+const { text, date } = Astro.props
+---
+
+<div class="thought">
+  {text}
+
+  <div class="date">{date}</div>
+</div>
+
+<style>
+  .thought {
+    width: 100%;
+    max-width: 550px;
+    padding: 16px 20px;
+    border: 1px solid #f0e489;
+    border-radius: 28px;
+
+    /* font-weight: 500; */
+    color: #8c7600;
+
+    background-color: #fef297;
+  }
+
+  .date {
+    padding-top: 16px;
+    font-weight: 400;
+    color: #b19a35;
+  }
+</style>

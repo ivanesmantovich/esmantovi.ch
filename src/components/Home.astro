@@ -2,12 +2,12 @@
 import { getCollection } from 'astro:content'
 import Note from '../components/Note.astro'
 import { formatDate } from '../utils/date'
-import Experiment from './Experiment.astro'
 import { Image } from 'astro:assets'
 import pointingLeftOriginal from '../assets/pointing-left-original.png'
 import hand from '../assets/hand.webp'
 import ResumeSection from './sections/ResumeSection.astro'
 import AboutSection from './sections/AboutSection.astro'
+import Thought from './Thought.astro'
 
 const notes = await getCollection('notes')
 ---
@@ -45,8 +45,8 @@ const notes = await getCollection('notes')
   </section>
 
   <section>
-    <a href="/experiments" class="category-header">
-      <h2 id="experiments">Experiments</h2>
+    <a href="/thoughts" class="category-header">
+      <h2 id="thoughts">Thoughts</h2>
       <div class="pointing-left-container">
         <Image
           src={pointingLeftOriginal}
@@ -57,20 +57,21 @@ const notes = await getCollection('notes')
         />
       </div>
     </a>
-    <div class="grid">
-      <Experiment title="Experiment 1" category="Three JS" />
-      <Experiment title="Experiment 2" category="Animation" />
-      <Experiment
-        title="Experiment 3 but it has a very long and awesome title"
-        category="Category that is very long and awesome"
+    <div style="display: flex; flex-direction: column; gap: 8px">
+      <Thought
+        text="Mac folks, any bugs you’ve noticed recently in the Micro.blog app? Fixing a couple little things for macOS 26 Tahoe beta"
+        date="April 25, 2024"
       />
-      <Experiment title="Experiment 4" category="Inspired" />
-      <Experiment title="Experiment 5" category="View Transitions" />
-      <Experiment title="Experiment 6" category="CSS" />
+      <Thought
+        text="Upgraded to the latest Tahoe beta and now a couple of apps seem to be confused. Nova thinks it’s expired. I have an older serial number, but they should work forever just without updates. I think something might be weird with the system keychain"
+        date="April 15, 2024"
+      />
+      <Thought
+        text="Losing my mind again debugging HTTP signatures. So easy to have flakiness between implementations."
+        date="March 20, 2024"
+      />
     </div>
   </section>
-
-  <ResumeSection />
 
   <section class="site">
     <h2>About this site</h2>
