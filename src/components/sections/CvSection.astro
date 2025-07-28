@@ -1,3 +1,8 @@
+---
+import pdfIcon from '../../assets/pdf-icon.webp'
+import CloudDownloadOutline from '../../assets/cloud-download-outline.svg'
+---
+
 <section class="cv-section">
   <h2>Résumé</h2>
   <ul class="cv-list body-text">
@@ -18,10 +23,29 @@
         ><a href={'/resume'}>esmantovi.ch/resume</a></span
       >
     </li>
+    <li class="resume-download">
+      <a class="resume-download-button" href="resume-v1.pdf" download>
+        <img src={pdfIcon.src} alt={'PDF Icon'} width={50} />
+        <span class="resume-button-text">
+          <span class="resume-button-filename">esmantovich_cv.pdf</span>
+          <span class="resume-button-info">28.07.2025 – 49 KB</span>
+        </span>
+        <CloudDownloadOutline
+          width={24}
+          height={24}
+          class="cloud-download-icon"
+          stroke-width={12}
+        />
+      </a>
+    </li>
   </ul>
 </section>
 
 <style>
+  .cv-section {
+    overflow-x: auto;
+  }
+
   .cv-list {
     list-style: none;
   }
@@ -33,12 +57,17 @@
 
   .cv-list-item {
     display: grid;
-    grid-column-gap: 1.4em;
+    grid-column-gap: 1em;
     grid-template-columns: minmax(9.45em, auto) 1fr;
   }
 
   .cv-list-item + .cv-list-item {
     margin-top: 3px;
+  }
+
+  .resume-download {
+    width: max-content;
+    margin-top: 12px;
   }
 
   .cv-item-title {
@@ -52,6 +81,7 @@
 
   .light {
     display: inline-block;
+    flex-shrink: 0;
 
     width: 13px;
     height: 13px;
@@ -61,5 +91,46 @@
 
   .light-available {
     background-color: #29c93f;
+  }
+
+  .resume-download-button {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+
+    width: fit-content;
+    margin-left: -6px;
+    padding: 6px;
+    border: 0.5px solid #d5d5d5;
+    border-radius: 10px;
+
+    background-color: #fff;
+
+    transition: opacity 0.45s cubic-bezier(0.075, 0.82, 0.165, 1);
+  }
+
+  .resume-button-text {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    line-height: normal;
+  }
+
+  .resume-button-filename {
+    color: #000000;
+  }
+
+  .resume-button-info {
+    font-size: 0.8rem;
+    color: #8a8a8d;
+  }
+
+  .cloud-download-icon {
+    flex-shrink: 0;
+    margin-left: 12px;
+  }
+
+  .resume-download-button:hover {
+    opacity: 0.7;
   }
 </style>
