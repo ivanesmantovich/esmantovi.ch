@@ -6,6 +6,7 @@ import { Image } from 'astro:assets'
 import pointingLeftOriginal from '../assets/pointing-left-original.png'
 import hand from '../assets/hand.webp'
 import CvSection from './sections/CvSection.astro'
+import BlogrollSection from './sections/BlogrollSection.astro'
 import AboutSection from './sections/AboutSection.astro'
 import Thought from './Thought.astro'
 
@@ -74,6 +75,8 @@ const notes = await getCollection('notes')
   </section>
 
   <CvSection />
+
+  <BlogrollSection />
 
   <section class="site-section">
     <h2>About this site</h2>

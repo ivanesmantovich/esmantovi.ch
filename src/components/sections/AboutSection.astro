@@ -81,6 +81,8 @@ import portrait from '../../assets/portrait-grays2-contrast22.webp'
     display: flex;
 
     width: 55%;
+    margin-bottom: 12px;
+    margin-left: 12px;
     padding-left: 12px;
   }
 
@@ -267,10 +269,15 @@ import portrait from '../../assets/portrait-grays2-contrast22.webp'
     transform: perspective(1000px) rotateX(-10deg) rotateY(10deg) rotateZ(2deg);
   }
 
+  @media (width <= 1068px) {
+    .portrait-container {
+      width: 50%;
+    }
+  }
+
   @media (width <= 734px) {
     .portrait-container {
-      width: 65%;
-      padding-left: 0;
+      padding-left: 0px;
     }
   }
 </style>

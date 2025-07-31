@@ -4,11 +4,14 @@ import CloudDownloadOutline from '../../assets/cloud-download-outline.svg'
 ---
 
 <section class="cv-section">
-  <h2>Résumé</h2>
+  <hgroup>
+    <h2 class="header-with-description">Résumé</h2>
+    <p class="description"><i>For recruiters</i></p>
+  </hgroup>
   <ul class="cv-list body-text">
     <li class="cv-list-item">
       <span class="cv-item-title">Status</span><span class="status-value"
-        ><span class="light light-available"></span>Open for new roles</span
+        ><span class="light light-available"></span>Open to new roles</span
       >
     </li>
     <li class="cv-list-item">
@@ -44,6 +47,15 @@ import CloudDownloadOutline from '../../assets/cloud-download-outline.svg'
 <style>
   .cv-section {
     overflow-x: auto;
+  }
+
+  .header-with-description {
+    margin-bottom: 8px;
+  }
+
+  .description {
+    margin-bottom: 24px;
+    color: rgb(115, 115, 115);
   }
 
   .cv-list {
