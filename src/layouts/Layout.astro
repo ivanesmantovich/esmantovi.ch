@@ -1,5 +1,4 @@
 ---
-import { ClientRouter } from 'astro:transitions'
 import '../styles/global.css'
 import '../styles/typography.css'
 import Header from '../components/Header.astro'
@@ -17,11 +16,50 @@ const { previewOpened = false, hideHeader = false } = Astro.props
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
+    <!-- Font preload - Place early for maximum performance -->
+    <link
+      rel="preload"
+      href="/node_modules/@fontsource-variable/public-sans/files/public-sans-latin-wght-normal.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <!-- Font styles - Define @font-face early -->
+    <style is:global>
+      @font-face {
+        font-family: 'Public Sans Variable';
+        font-weight: 100 900;
+        font-style: normal;
+        font-display: swap;
+        src: url(@fontsource-variable/public-sans/files/public-sans-latin-wght-normal.woff2)
+          format('woff2-variations');
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+          U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
+          U+FEFF, U+FFFD;
+      }
+
+      body {
+        font-family: 'Public Sans Variable', system-ui, 'Segoe UI', Roboto, Oxygen, Ubuntu,
+          Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        font-variation-settings: 'wght' 330;
+      }
+
+      .font-light {
+        font-variation-settings: 'wght' 300;
+      }
+      .font-regular {
+        font-variation-settings: 'wght' 400;
+      }
+      .font-medium {
+        font-variation-settings: 'wght' 500;
+      }
+      .font-semibold {
+        font-variation-settings: 'wght' 600;
+      }
+    </style>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>esmantovi.ch</title>
-
-    <ClientRouter />
   </head>
   <body>
     {!hideHeader && <Header previewOpened={previewOpened} />}

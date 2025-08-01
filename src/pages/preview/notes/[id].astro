@@ -45,35 +45,6 @@ const { Content } = await render(note)
   </div>
 </Layout>
 
-<script>
-  import { navigate } from 'astro:transitions/client'
-
-  document.addEventListener('astro:page-load', () => {
-    const pathname = window.location.pathname
-    const noteId = pathname.split('/').filter(Boolean)[2]
-    const overlay = document.getElementById('overlay')
-    const closeButton = document.getElementById('closeButton')
-    const fullscreenButton = document.getElementById('fullscreenButton')
-
-    const handleClose = () => {
-      navigate('/')
-    }
-
-    const handleFullscreen = () => {
-      navigate(`/notes/${noteId}`)
-    }
-
-    overlay?.addEventListener('click', (e) => {
-      if (e.target === overlay) {
-        handleClose()
-      }
-    })
-
-    closeButton?.addEventListener('click', handleClose)
-    fullscreenButton?.addEventListener('click', handleFullscreen)
-  })
-</script>
-
 <style>
   /* 1:1 Apple Newsroom behaviour */
   /* Prevent body scroll when overlay exists */

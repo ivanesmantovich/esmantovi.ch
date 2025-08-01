@@ -11,6 +11,7 @@
     "format:check": "prettier --check ."
   },
   "dependencies": {
+    "@fontsource-variable/public-sans": "^5.2.6",
     "astro": "^5.1.7"
   },
   "devDependencies": {
