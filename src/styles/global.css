@@ -8,7 +8,11 @@ body {
   font-size: 18px;
   -webkit-font-smoothing: antialiased;
   color: rgb(29, 29, 31);
+  text-rendering: optimizelegibility;
+
   background-color: #fafafa;
+
+  font-synthesis: none;
 }
 
 /* Improve media defaults */
@@ -80,6 +84,18 @@ section h2:first-of-type,
 .inline-link:hover {
   text-decoration-color: color(display-p3 0.392 0.392 0.392);
   opacity: initial;
+}
+
+.card {
+  transition: filter 0.2s ease;
+}
+
+.card:hover {
+  filter: contrast(95%);
+}
+
+.card:active {
+  filter: contrast(90%);
 }
 
 .overlay {

@@ -18,7 +18,7 @@ const notes = await getCollection('notes')
 
   <section>
     <a href="/notes" class="category-header">
-      <h2 class="font-medium" id="notes">Notes</h2>
+      <h2 class="font-medium section-header" id="notes">Notes</h2>
       <div class="pointing-left-container">
         <Image
           src={pointingLeftOriginal}
@@ -46,8 +46,8 @@ const notes = await getCollection('notes')
   </section>
 
   <section>
-    <a href="/thoughts" class="font-medium category-header">
-      <h2 id="thoughts">Thoughts</h2>
+    <a href="/thoughts" class="category-header">
+      <h2 class="font-medium section-header" id="thoughts">Thoughts</h2>
       <div class="pointing-left-container">
         <Image
           src={pointingLeftOriginal}
@@ -162,11 +162,35 @@ const notes = await getCollection('notes')
     margin-bottom: 8px;
   }
 
+  section:hover .pointing-left {
+    opacity: 1;
+  }
+
+  .section-header {
+    transition: filter 0.3s ease;
+  }
+
+  .section-header:hover {
+    filter: contrast(50%);
+  }
+
+  .section-header:active {
+    filter: contrast(30%);
+  }
+
   .pointing-left {
     width: auto;
     height: 26px;
     object-fit: contain;
-    transition: transform 0.3s ease-out;
+    transition:
+      transform 0.3s ease-out,
+      opacity 0.3s ease;
+  }
+
+  @media (pointer: fine) {
+    .pointing-left {
+      opacity: 0;
+    }
   }
 
   .screen {
@@ -199,7 +223,7 @@ const notes = await getCollection('notes')
     max-width: 80vw;
     height: auto;
 
-    transition: transform 0.2s ease-out;
+    transition: transform 0.2s ease;
 
     -webkit-tap-highlight-color: transparent;
     -webkit-touch-callout: none;
