@@ -162,11 +162,6 @@ const notes = await getCollection('notes')
     margin-bottom: 8px;
   }
 
-  section:hover .pointing-left {
-    opacity: 1;
-    filter: blur(0px);
-  }
-
   .section-header {
     transition: filter 0.3s ease;
   }
@@ -193,6 +188,23 @@ const notes = await getCollection('notes')
     .pointing-left {
       opacity: 0;
       filter: blur(4px);
+    }
+
+    section:hover .pointing-left {
+      opacity: 1;
+      filter: blur(0px);
+    }
+  }
+
+  @media (pointer: coarse) {
+    .pointing-left-container {
+      animation-name: pointing-scroll-fade;
+      animation-fill-mode: both;
+      animation-timeline: --portrait-timeline;
+      view-timeline-name: --portrait-timeline;
+      view-timeline-axis: block;
+
+      animation-range: entry 0% exit 100%;
     }
   }
 
@@ -357,6 +369,28 @@ const notes = await getCollection('notes')
   @keyframes fadeOut {
     to {
       opacity: 0;
+    }
+  }
+
+  @keyframes pointing-scroll-fade {
+    0% {
+      opacity: 0;
+      filter: blur(12px);
+    }
+
+    25% {
+      opacity: 1;
+      filter: blur(0px);
+    }
+
+    90% {
+      opacity: 1;
+      filter: blur(0px);
+    }
+
+    100% {
+      opacity: 0;
+      filter: blur(12px);
     }
   }
 </style>

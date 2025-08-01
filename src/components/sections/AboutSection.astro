@@ -84,6 +84,14 @@ import portrait from '../../assets/portrait-grays2-contrast22.webp'
     margin-bottom: 12px;
     margin-left: 12px;
     padding-left: 12px;
+
+    animation-name: portrait-scroll-fade;
+    animation-fill-mode: both;
+    animation-timeline: --portrait-timeline;
+    view-timeline-name: --portrait-timeline;
+    view-timeline-axis: block;
+
+    animation-range: entry 0% exit 100%;
   }
 
   .holdingSomething {
@@ -278,6 +286,28 @@ import portrait from '../../assets/portrait-grays2-contrast22.webp'
   @media (width <= 734px) {
     .portrait-container {
       padding-left: 0px;
+    }
+  }
+
+  @keyframes portrait-scroll-fade {
+    0% {
+      opacity: 0;
+      filter: blur(12px);
+    }
+
+    25% {
+      opacity: 1;
+      filter: blur(0px);
+    }
+
+    75% {
+      opacity: 1;
+      filter: blur(0px);
+    }
+
+    100% {
+      opacity: 0;
+      filter: blur(12px);
     }
   }
 </style>
