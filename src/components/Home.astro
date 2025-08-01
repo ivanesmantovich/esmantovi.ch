@@ -164,6 +164,7 @@ const notes = await getCollection('notes')
 
   section:hover .pointing-left {
     opacity: 1;
+    filter: blur(0px);
   }
 
   .section-header {
@@ -184,12 +185,14 @@ const notes = await getCollection('notes')
     object-fit: contain;
     transition:
       transform 0.3s ease-out,
-      opacity 0.3s ease;
+      opacity 0.3s ease,
+      filter 0.3s ease;
   }
 
   @media (pointer: fine) {
     .pointing-left {
       opacity: 0;
+      filter: blur(4px);
     }
   }
 
