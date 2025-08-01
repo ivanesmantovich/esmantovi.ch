@@ -18,7 +18,7 @@ const notes = await getCollection('notes')
 
   <section>
     <a href="/notes" class="category-header">
-      <h2 id="notes">Notes</h2>
+      <h2 class="font-medium" id="notes">Notes</h2>
       <div class="pointing-left-container">
         <Image
           src={pointingLeftOriginal}
@@ -46,7 +46,7 @@ const notes = await getCollection('notes')
   </section>
 
   <section>
-    <a href="/thoughts" class="category-header">
+    <a href="/thoughts" class="font-medium category-header">
       <h2 id="thoughts">Thoughts</h2>
       <div class="pointing-left-container">
         <Image
@@ -79,7 +79,7 @@ const notes = await getCollection('notes')
   <BlogrollSection />
 
   <section class="site-section">
-    <h2>About this site</h2>
+    <h2 class="font-medium">About this site</h2>
     <p class="body-text">
       This site is built with <a href="https://astro.build" class="inline-link">Astro</a> and deployed
       via <a href="https://pages.cloudflare.com" class="inline-link">Cloudflare Pages</a>.
