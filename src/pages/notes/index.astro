@@ -13,8 +13,8 @@ const notes = await getCollection('notes')
 <Layout isArticle>
   <section class="notes-section">
     <Image src={illustrationNotes} alt="Notes illustration" class="notes-illustration" />
-    <h1 class="notes-header">Notes</h1>
-    <div>
+    <h2 class="notes-header">Notes</h2>
+    <div class="notes-list">
       {
         notes.map((note) => {
           return (
@@ -29,7 +29,8 @@ const notes = await getCollection('notes')
         })
       }
     </div>
-    <div>
+    <h2 class="notes-header thoughts-header">Thoughts</h2>
+    <div class="thoughts-list">
       <Thought
         text="Mac folks, any bugs you’ve noticed recently in the Micro.blog app? Fixing a couple little things for macOS 26 Tahoe beta"
         date="April 25, 2024"
@@ -50,7 +51,7 @@ const notes = await getCollection('notes')
   .notes-section {
     display: grid;
     grid-auto-rows: auto;
-    grid-template-columns: 60% 1fr;
+    grid-template-columns: 48% 1fr;
     gap: 1rem;
 
     padding-top: 80px;
@@ -64,6 +65,33 @@ const notes = await getCollection('notes')
   }
 
   .notes-header {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 1.5em;
     text-align: end;
+  }
+
+  .thoughts-header {
+    display: none;
+  }
+
+  .notes-list,
+  .thoughts-list {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .thoughts-list {
+    grid-auto-rows: min-content;
+  }
+
+  @media (width <= 465px) {
+    .notes-section {
+      grid-template-columns: none;
+    }
+
+    .thoughts-header {
+      display: block;
+    }
   }
 </style>

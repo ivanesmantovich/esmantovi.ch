@@ -10,7 +10,6 @@ interface Props {
 const { title = '', text = '', date = '', id = '', compact = false } = Astro.props
 ---
 
-<!-- TODO: Подкрутить типографию (line-height, letter-spacing и т.д) -->
 <a href={`/notes/${id}/`} class:list={['card', 'note', { compact }]} data-astro-prefetch>
   <div class="yellow-part"></div>
   <div class="dotted-line-container">
@@ -92,6 +91,126 @@ const { title = '', text = '', date = '', id = '', compact = false } = Astro.pro
       text-size-adjust: none;
     }
 
+    .note.compact {
+      & {
+        min-width: 210px;
+      }
+    }
+
+    /* TODO: Rewrite to Container Query */
+    .note.compact {
+      .note {
+        min-width: 210px;
+      }
+
+      .yellow-part {
+        height: 25px;
+      }
+
+      .info {
+        display: flex;
+        gap: 1em;
+
+        .date {
+          order: 1;
+          white-space: nowrap;
+        }
+
+        .text {
+          position: relative;
+          flex-grow: 1;
+          order: 2;
+        }
+
+        .text::before {
+          content: '';
+
+          position: absolute;
+          z-index: 1;
+          top: 0;
+          left: 0;
+
+          width: 10px;
+          height: 100%;
+
+          background: linear-gradient(to right, #fff, transparent);
+        }
+
+        .text::after {
+          content: '';
+
+          position: absolute;
+          z-index: 1;
+          top: 0;
+          right: 0;
+
+          width: 10px;
+          height: 100%;
+
+          background: linear-gradient(to left, #fff, transparent);
+        }
+
+        .marquee span {
+          will-change: transform;
+
+          display: inline-block;
+
+          width: max-content;
+          padding-left: 100%;
+
+          animation: marquee 12s linear infinite;
+        }
+
+        .marquee span:hover {
+          animation-play-state: paused;
+        }
+      }
+    }
+
+    .note:not(.compact) {
+      @media (width >= 430px) {
+        .yellow-part {
+          height: 25%;
+        }
+
+        .note-content {
+          position: relative;
+          overflow: hidden;
+          padding: 1.2rem;
+          padding-top: calc(1.2rem - 10px);
+        }
+
+        .info {
+          display: contents;
+        }
+
+        .date {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+
+          width: 100%;
+          padding-top: 2rem;
+          padding-bottom: 1.2rem;
+          padding-left: 1.2rem;
+
+          color: #8a898e;
+
+          background: linear-gradient(
+            to bottom,
+            rgba(255, 255, 255, 0) 0%,
+            rgba(255, 255, 255, 1) 45%
+          );
+        }
+      }
+
+      @media (width >= 430px) {
+        & {
+          aspect-ratio: 1/1;
+        }
+      }
+    }
+
     @media (pointer: fine) {
       .note:hover {
         cursor: pointer;
@@ -164,46 +283,6 @@ const { title = '', text = '', date = '', id = '', compact = false } = Astro.pro
         .marquee span:hover {
           animation-play-state: paused;
         }
-      }
-    }
-
-    @media (width >= 430px) {
-      .note {
-        aspect-ratio: 1/1;
-      }
-
-      .yellow-part {
-        height: 25%;
-      }
-
-      .note-content {
-        position: relative;
-        overflow: hidden;
-        padding: 1.2rem;
-        padding-top: calc(1.2rem - 10px);
-      }
-
-      .info {
-        display: contents;
-      }
-
-      .date {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-
-        width: 100%;
-        padding-top: 2rem;
-        padding-bottom: 1.2rem;
-        padding-left: 1.2rem;
-
-        color: #8a898e;
-
-        background: linear-gradient(
-          to bottom,
-          rgba(255, 255, 255, 0) 0%,
-          rgba(255, 255, 255, 1) 45%
-        );
       }
     }
 
