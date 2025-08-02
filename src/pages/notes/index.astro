@@ -23,6 +23,7 @@ const notes = await getCollection('notes')
               text={note.data.preview}
               date={formatDate(note.data.date)}
               id={note.id}
+              compact
             />
           )
         })

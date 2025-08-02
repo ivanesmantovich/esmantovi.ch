@@ -4,13 +4,14 @@ interface Props {
   text?: string
   date?: string
   id?: string
+  compact?: boolean
 }
 
-const { title = '', text = '', date = '', id = '' } = Astro.props
+const { title = '', text = '', date = '', id = '', compact = false } = Astro.props
 ---
 
 <!-- TODO: Подкрутить типографию (line-height, letter-spacing и т.д) -->
-<a href={`/notes/${id}/`} class="card note" data-astro-prefetch>
+<a href={`/notes/${id}/`} class:list={['card', 'note', { compact }]} data-astro-prefetch>
   <div class="yellow-part"></div>
   <div class="dotted-line-container">
     <div class="dotted-line"></div>

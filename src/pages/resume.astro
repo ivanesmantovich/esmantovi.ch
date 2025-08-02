@@ -1,73 +1,64 @@
 ---
 import Layout from '../layouts/Layout.astro'
-import ResumeComponent from '../components/Resume.astro'
+import { Image } from 'astro:assets'
+import illustrationResume from '../assets/illustration-resume.webp'
+import CvBlock from '../components/CvBlock.astro'
 ---
 
-<Layout hideHeader>
-  <div class="resume-container">
-    <button class="print-button">Print</button>
-    <ResumeComponent />
-  </div>
+<Layout isArticle>
+  <section class="resume-section">
+    <h2 class="small-screen header">Résumé</h2>
+    <Image src={illustrationResume} alt="Resume illustration" class="resume-illustration" />
+    <h2 class="resume-header">Résumé</h2>
+    <CvBlock />
+  </section>
 </Layout>
 
 <style>
-  body {
-    margin: 0;
+  .resume-section {
+    gap: 1rem;
+    padding-top: 80px;
+    padding-bottom: 80px;
   }
 
-  .resume-container {
-    position: relative;
-    max-width: 1000px;
-    margin: 2rem auto;
+  .resume-illustration {
+    float: left;
+
+    aspect-ratio: 1041/1450;
+    width: 55%;
+    height: auto;
+    padding-right: 30px;
   }
 
-  .print-button {
-    cursor: pointer;
-
-    position: sticky;
-    z-index: 10;
-    top: 1rem;
-
-    float: right;
-
-    margin: 1rem;
-    margin-bottom: 0;
-    padding: 0.5rem 2rem;
-    border: none;
-    border: 0.5px solid rgba(255, 255, 255, 0.7);
-    border-radius: 18px;
-
-    font-size: 1rem;
-    font-weight: 500;
-    color: rgba(255, 255, 255, 0.9);
-
-    background: rgba(20, 20, 20, 0.75);
-    backdrop-filter: blur(10px);
+  .resume-header {
+    margin-top: 0;
+    margin-bottom: 24px;
+    font-size: 32px;
   }
 
-  .print-button:hover {
-    background: rgba(20, 20, 20, 0.85);
+  .small-screen {
+    display: none;
   }
 
-  @media (width < 768px) {
-    .resume-container {
-      margin: 0;
+  @media (width <= 768px) {
+    .resume-section {
+      padding-top: 10px;
+      padding-bottom: 58px;
     }
-  }
 
-  @media print {
-    .print-button {
+    .small-screen {
+      display: block;
+    }
+
+    .resume-illustration {
+      float: none;
+      width: 450px;
+      margin-bottom: 16px;
+      padding: 0;
+    }
+
+    .resume-header {
       display: none;
     }
   }
 </style>
-
-<script>
-  const printButton = document.querySelector('.print-button')
-
-  if (printButton) {
-    printButton.addEventListener('click', () => {
-      window.print()
-    })
-  }
-</script>
