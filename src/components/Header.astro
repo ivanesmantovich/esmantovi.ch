@@ -6,12 +6,11 @@ interface Props {
 const { previewOpened = false } = Astro.props
 ---
 
-<header class={previewOpened ? 'preview-opened' : ''}>
+<header id="header" class={previewOpened ? 'preview-opened' : ''}>
   <nav>
     <a class="font-medium home-link" href="/">Ivan Esmantovich</a>
     <span class="separator"></span>
     <a href="/notes">Notes</a>
-    <a href="/thoughts">Thoughts</a>
     <a href="/resume">Résumé</a>
   </nav>
 </header>

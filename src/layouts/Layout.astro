@@ -4,11 +4,10 @@ import '../styles/typography.css'
 import Header from '../components/Header.astro'
 
 interface Props {
-  previewOpened?: boolean
-  hideHeader?: boolean
+  isArticle?: boolean
 }
 
-const { previewOpened = false, hideHeader = false } = Astro.props
+const { isArticle = false } = Astro.props
 ---
 
 <!doctype html>
@@ -61,8 +60,8 @@ const { previewOpened = false, hideHeader = false } = Astro.props
     <meta name="generator" content={Astro.generator} />
     <title>esmantovi.ch</title>
   </head>
-  <body>
-    {!hideHeader && <Header previewOpened={previewOpened} />}
+  <body class:list={[{ article: isArticle }]}>
+    <Header />
     <slot />
   </body>
 </html>

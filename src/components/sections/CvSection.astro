@@ -16,8 +16,8 @@ import CloudDownloadOutline from '../../assets/cloud-download-outline.svg'
     </li>
     <li class="cv-list-item">
       <span class="cv-item-title">Contact methods</span><span
-        ><a href="mailto:mail@esmantovi.ch">mail@esmantovi.ch</a> or <a href="t.me/esmantovich"
-          >t.me/esmantovich</a
+        ><a href="mailto:mail@esmantovi.ch">mail@esmantovi.ch</a> or <a
+          href="https://t.me/esmantovich">t.me/esmantovich</a
         ></span
       >
     </li>
@@ -114,7 +114,15 @@ import CloudDownloadOutline from '../../assets/cloud-download-outline.svg'
 
     background-color: #fff;
 
-    transition: opacity 0.45s cubic-bezier(0.075, 0.82, 0.165, 1);
+    transition: filter 0.2s ease;
+  }
+
+  .resume-download-button:hover {
+    filter: contrast(95%);
+  }
+
+  .resume-download-button:active {
+    filter: contrast(90%);
   }
 
   .resume-button-text {

@@ -3,6 +3,8 @@ import { getCollection } from 'astro:content'
 import { render } from 'astro:content'
 import Layout from '../../layouts/Layout.astro'
 import NoteInfo from '../../components/NoteInfo.astro'
+import { Image } from 'astro:assets'
+import pointingUp from '../../assets/pointing-up.webp'
 
 export async function getStaticPaths() {
   const notes = await getCollection('notes')
@@ -16,10 +18,13 @@ const { note } = Astro.props
 const { Content } = await render(note)
 ---
 
-<Layout>
+<Layout isArticle>
   <article class="note-content">
     <NoteInfo date={note.data.date} title={note.data.title} preview={note.data.preview} />
     <Content />
+    <a href="#header">
+      <Image src={pointingUp} alt="Pointing up" class="pointing-up" height={400} />
+    </a>
   </article>
 </Layout>
 
@@ -27,8 +32,29 @@ const { Content } = await render(note)
   .note-content {
     max-width: 1024px;
     margin: 0 auto;
-    padding-top: 80px;
-    padding-right: 4%;
-    padding-left: 4%;
+    padding: 80px 4%;
+    padding-bottom: 160px;
+  }
+
+  .pointing-up {
+    box-sizing: content-box;
+    aspect-ratio: 144/300;
+    width: auto;
+    height: 300px;
+    margin: 160px auto 0px;
+    padding: 20px;
+
+    transition: transform 0.3s ease;
+  }
+
+  .pointing-up:hover {
+    cursor: pointer;
+    transform: translateY(-20px);
+  }
+
+  @media (width <= 734px) {
+    .pointing-up {
+      height: 200px;
+    }
   }
 </style>

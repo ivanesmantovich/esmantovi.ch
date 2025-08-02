@@ -1,7 +1,68 @@
 ---
+import { Image } from 'astro:assets'
 import Layout from '../../layouts/Layout.astro'
+import illustrationNotes from '../../assets/illustration-notes.webp'
+import Thought from '../../components/Thought.astro'
+import { getCollection } from 'astro:content'
+import Note from '../../components/Note.astro'
+import { formatDate } from '../../utils/date'
+
+const notes = await getCollection('notes')
 ---
 
-<Layout>
-  <h1>Notes</h1>
+<Layout isArticle>
+  <section class="notes-section">
+    <Image src={illustrationNotes} alt="Notes illustration" class="notes-illustration" />
+    <h1 class="notes-header">Notes</h1>
+    <div>
+      {
+        notes.map((note) => {
+          return (
+            <Note
+              title={note.data.title}
+              text={note.data.preview}
+              date={formatDate(note.data.date)}
+              id={note.id}
+            />
+          )
+        })
+      }
+    </div>
+    <div>
+      <Thought
+        text="Mac folks, any bugs you’ve noticed recently in the Micro.blog app? Fixing a couple little things for macOS 26 Tahoe beta"
+        date="April 25, 2024"
+      />
+      <Thought
+        text="Upgraded to the latest Tahoe beta and now a couple of apps seem to be confused. Nova thinks it’s expired. I have an older serial number, but they should work forever just without updates. I think something might be weird with the system keychain"
+        date="April 15, 2024"
+      />
+      <Thought
+        text="Losing my mind again debugging HTTP signatures. So easy to have flakiness between implementations."
+        date="March 20, 2024"
+      />
+    </div>
+  </section>
 </Layout>
+
+<style>
+  .notes-section {
+    display: grid;
+    grid-auto-rows: auto;
+    grid-template-columns: 60% 1fr;
+    gap: 1rem;
+
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+
+  .notes-illustration {
+    aspect-ratio: 1600/1366;
+    width: 500px;
+    height: auto;
+  }
+
+  .notes-header {
+    text-align: end;
+  }
+</style>

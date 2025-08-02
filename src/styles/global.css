@@ -4,6 +4,10 @@
   padding: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-size: 18px;
   -webkit-font-smoothing: antialiased;
@@ -61,6 +65,10 @@ section h2:first-of-type,
   }
 }
 
+.article {
+  background-color: #fff;
+}
+
 .body-text {
   line-height: 1.5;
   color: #737373;
@@ -90,12 +98,14 @@ section h2:first-of-type,
   transition: filter 0.2s ease;
 }
 
-.card:hover {
-  filter: contrast(95%);
-}
+@media (pointer: fine) {
+  .card:hover {
+    filter: contrast(95%);
+  }
 
-.card:active {
-  filter: contrast(90%);
+  .card:active {
+    filter: contrast(90%);
+  }
 }
 
 .overlay {

@@ -13,7 +13,7 @@ const { date, title, preview } = Astro.props
 ---
 
 <span class="note-preview-date">{formatDate(date)}</span>
-<h1 class="note-preview-title">{title}</h1>
+<h1 class="font-medium note-preview-title">{title}</h1>
 <p class="note-preview-description">{preview}</p>
 <div class="link-buttons-container">
   <a href="https://news.ycombinator.com/item?id=35162222" class="icon-button link-button filled">
