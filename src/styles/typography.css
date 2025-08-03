@@ -4,7 +4,7 @@ article {
   letter-spacing: -0.022em;
 }
 
-article p {
+article :is(p, ol, ul) {
   margin-bottom: 1em;
 }
 
@@ -22,12 +22,14 @@ ul {
   list-style-position: inside;
 
   li + li {
-    margin-top: 0.3em;
+    margin-top: 0.15em;
   }
 }
 
 .highlight {
   cursor: pointer;
+
+  position: relative;
 
   border-radius: 2px;
 
@@ -39,10 +41,6 @@ ul {
 
 .highlight:hover {
   background-color: #f8e7da;
-}
-
-.highlight {
-  position: relative;
 }
 
 .highlight::after {

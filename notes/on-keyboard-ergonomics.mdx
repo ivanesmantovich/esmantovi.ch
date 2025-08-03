@@ -4,6 +4,29 @@ preview: 'Pieces of paper on a desk'
 date: '2025-08-03'
 ---
 
+import Sources from '../src/components/Sources.astro'
+
+export const wristRestSources = [
+  {
+    href: "https://www.ccohs.ca/oshanswers/ergonomics/office/chair_adjusting.html",
+    label: "CCOHS - Office Ergonomics: Adjusting Your Chair"
+  },
+  {
+    href: "https://www.carpalrx.com/post/should-you-use-a-wrist-rest",
+    label: "Should you use a wrist rest?"
+  },
+  {
+    href: "https://www.kensington.com/news/did-you-know/are-wrist-rests-good-or-bad/",
+    label: "Are Wrist Rests Good or Bad?"
+  }
+]
+
+export const tooltipLinks = [
+  {url: 'https://example.com', text: 'First Link'},
+  {url: 'https://google.com', text: 'Second Link'},
+  {url: 'https://github.com', text: 'Third Link'}
+]
+
 <b>First off, adjust your chair.</b> Adjusting the ergonomics of your office chair keeps you
 comfortable throughout the day, and reduces the likelihood of you giving up work because the shape
 of your skeleton is all wrong. The following advice is copied and pasted directly from the Canadian
@@ -17,3 +40,5 @@ attempt to adjust non-adjustable chairs without the relevant woodworking knowled
 5. Sit upright with your arms hanging loosely by your sides. Bend your elbows at about a right angle (90 degrees) and adjust the armrest(s) height until they barely touch the undersides of the elbows.
 6. Remove the armrests from the chair if this level can not be achieved or if armrests, in their lowest adjustment, <span class="highlight" data-hint="Otherwise you will have stiffness and pain in your trapezius">elevate your elbows even slightly</span>.
 7. Tilt the seat itself forwards or backwards if you prefer.
+
+<b>Float your hands while typing.</b> Don't use a wrist rest, <Sources sources={wristRestSources}>it's bad for you</Sources>. It applies pressure to the underside of your wrist which will compress the tissues, resulting in decreased blood flow.

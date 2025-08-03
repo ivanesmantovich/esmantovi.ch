@@ -1,0 +1,82 @@
+---
+interface Source {
+  href: string
+  label: string
+}
+
+export interface Props {
+  sources: Source[]
+}
+
+const { sources } = Astro.props
+---
+
+<span class="sources">
+  <slot />
+  <span class="sources-tooltip">
+    {
+      sources.map((source) => (
+        <a href={source.href} target="_blank" rel="noopener noreferrer">
+          {sources.indexOf(source) + 1}. {source.label}
+        </a>
+      ))
+    }
+  </span>
+</span>
+
+<style>
+  .sources {
+    cursor: pointer;
+
+    position: relative;
+
+    border-radius: 2px;
+
+    color: #0288ff;
+
+    background-color: #deedff;
+    box-decoration-break: clone;
+    outline: none;
+  }
+
+  .sources:hover {
+    background-color: #cce0ff;
+  }
+
+  .sources-tooltip {
+    display: none;
+  }
+
+  .sources-tooltip a {
+    display: inline-block;
+    color: #0288ff;
+    text-decoration: underline wavy;
+    text-decoration-thickness: 0.5px;
+  }
+
+  .sources-tooltip a + a {
+    margin-top: 0.5em;
+  }
+
+  .sources:hover .sources-tooltip {
+    position: absolute;
+    z-index: 10;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(8px);
+
+    display: block;
+
+    min-width: 120px;
+    max-width: 260px;
+    padding: 6px 12px;
+    border: 0.5px solid #cbc9c5;
+    border-radius: 4px;
+
+    font-size: 0.9rem;
+    color: #4a4846;
+    white-space: pre-line;
+
+    background: #e1edfb;
+  }
+</style>
