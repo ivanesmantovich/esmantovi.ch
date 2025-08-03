@@ -10,7 +10,9 @@ import BlogrollSection from './sections/BlogrollSection.astro'
 import AboutSection from './sections/AboutSection.astro'
 import Thought from './Thought.astro'
 
-const notes = await getCollection('notes')
+const notes = (await getCollection('notes')).sort(
+  (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+)
 ---
 
 <main>
