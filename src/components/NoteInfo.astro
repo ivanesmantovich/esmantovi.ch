@@ -13,7 +13,7 @@ const { date, title, preview } = Astro.props
 ---
 
 <span class="note-preview-date">{formatDate(date)}</span>
-<h1 class="font-medium note-preview-title">{title}</h1>
+<h1 class="font-regular note-preview-title">{title}</h1>
 <p class="note-preview-description">{preview}</p>
 <div class="link-buttons-container">
   <a href="https://news.ycombinator.com/item?id=35162222" class="icon-button link-button filled">
@@ -48,12 +48,13 @@ const { date, title, preview } = Astro.props
   }
 
   .note-preview-description {
+    margin-bottom: 0;
     padding-top: 6px;
 
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.47;
-    color: #737373;
+    color: rgb(102, 102, 102);
     letter-spacing: -0.022em;
   }
 
@@ -62,6 +63,7 @@ const { date, title, preview } = Astro.props
     gap: 8px;
     align-items: center;
 
+    margin-bottom: 3em;
     margin-left: -6px;
     padding-top: 12px;
   }
