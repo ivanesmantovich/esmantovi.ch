@@ -17,7 +17,8 @@ const { sources } = Astro.props
     {
       sources.map((source) => (
         <a href={source.href} target="_blank" rel="noopener noreferrer">
-          {sources.indexOf(source) + 1}. {source.label}
+          <span class="link-number">{sources.indexOf(source) + 1}.</span>{' '}
+          <span class="link-text">{source.label}</span>
         </a>
       ))
     }
@@ -55,15 +56,18 @@ const { sources } = Astro.props
 
   .sources-tooltip a {
     display: inline-block;
-
     color: #0288ff;
+    text-decoration: none;
+  }
+
+  .sources-tooltip a .link-text {
     text-decoration: underline;
     text-decoration-style: wavy;
     text-decoration-thickness: 0.5px;
+  }
 
-    &:hover {
-      text-decoration-thickness: 1px;
-    }
+  .sources-tooltip a:hover .link-text {
+    text-decoration-thickness: 1px;
   }
 
   .sources-tooltip a + a {
