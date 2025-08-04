@@ -1,6 +1,6 @@
 article {
   line-height: 1.47;
-  color: rgb(102, 102, 102);
+  color: #676767;
   letter-spacing: -0.022em;
 }
 
@@ -26,17 +26,51 @@ ul {
   }
 }
 
-.highlight {
+blockquote {
+  padding-left: 0.75em;
+  border-left: 3px solid #bdbdbd;
+}
+
+blockquote > * {
+  margin-bottom: 0 !important;
+}
+
+blockquote + p {
+  margin-top: 0.3em;
+  color: #828282;
+}
+
+article p > a {
+  color: inherit;
+}
+
+cite a,
+article p > a {
+  color: inherit;
+  text-decoration-style: wavy;
+  text-decoration-thickness: 0.5px;
+}
+
+cite a:hover,
+article p > a:hover {
   cursor: pointer;
+  text-decoration-thickness: 1px;
+}
+
+.highlight {
+  cursor: help;
 
   position: relative;
 
-  border-radius: 2px;
+  padding: 1px 4px;
+  border-radius: 3px;
 
   color: #ff8d26;
 
   background-color: #ffeee1;
   box-decoration-break: clone;
+
+  webkit-box-decoration-break: clone;
 }
 
 .highlight:hover {
@@ -55,8 +89,8 @@ ul {
 
   display: none;
 
-  min-width: 120px;
-  max-width: 260px;
+  min-width: 160px;
+  max-width: 320px;
   padding: 6px 12px;
   border: 0.5px solid #cbc9c5;
   border-radius: 4px;

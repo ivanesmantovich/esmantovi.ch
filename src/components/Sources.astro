@@ -11,8 +11,8 @@ export interface Props {
 const { sources } = Astro.props
 ---
 
-<span class="sources">
-  <slot />
+<span class="sources" tabindex="0">
+  <span class="sources-text"><slot /></span>
   <span class="sources-tooltip">
     {
       sources.map((source) => (
@@ -26,10 +26,13 @@ const { sources } = Astro.props
 
 <style>
   .sources {
+    position: relative;
+  }
+
+  .sources-text {
     cursor: pointer;
 
-    position: relative;
-
+    padding: 1px 4px;
     border-radius: 2px;
 
     color: #0288ff;
@@ -37,9 +40,12 @@ const { sources } = Astro.props
     background-color: #deedff;
     box-decoration-break: clone;
     outline: none;
+
+    webkit-box-decoration-break: clone;
   }
 
-  .sources:hover {
+  .sources-text:hover,
+  .sources-text:focus {
     background-color: #cce0ff;
   }
 
@@ -49,16 +55,23 @@ const { sources } = Astro.props
 
   .sources-tooltip a {
     display: inline-block;
+
     color: #0288ff;
-    text-decoration: underline wavy;
+    text-decoration: underline;
+    text-decoration-style: wavy;
     text-decoration-thickness: 0.5px;
+
+    &:hover {
+      text-decoration-thickness: 1px;
+    }
   }
 
   .sources-tooltip a + a {
     margin-top: 0.5em;
   }
 
-  .sources:hover .sources-tooltip {
+  .sources:focus .sources-tooltip,
+  .sources:focus-within .sources-tooltip {
     position: absolute;
     z-index: 10;
     top: 100%;
@@ -67,10 +80,10 @@ const { sources } = Astro.props
 
     display: block;
 
-    min-width: 120px;
-    max-width: 260px;
+    min-width: 180px;
+    max-width: 360px;
     padding: 6px 12px;
-    border: 0.5px solid #cbc9c5;
+    border: 0.5px solid #9fcbfe;
     border-radius: 4px;
 
     font-size: 0.9rem;

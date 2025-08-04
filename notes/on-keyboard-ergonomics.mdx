@@ -1,6 +1,6 @@
 ---
-title: 'On Keyboard Ergonomics'
-preview: 'Pieces of paper on a desk'
+title: 'On Keyboard Ergonomics / RSI Prevention Checklist'
+preview: 'For longer hacking sessions'
 date: '2025-08-03'
 ---
 
@@ -21,18 +21,53 @@ export const wristRestSources = [
   }
 ]
 
-export const tooltipLinks = [
-  {url: 'https://example.com', text: 'First Link'},
-  {url: 'https://google.com', text: 'Second Link'},
-  {url: 'https://github.com', text: 'Third Link'}
+export const stressSources = [
+  {
+    href: "https://www.tomoliver.net/posts/tms",
+    label: "I healed RSI using only my mind"
+  },
+  {
+    href: "https://www.joshwcomeau.com/blog/mindbody/",
+    label: "Josh Comeau's experience with RSI"
+  },
+  {
+    href: "https://codewithoutrules.com/2016/11/18/rsi-solution/",
+    label: "How I stopped the RSI pain that almost destroyed my programming career"
+  }
 ]
 
-<b>First off, adjust your chair.</b> Adjusting the ergonomics of your office chair keeps you
+export const alternativeLayoutSources = [
+  {
+    href: "https://getreuer.info/posts/keyboards/alt-layouts/index.html#which-alt-keyboard-layout-should-i-learn",
+    label: "Which alt keyboard layout should I learn?"
+  },
+  {
+    href: "https://getreuer.info/posts/keyboards/alt-layouts/index.html#should-i-use-an-alt-layout",
+    label: "Should I use an alt layout?"
+  }
+]
+
+export const russianStyleSources = [
+  {
+    href: "https://www.reddit.com/r/pcgaming/comments/d723kz/how_many_of_you_are_playing_russian_style/",
+    label: "How many of you are playing Russian style?"
+  },
+  {
+    href: "https://geekhack.org/index.php?PHPSESSID=o3j27d66h194u3mrjit8g4ra959grvkb&topic=61011.msg1413501#msg1413501",
+    label: "GeekHack: Typing with keyboard on the lap"
+  }
+]
+
+Advices are ordered incrementally by the amount of enthusiasm you will need to implement them.
+
+<b>First off, adjust your chair</b>. Adjusting the ergonomics of your office chair keeps you
 comfortable throughout the day, and reduces the likelihood of you giving up work because the shape
 of your skeleton is all wrong. The following advice is copied and pasted directly from the Canadian
 Centre for Occupational Health and Safety. It applies solely to adjustable office chairs. Do not
 attempt to adjust non-adjustable chairs without the relevant woodworking knowledge and resources.
 
+<figure>
+<blockquote>
 1. Stand in front of the chair. Adjust the height so the highest point of the seat, (when in the horizontal position), is just below the knee cap.
 2. Sit on the chair and keep your feet flat on the floor.
 3. Check that the clearance between the front edge of the seat and the lower part of the legs (your calves) fits a clenched fist (about 5 cm or 2 inches).
@@ -40,5 +75,35 @@ attempt to adjust non-adjustable chairs without the relevant woodworking knowled
 5. Sit upright with your arms hanging loosely by your sides. Bend your elbows at about a right angle (90 degrees) and adjust the armrest(s) height until they barely touch the undersides of the elbows.
 6. Remove the armrests from the chair if this level can not be achieved or if armrests, in their lowest adjustment, <span class="highlight" data-hint="Otherwise you will have stiffness and pain in your trapezius">elevate your elbows even slightly</span>.
 7. Tilt the seat itself forwards or backwards if you prefer.
+</blockquote>
+<p>Canadian Centre for Occupational Health and Safety — <cite><a href="https://www.ccohs.ca/oshanswers/ergonomics/office/chair_adjusting.html">How to Adjust Office Chairs</a></cite></p>
+</figure>
 
-<b>Float your hands while typing.</b> Don't use a wrist rest, <Sources sources={wristRestSources}>it's bad for you</Sources>. It applies pressure to the underside of your wrist which will compress the tissues, resulting in decreased blood flow.
+<b>Vary it up</b>. Take breaks, move, don't keep a static posture for too long. Go for a walk. Weightlifting and pullups <a href="https://news.ycombinator.com/item?id=23577204">help a lot</a> by maintaining wrist muscles in a good shape. <a href="https://www.joshwcomeau.com/blog/hands-free-coding">Try some voice coding</a>.
+
+<b>Relax more often</b>. <Sources sources={stressSources}>This is no joke</Sources>. Suppressed emotional stress can cause the pain by tensing muscles or reducing blood flow. Many chronic pain conditions are caused by the brain, in order to distract us from repressed emotions.
+
+<b>Use a flat profile keyboard</b>. The flatter the better.
+
+<b>Type properly</b>. Press spacebar with right hand. Use both hands to press shortcuts, right side modifiers are there for a reason, chording is very bad for your hands.
+
+<b>Float your hands while typing</b>. Don't use a wrist rest, <Sources sources={wristRestSources}>it's bad for you</Sources>. It applies pressure to the underside of your wrist which will compress the tissues, resulting in decreased blood flow. Blood flow is a common theme (rephrase) as you might have noticed.
+
+<b>Put the keyboard on your lap</b>. Some people call it <Sources sources={russianStyleSources}>"Russian style"</Sources>. This is actually my favorite advice on this list, i program like this 95% of the time. Tilting the keyboard slightly downward increases the blood flow, you don't depend on having an ergonomic desk, you can't overreach even if you try and your elbows are forced in the perfect ergonomic position. It is also the most comfortable way to float type.
+
+<b>Avoid working in the cold</b>. Don't work under the air conditioner. Cold reduces blood flow.
+
+<b>Cut back on salt and sugar</b>. This is an uncommon one. My dentist gave me this advice (programmers are not the only ones suffering from RSI). High glucose levels directly stimulate inflammatory markers in tendon cells → RSI. Salt causes swelling, when tissues swell due to fluid retention, they can compress the median nerve as it passes through the narrow carpal tunnel in the wrist → RSI.
+
+<b>Cut back on coffee</b>. Caffeine shrinks blood vessels.
+
+<figure>
+<blockquote>
+I spent three years unable to work as a programmer, and there’s a good chance I could have solved the problem just by wearing warmer clothing
+</blockquote>
+<p>Itamar Turner-Trauring — <cite><a href="https://codewithoutrules.com/2016/11/18/rsi-solution/">How I stopped the RSI pain that almost destroyed my programming career</a></cite></p>
+</figure>
+
+<b>Try an alternative layout</b>. Dvorak, Colemak, Workman, Sturdy... <Sources sources={alternativeLayoutSources}>There are a lot of them</Sources>
+
+<b>More sources</b>: Michael Mellinger — <a href="https://github.com/melling/ErgonomicNotes">Ergonomic Notes</a>

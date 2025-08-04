@@ -71,7 +71,7 @@ section h2:first-of-type,
 
 .body-text {
   line-height: 1.5;
-  color: rgb(102, 102, 102);
+  color: #676767;
 }
 
 .body-text + .body-text {
