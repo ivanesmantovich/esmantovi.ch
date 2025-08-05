@@ -5,6 +5,8 @@ import Layout from '../../layouts/Layout.astro'
 import NoteInfo from '../../components/NoteInfo.astro'
 import { Image } from 'astro:assets'
 import pointingUp from '../../assets/pointing-up.webp'
+import NoteLinkButtons from '../../components/NoteLinkButtons.astro'
+import type { CollectionEntry } from 'astro:content'
 
 export async function getStaticPaths() {
   const notes = await getCollection('notes')
@@ -12,6 +14,9 @@ export async function getStaticPaths() {
     params: { id: note.id },
     props: { note },
   }))
+}
+interface Props {
+  note: CollectionEntry<'notes'>
 }
 
 const { note } = Astro.props
@@ -22,6 +27,10 @@ const { Content } = await render(note)
   <article class="note-content">
     <NoteInfo date={note.data.date} title={note.data.title} preview={note.data.preview} />
     <Content />
+    <NoteLinkButtons
+      hnUrl={note.data.hnUrl}
+      externalUrl={`https://esmantovi.ch/notes/${note.id}`}
+    />
     <a href="#header">
       <Image src={pointingUp} alt="Pointing up" class="pointing-up" height={400} />
     </a>

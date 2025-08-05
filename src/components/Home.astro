@@ -1,7 +1,6 @@
 ---
 import { getCollection } from 'astro:content'
 import Note from '../components/Note.astro'
-import { formatDate } from '../utils/date'
 import { Image } from 'astro:assets'
 import pointingLeftOriginal from '../assets/pointing-left-original.png'
 import hand from '../assets/hand.webp'
@@ -11,6 +10,10 @@ import AboutSection from './sections/AboutSection.astro'
 import Thought from './Thought.astro'
 
 const notes = (await getCollection('notes')).sort(
+  (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+)
+
+const thoughts = (await getCollection('thoughts')).sort(
   (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
 )
 ---
@@ -34,21 +37,14 @@ const notes = (await getCollection('notes')).sort(
     <div class="grid">
       {
         notes.map((note) => {
-          return (
-            <Note
-              title={note.data.title}
-              text={note.data.preview}
-              date={formatDate(note.data.date)}
-              id={note.id}
-            />
-          )
+          return <Note note={note} />
         })
       }
     </div>
   </section>
 
   <section>
-    <a href="/thoughts" class="category-header">
+    <a href="/notes" class="category-header">
       <h2 class="font-medium section-header" id="thoughts">Thoughts</h2>
       <div class="pointing-left-container">
         <Image
@@ -60,19 +56,12 @@ const notes = (await getCollection('notes')).sort(
         />
       </div>
     </a>
-    <div style="display: flex; flex-direction: column; gap: 8px">
-      <Thought
-        text="Mac folks, any bugs you’ve noticed recently in the Micro.blog app? Fixing a couple little things for macOS 26 Tahoe beta"
-        date="April 25, 2024"
-      />
-      <Thought
-        text="Upgraded to the latest Tahoe beta and now a couple of apps seem to be confused. Nova thinks it’s expired. I have an older serial number, but they should work forever just without updates. I think something might be weird with the system keychain"
-        date="April 15, 2024"
-      />
-      <Thought
-        text="Losing my mind again debugging HTTP signatures. So easy to have flakiness between implementations."
-        date="March 20, 2024"
-      />
+    <div class="thoughts-list">
+      {
+        thoughts.map((thought) => {
+          return <Thought thought={thought} />
+        })
+      }
     </div>
   </section>
 
@@ -279,6 +268,12 @@ const notes = (await getCollection('notes')).sort(
     font-weight: 500;
     color: #007aff;
     text-decoration: none;
+  }
+
+  .thoughts-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
   }
 
   .message {

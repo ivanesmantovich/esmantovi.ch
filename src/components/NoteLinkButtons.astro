@@ -1,0 +1,70 @@
+---
+import LogoHN from '../assets/logo-hn.svg'
+import GlobeFilled from '../assets/globe-filled.svg'
+
+interface Props {
+  hnUrl?: string
+  externalUrl?: string
+}
+
+const { hnUrl, externalUrl } = Astro.props
+---
+
+<div class="link-buttons-container">
+  {
+    hnUrl && (
+      <a href={hnUrl} class="icon-button link-button filled">
+        <LogoHN width={24} height={24} />
+      </a>
+    )
+  }
+  {
+    externalUrl && (
+      <a href="" class="icon-button link-button filled">
+        <GlobeFilled width={24} height={24} />
+      </a>
+    )
+  }
+</div>
+
+<style>
+  .link-buttons-container {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+
+    margin-left: -6px;
+    padding-top: 12px;
+  }
+
+  .icon-button {
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: none;
+
+    background-color: transparent;
+  }
+
+  .icon-button svg {
+    color: rgb(110, 110, 115);
+    transition: color 0.3s cubic-bezier(0.4, 0, 0.25, 1) 0ms;
+  }
+
+  .icon-button.filled svg {
+    fill: currentColor;
+  }
+
+  .icon-button:hover svg {
+    color: rgb(29, 29, 31);
+  }
+
+  .link-button {
+    padding: 6px;
+    border-radius: 50%;
+    text-decoration: none;
+  }
+</style>

@@ -5,9 +5,14 @@ import illustrationNotes from '../../assets/illustration-notes.webp'
 import Thought from '../../components/Thought.astro'
 import { getCollection } from 'astro:content'
 import Note from '../../components/Note.astro'
-import { formatDate } from '../../utils/date'
 
-const notes = await getCollection('notes')
+const notes = (await getCollection('notes')).sort(
+  (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+)
+
+const thoughts = (await getCollection('thoughts')).sort(
+  (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+)
 ---
 
 <Layout isArticle>
@@ -17,32 +22,17 @@ const notes = await getCollection('notes')
     <div class="notes-list">
       {
         notes.map((note) => {
-          return (
-            <Note
-              title={note.data.title}
-              text={note.data.preview}
-              date={formatDate(note.data.date)}
-              id={note.id}
-              compact
-            />
-          )
+          return <Note note={note} compact />
         })
       }
     </div>
     <h2 class="notes-header thoughts-header">Thoughts</h2>
     <div class="thoughts-list">
-      <Thought
-        text="Mac folks, any bugs you’ve noticed recently in the Micro.blog app? Fixing a couple little things for macOS 26 Tahoe beta"
-        date="April 25, 2024"
-      />
-      <Thought
-        text="Upgraded to the latest Tahoe beta and now a couple of apps seem to be confused. Nova thinks it’s expired. I have an older serial number, but they should work forever just without updates. I think something might be weird with the system keychain"
-        date="April 15, 2024"
-      />
-      <Thought
-        text="Losing my mind again debugging HTTP signatures. So easy to have flakiness between implementations."
-        date="March 20, 2024"
-      />
+      {
+        thoughts.map((thought) => {
+          return <Thought thought={thought} />
+        })
+      }
     </div>
   </section>
 </Layout>

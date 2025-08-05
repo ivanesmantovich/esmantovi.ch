@@ -1,18 +1,20 @@
 ---
-// Define the props interface for type safety
+import type { CollectionEntry } from 'astro:content'
+import { render } from 'astro:content'
+import { formatDate } from '../utils/date'
+
 interface Props {
-  text: string
-  date: string
+  thought: CollectionEntry<'thoughts'>
 }
 
-// Destructure the title prop
-const { text, date } = Astro.props
+const { thought } = Astro.props
+const { Content } = await render(thought)
 ---
 
 <div class="thought">
-  {text}
+  <Content />
 
-  <div class="date">{date}</div>
+  <div class="thought-date">{formatDate(thought.data.date)}</div>
 </div>
 
 <style>
@@ -23,15 +25,34 @@ const { text, date } = Astro.props
     border: 1px solid #f0e489;
     border-radius: 28px;
 
-    /* font-weight: 500; */
     color: #8c7600;
 
     background: linear-gradient(155deg, rgba(254, 242, 151, 1) 65%, rgba(231, 217, 124, 1) 100%);
   }
 
-  .date {
+  .thought-date {
     padding-top: 16px;
-    font-weight: 400;
     color: #b19a35;
   }
 </style>
+
+<script>
+  const thoughtDates = document.querySelectorAll('.thought-date')
+
+  thoughtDates.forEach((dateElement) => {
+    const dateText = dateElement.textContent
+    const today = new Date()
+    const yesterday = new Date(today)
+    yesterday.setDate(yesterday.getDate() - 1)
+
+    if (!dateText) return
+
+    const noteDate = new Date(dateText)
+
+    if (noteDate.toDateString() === today.toDateString()) {
+      dateElement.textContent = 'Today'
+    } else if (noteDate.toDateString() === yesterday.toDateString()) {
+      dateElement.textContent = 'Yesterday'
+    }
+  })
+</script>

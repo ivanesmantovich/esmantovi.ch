@@ -1,7 +1,6 @@
 ---
 import { formatDate } from '../utils/date'
-import LogoHN from '../assets/logo-hn.svg'
-import GlobeFilled from '../assets/globe-filled.svg'
+import NoteLinkButtons from './NoteLinkButtons.astro'
 
 interface Props {
   date: string
@@ -15,14 +14,6 @@ const { date, title, preview } = Astro.props
 <span class="note-preview-date">{formatDate(date)}</span>
 <h1 class="font-regular note-preview-title">{title}</h1>
 <p class="note-preview-description">{preview}</p>
-<div class="link-buttons-container">
-  <a href="https://news.ycombinator.com/item?id=35162222" class="icon-button link-button filled">
-    <LogoHN width={24} height={24} />
-  </a>
-  <a href="https://news.ycombinator.com/item?id=35162222" class="icon-button link-button filled">
-    <GlobeFilled width={24} height={24} />
-  </a>
-</div>
 
 <style>
   .note-preview-date {
@@ -48,7 +39,7 @@ const { date, title, preview } = Astro.props
   }
 
   .note-preview-description {
-    margin-bottom: 0;
+    margin-bottom: 4rem;
     padding-top: 6px;
 
     font-size: 1rem;
@@ -56,46 +47,5 @@ const { date, title, preview } = Astro.props
     line-height: 1.47;
     color: #676767;
     letter-spacing: -0.022em;
-  }
-
-  .link-buttons-container {
-    display: flex;
-    gap: 8px;
-    align-items: center;
-
-    margin-bottom: 3em;
-    margin-left: -6px;
-    padding-top: 12px;
-  }
-
-  .icon-button {
-    cursor: pointer;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border: none;
-
-    background-color: transparent;
-  }
-
-  .icon-button svg {
-    color: rgb(110, 110, 115);
-    transition: color 0.3s cubic-bezier(0.4, 0, 0.25, 1) 0ms;
-  }
-
-  .icon-button.filled svg {
-    fill: currentColor;
-  }
-
-  .icon-button:hover svg {
-    color: rgb(29, 29, 31);
-  }
-
-  .link-button {
-    padding: 6px;
-    border-radius: 50%;
-    text-decoration: none;
   }
 </style>
