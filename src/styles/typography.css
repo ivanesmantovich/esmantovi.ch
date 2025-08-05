@@ -4,8 +4,22 @@ article {
   letter-spacing: -0.022em;
 }
 
+article p {
+  -webkit-hyphens: auto;
+  hyphens: auto;
+
+  -webkit-hyphenate-limit-after: 3;
+  -webkit-hyphenate-limit-before: 4;
+  hyphenate-limit-chars: 7 4 3;
+  hyphenate-limit-last: always;
+  -webkit-hyphenate-limit-lines: 2;
+  hyphenate-limit-lines: 2;
+  hyphenate-limit-zone: 8%;
+}
+
 article :is(p, ol, ul) {
   margin-bottom: 1em;
+  margin-bottom: 1lh;
 }
 
 article b {
@@ -17,6 +31,10 @@ article h2 {
   margin-bottom: 16px;
 }
 
+article figure {
+  font-size: 0.9em;
+}
+
 ol,
 ul {
   list-style-position: inside;
@@ -26,9 +44,9 @@ ul {
   }
 }
 
-blockquote {
-  padding-left: 0.75em;
-  border-left: 3px solid #bdbdbd;
+figure:has(blockquote) {
+  padding-right: 1em;
+  padding-left: 1em;
 }
 
 blockquote > * {

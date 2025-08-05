@@ -31,7 +31,7 @@ const { Content } = await render(note)
       hnUrl={note.data.hnUrl}
       externalUrl={`https://esmantovi.ch/notes/${note.id}`}
     />
-    <a href="#header">
+    <a href="#header" class="to-the-top">
       <Image src={pointingUp} alt="Pointing up" class="pointing-up" height={400} />
     </a>
   </article>
@@ -45,20 +45,27 @@ const { Content } = await render(note)
     padding-bottom: 160px;
   }
 
-  .pointing-up {
-    box-sizing: content-box;
-    aspect-ratio: 144/300;
-    width: auto;
-    height: 300px;
-    margin: 160px auto 0px;
+  .to-the-top {
+    display: block;
+
+    width: fit-content;
+    margin: 0 auto;
+    margin-top: 160px;
     padding: 20px;
 
     transition: transform 0.3s ease;
   }
 
-  .pointing-up:hover {
+  .to-the-top:hover {
     cursor: pointer;
     transform: translateY(-20px);
+  }
+
+  .pointing-up {
+    box-sizing: content-box;
+    aspect-ratio: 144/300;
+    width: auto;
+    height: 300px;
   }
 
   @media (width <= 734px) {
