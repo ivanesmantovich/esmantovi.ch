@@ -13,21 +13,54 @@ import photo10 from './10.jpg'
 import photo11 from './11.jpg'
 import photo12 from './12.jpg'
 import photo13 from './13.jpg'
+
+const photos = [
+  { src: photo1, alt: 'Photo of Norilsk 1' },
+  { src: photo2, alt: 'Photo of Norilsk 2' },
+  { src: photo10, alt: 'Photo of Norilsk 10' },
+  { src: photo6, alt: 'Photo of Norilsk 6' },
+  { src: photo5, alt: 'Photo of Norilsk 5' },
+  { src: photo4, alt: 'Photo of Norilsk 4' },
+  { src: photo9, alt: 'Photo of Norilsk 9' },
+  { src: photo7, alt: 'Photo of Norilsk 7' },
+  { src: photo8, alt: 'Photo of Norilsk 8' },
+  { src: photo3, alt: 'Photo of Norilsk 3' },
+  { src: photo12, alt: 'Photo of Norilsk 12' },
+  { src: photo13, alt: 'Photo of Norilsk 13' },
+]
 ---
 
 <div class="photo-grid">
-  <Image src={photo1} alt="Photo of Norilsk 1" class="photo-grid-item" />
-  <Image src={photo2} alt="Photo of Norilsk 2" class="photo-grid-item" />
-  <Image src={photo10} alt="Photo of Norilsk 10" class="photo-grid-item" />
-  <Image src={photo6} alt="Photo of Norilsk 6" class="photo-grid-item" />
-  <Image src={photo5} alt="Photo of Norilsk 5" class="photo-grid-item" />
-  <Image src={photo4} alt="Photo of Norilsk 4" class="photo-grid-item" />
-  <Image src={photo9} alt="Photo of Norilsk 9" class="photo-grid-item" />
-  <Image src={photo7} alt="Photo of Norilsk 7" class="photo-grid-item" />
-  <Image src={photo8} alt="Photo of Norilsk 8" class="photo-grid-item" />
-  <Image src={photo3} alt="Photo of Norilsk 3" class="photo-grid-item" />
-  <Image src={photo12} alt="Photo of Norilsk 12" class="photo-grid-item" />
-  <Image src={photo13} alt="Photo of Norilsk 13" class="photo-grid-item" />
+  {
+    photos.map((photo, index) => (
+      <Image src={photo.src} alt={photo.alt} class="photo-grid-item" data-photo-index={index} />
+    ))
+  }
+</div>
+
+<!-- Popover for displaying enlarged photos -->
+<div id="photo-popover" popover class="photo-popover">
+  <button id="prev-btn" class="nav-btn prev-btn" aria-label="Previous photo">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M15 18L9 12L15 6"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"></path>
+    </svg>
+  </button>
+  <img id="popover-image" src="" alt="" class="popover-image" />
+  <button id="next-btn" class="nav-btn next-btn" aria-label="Next photo">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M9 18L15 12L9 6"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"></path>
+    </svg>
+  </button>
 </div>
 
 <style>
@@ -41,17 +74,209 @@ import photo13 from './13.jpg'
   }
 
   .photo-grid-item {
+    cursor: pointer;
+
     aspect-ratio: 1/1;
     width: calc(33.33% - 1px);
     height: auto;
     border-radius: 2px;
 
     object-fit: cover;
+
+    transition: filter 0.2s ease;
   }
 
-  @media (width <= 576px) {
+  .photo-grid-item:hover {
+    filter: blur(4px);
+  }
+
+  /* Popover styles */
+  .photo-popover {
+    width: 100vw;
+    height: 100lvh;
+    padding: 0;
+    border: none;
+    border-radius: 8px;
+
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+  }
+
+  .popover-image {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+
+    display: block;
+
+    width: 50%;
+    height: auto;
+    margin: 0 auto;
+    border-radius: 8px;
+  }
+
+  /* Navigation buttons */
+  .nav-btn {
+    cursor: pointer;
+
+    position: absolute;
+    z-index: 10;
+    top: 50%;
+    transform: translateY(-50%);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 48px;
+    height: 48px;
+    border: none;
+    border-radius: 50%;
+
+    color: white;
+
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+
+    transition: all 0.2s ease;
+  }
+
+  .nav-btn:active {
+    transform: translateY(-50%) scale(0.95);
+  }
+
+  .prev-btn {
+    left: 20px;
+  }
+
+  .next-btn {
+    right: 20px;
+  }
+
+  /* Ensure popover is centered */
+  .photo-popover[open] {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    margin: 0;
+  }
+
+  @media (pointer: fine) {
+    .nav-btn:hover {
+      transform: translateY(-50%) scale(1.1);
+      background: rgba(255, 255, 255, 0.3);
+    }
+  }
+
+  @media (width <= 768px) {
     .photo-grid {
       border-radius: 0;
     }
+
+    .popover-image {
+      width: 100%;
+      border-radius: 0px;
+    }
+
+    .nav-btn {
+      width: 40px;
+      height: 40px;
+    }
+
+    .prev-btn {
+      left: 10px;
+    }
+
+    .next-btn {
+      right: 10px;
+    }
   }
 </style>
+
+<script>
+  // Wait for DOM to be ready
+  document.addEventListener('DOMContentLoaded', function () {
+    const photos = document.querySelectorAll('.photo-grid-item')
+    const popover = document.getElementById('photo-popover')
+    const popoverImage = document.getElementById('popover-image') as HTMLImageElement
+    const prevBtn = document.getElementById('prev-btn')
+    const nextBtn = document.getElementById('next-btn')
+
+    if (!popover || !popoverImage || !prevBtn || !nextBtn) return
+
+    let currentPhotoIndex = 0
+
+    // Get photo data from the images
+    const photoData = Array.from(photos).map((img) => ({
+      src: (img as HTMLImageElement).src,
+      alt: (img as HTMLImageElement).alt,
+    }))
+
+    // Function to show photo at specific index
+    function showPhoto(index: number) {
+      currentPhotoIndex = index
+      const photoInfo = photoData[index]
+      popoverImage.src = photoInfo.src
+      popoverImage.alt = photoInfo.alt
+    }
+
+    // Function to go to previous photo
+    function goToPrevious() {
+      const prevIndex = currentPhotoIndex > 0 ? currentPhotoIndex - 1 : photoData.length - 1
+      showPhoto(prevIndex)
+    }
+
+    // Function to go to next photo
+    function goToNext() {
+      const nextIndex = currentPhotoIndex < photoData.length - 1 ? currentPhotoIndex + 1 : 0
+      showPhoto(nextIndex)
+    }
+
+    // Add click event listeners to all photos
+    photos.forEach((photo, index) => {
+      photo.addEventListener('click', function () {
+        showPhoto(index)
+        popover.showPopover()
+      })
+    })
+
+    // Navigation button event listeners
+    prevBtn.addEventListener('click', function (event) {
+      event.stopPropagation()
+      goToPrevious()
+    })
+
+    nextBtn.addEventListener('click', function (event) {
+      event.stopPropagation()
+      goToNext()
+    })
+
+    // Close popover when clicking outside the image
+    popover.addEventListener('click', function (event) {
+      if (event.target === popover) {
+        popover.hidePopover()
+      }
+    })
+
+    // Handle keyboard navigation
+    document.addEventListener('keydown', function (event) {
+      if (popover.matches(':popover-open')) {
+        switch (event.key) {
+          case 'Escape':
+            popover.hidePopover()
+            break
+          case 'ArrowLeft':
+            event.preventDefault()
+            goToPrevious()
+            break
+          case 'ArrowRight':
+            event.preventDefault()
+            goToNext()
+            break
+        }
+      }
+    })
+  })
+</script>
