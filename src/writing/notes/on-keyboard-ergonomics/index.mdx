@@ -5,6 +5,7 @@ date: '2025-08-03'
 ---
 
 import Sources from '../../../components/Sources.astro'
+import ImageWithCaption from '../../../components/ImageWithCaption.astro'
 
 export const wristRestSources = [
   {
@@ -76,20 +77,26 @@ attempt to adjust non-adjustable chairs without the relevant woodworking knowled
 6. Remove the armrests from the chair if this level can not be achieved or if armrests, in their lowest adjustment, <span class="highlight" data-hint="Otherwise you will have stiffness and pain in your trapezius">elevate your elbows even slightly</span>.
 7. Tilt the seat itself forwards or backwards if you prefer.
 </blockquote>
-<p>Canadian Centre for Occupational Health and Safety — <cite><a href="https://www.ccohs.ca/oshanswers/ergonomics/office/chair_adjusting.html">How to Adjust Office Chairs</a></cite></p>
+<p>Canadian Centre for Occupational Health and Safety —&nbsp;<cite><a href="https://www.ccohs.ca/oshanswers/ergonomics/office/chair_adjusting.html">How to Adjust Office Chairs</a></cite></p>
 </figure>
 
 <b>Vary it up</b>. Take breaks, move, don't keep a static posture for too long. Go for a walk. Weightlifting and pullups <a href="https://news.ycombinator.com/item?id=23577204">help a lot</a> by maintaining wrist muscles in a good shape. <a href="https://www.joshwcomeau.com/blog/hands-free-coding">Try some voice coding</a>.
 
 <b>Relax more often</b>. <Sources sources={stressSources}>This is no joke</Sources>. Suppressed emotional stress can cause the pain by tensing muscles or reducing blood flow. Many chronic pain conditions are caused by the brain, in order to distract us from repressed emotions.
 
-<b>Use a flat profile keyboard</b>. The flatter the better.
+<b>Bring a keyboard closer to you</b>. If the keyboard is too far away from you, you need to hyper extend your arms to reach it. 110° is the maximum angle your elbows can be at.
+
+<b>Use a flat profile keyboard</b>. The flatter the better. If your keyboard is higher than your wrists it requires you to hyper extend them. Apple Magic Keyboard is actually a great keyboard ergonomic-wise, because of its extremely flat profile. If you have a keyboard with tilt stands, <span class="highlight" data-hint="Positive tilt angle significantly increases the pressure within carpal tunnel">do not use them</span>, they exist to improve key visibility for non-touch typists.
+
+<ImageWithCaption src="/src/writing/notes/on-keyboard-ergonomics/magic-hhkb.jpeg" alt="Height comparison of Apple Magic Keyboard and HHKB" caption="Magic Keyboard vs HHKB" />
 
 <b>Type properly</b>. Press spacebar with right hand. Use both hands to press shortcuts, right side modifiers are there for a reason, chording is very bad for your hands.
 
-<b>Float your hands while typing</b>. Don't use a wrist rest, <Sources sources={wristRestSources}>it's bad for you</Sources>. It applies pressure to the underside of your wrist which will compress the tissues, resulting in decreased blood flow. Blood flow is a common theme (rephrase) as you might have noticed.
+<b>Float your hands while typing</b>. Don't use a wrist rest, <Sources sources={wristRestSources}>it's bad for you</Sources>. It applies pressure to the underside of your wrist which will compress the tissues, resulting in decreased blood flow. Blood flow is a common theme (rephrase) as you might have noticed. It's much easier to float type on a flat keyboard. When you are not typing rest your hands in a natural position.
 
-<b>Put the keyboard on your lap</b>. Some people call it <Sources sources={russianStyleSources}>"Russian style"</Sources>. This is actually my favorite advice on this list, i program like this 95% of the time. Tilting the keyboard slightly downward increases the blood flow, you don't depend on having an ergonomic desk, you can't overreach even if you try and your elbows are forced in the perfect ergonomic position. It is also the most comfortable way to float type.
+<b>Put the keyboard on your lap</b>. Some people call it <Sources sources={russianStyleSources}>"Russian style"</Sources>. This is actually my favorite advice on this list, i program like this 95% of the time. Negative tilt improves your blood flow, you don't depend on having an ergonomic desk, you wont't have arm extension even if you try and your elbows are forced in the perfect ergonomic position. It is also the most comfortable way to float type. Compact keyboards feel best this way, if you have a keyboard with the numpad it would probably be too wide. I used HHKB this way for many years and it was amazing. My current setup is the ZSA Voyager on some random kitchen board with a soft towel on top. Peak ergonomics.
+
+<ImageWithCaption src="/src/writing/notes/on-keyboard-ergonomics/voyager.jpeg" alt="ZSA Voyager on my lap" caption="ZSA Voyager on my lap" />
 
 <b>Avoid working in the cold</b>. Don't work under the air conditioner. Cold reduces blood flow.
 
@@ -99,7 +106,7 @@ attempt to adjust non-adjustable chairs without the relevant woodworking knowled
 <blockquote>
 I spent three years unable to work as a programmer, and there’s a good chance I could have solved the problem just by wearing warmer clothing
 </blockquote>
-<p>Itamar Turner-Trauring — <cite><a href="https://codewithoutrules.com/2016/11/18/rsi-solution/">How I stopped the RSI pain that almost destroyed my programming career</a></cite></p>
+<p>Itamar Turner-Trauring —&nbsp;<cite><a href="https://codewithoutrules.com/2016/11/18/rsi-solution/">How I stopped the RSI pain that almost destroyed my programming career</a></cite></p>
 </figure>
 
 <b>Try using layers and home row mods</b>. Buy a keyboard from ZSA, they are great and support layers on firmware level through <a href="https://docs.qmk.fm">QMK</a>. Or you can try it with any keyboard with the help of software like <a href="https://github.com/jtroo/kanata">Kanata</a> or <a href="https://github.com/kmonad/kmonad">KMonad</a>. Remember that <a href="https://getreuer.info/posts/keyboards/faqs/index.html#home-row-mods-are-hard-to-use">home row mods are not for everyone</a>. And more layers ≠ more ergonomics, <a href="https://getreuer.info/posts/keyboards/thumb-ergo/index.html">you can actually overuse your thumbs</a>. I myself use ZSA Voyager <a href="https://configure.zsa.io/voyager/layouts/6JN7l/latest/0">with only one layer</a> and it's perfect for me.

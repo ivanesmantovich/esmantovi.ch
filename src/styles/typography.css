@@ -1,6 +1,6 @@
 article {
   line-height: 1.47;
-  color: #676767;
+  color: #595959;
   letter-spacing: -0.022em;
 }
 
@@ -55,7 +55,7 @@ blockquote > * {
 
 blockquote + p {
   margin-top: 0.3em;
-  color: #828282;
+  color: rgb(115, 115, 115);
 }
 
 article p > a {
