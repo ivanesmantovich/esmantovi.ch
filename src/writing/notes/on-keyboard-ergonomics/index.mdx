@@ -1,5 +1,5 @@
 ---
-title: 'On Keyboard Ergonomics and RSI Prevention'
+title: 'On keyboard ergonomics, RSI prevention advice'
 preview: 'For longer hacking sessions'
 date: '2025-08-03'
 hnUrl: 'https://news.ycombinator.com/item?id=36610000'
@@ -7,6 +7,8 @@ hnUrl: 'https://news.ycombinator.com/item?id=36610000'
 
 import Sources from '../../../components/Sources.astro'
 import ImageWithCaption from '../../../components/ImageWithCaption.astro'
+import magicHhkbImage from './magic-hhkb.jpeg'
+import voyagerImage from './voyager.jpeg'
 
 export const wristRestSources = [
   {
@@ -60,58 +62,54 @@ export const russianStyleSources = [
   }
 ]
 
-Advices are ordered incrementally by the amount of enthusiasm you will need to implement them.
+The advice is ordered incrementally by the amount of enthusiasm you'll need to implement it.
 
-<b>First off, adjust your chair</b>. Adjusting the ergonomics of your office chair keeps you
-comfortable throughout the day, and reduces the likelihood of you giving up work because the shape
-of your skeleton is all wrong. The following advice is copied and pasted directly from the Canadian
-Centre for Occupational Health and Safety. It applies solely to adjustable office chairs. Do not
-attempt to adjust non-adjustable chairs without the relevant woodworking knowledge and resources.
+<b>First off, adjust your chair</b>. I can't overstate how important this is.
 
 <figure>
 <blockquote>
-1. Stand in front of the chair. Adjust the height so the highest point of the seat, (when in the horizontal position), is just below the knee cap.
+1. Stand in front of the chair. Adjust the height so the highest point of the seat, is just below the knee cap.
 2. Sit on the chair and keep your feet flat on the floor.
 3. Check that the clearance between the front edge of the seat and the lower part of the legs (your calves) fits a clenched fist (about 5 cm or 2 inches).
 4. Adjust the back rest forwards and backwards as well as up and down so that it fits the hollow in your lower back.
-5. Sit upright with your arms hanging loosely by your sides. Bend your elbows at about a right angle (90 degrees) and adjust the armrest(s) height until they barely touch the undersides of the elbows.
-6. Remove the armrests from the chair if this level can not be achieved or if armrests, in their lowest adjustment, <span class="highlight" data-hint="Otherwise you will have stiffness and pain in your trapezius">elevate your elbows even slightly</span>.
+5. Sit upright with your arms hanging loosely by your sides. Bend your elbows at about a right angle (90°) and adjust the armrests height until they barely touch the undersides of the elbows.
+6. Remove the armrests from the chair if this level can not be achieved or if armrests, in their lowest adjustment, <span class="highlight" data-hint="Otherwise, you'll have stiffness and pain in your trapezius">elevate your elbows even slightly</span>.
 7. Tilt the seat itself forwards or backwards if you prefer.
 </blockquote>
 <p>Canadian Centre for Occupational Health and Safety —&nbsp;<cite><a href="https://www.ccohs.ca/oshanswers/ergonomics/office/chair_adjusting.html">How to Adjust Office Chairs</a></cite></p>
 </figure>
 
-<b>Vary it up</b>. Take breaks, move, don't keep a static posture for too long. Go for a walk. Weightlifting and pullups <a href="https://news.ycombinator.com/item?id=23577204">help a lot</a> by maintaining wrist muscles in a good shape. <a href="https://www.joshwcomeau.com/blog/hands-free-coding">Try some voice coding</a>.
+<b>Vary it up</b>. Take breaks. Move. Don't keep a static posture for too long. Go for a walk. Weightlifting and pull-ups <a href="https://news.ycombinator.com/item?id=23577204">help a lot</a> by keeping wrist muscles in good shape. <a href="https://www.joshwcomeau.com/blog/hands-free-coding">Try some voice coding</a>.
 
-<b>Relax more often</b>. <Sources sources={stressSources}>This is no joke</Sources>. Suppressed emotional stress can cause the pain by tensing muscles or reducing blood flow. Many chronic pain conditions are caused by the brain, in order to distract us from repressed emotions.
+<b>Relax more often</b>. <Sources sources={stressSources}>This is no joke</Sources>. Suppressed emotional stress can cause pain by tensing muscles or reducing blood flow. Many chronic pain conditions are caused by the brain as a way to distract us from repressed emotions.
 
-<b>Bring a keyboard closer to you</b>. If the keyboard is too far away from you, you need to hyper extend your arms to reach it. 110° is the maximum angle your elbows can be at.
+<b>Bring your keyboard closer</b>. If the keyboard is too far from you, you'll hyperextend your arms to reach it. 110° is the maximum angle your elbows should be at.
 
-<b>Use a flat profile keyboard</b>. The flatter the better. If your keyboard is higher than your wrists it requires you to hyper extend them. Apple Magic Keyboard is actually a great keyboard ergonomic-wise, because of its extremely flat profile. If you have a keyboard with tilt stands, <span class="highlight" data-hint="Positive tilt angle significantly increases the pressure within carpal tunnel">do not use them</span>, they exist to improve key visibility for non-touch typists.
+<b>Use a flat-profile keyboard</b>. The flatter, the better. If your keyboard is higher than your wrists, it forces you to hyperextend them. If your keyboard has tilt stands, <span class="highlight" data-hint="Positive tilt angle significantly increases the pressure within carpal tunnel">don't use them</span>. They exist to improve key visibility for non-touch typists.
 
-<ImageWithCaption src="/src/writing/notes/on-keyboard-ergonomics/magic-hhkb.jpeg" alt="Height comparison of Apple Magic Keyboard and HHKB" caption="Magic Keyboard vs HHKB" />
+<ImageWithCaption image={magicHhkbImage} alt="Height comparison of Apple Magic Keyboard and HHKB" caption="Magic Keyboard vs HHKB" />
 
-<b>Type properly</b>. Press spacebar with right hand. Use both hands to press shortcuts, right side modifiers are there for a reason, chording is very bad for your hands.
+<b>Type properly</b>. Press the spacebar with your right hand. Use both hands for shortcuts—right-side modifiers exist for a reason. Chording is hard on your hands.
 
-<b>Float your hands while typing</b>. Don't use a wrist rest, <Sources sources={wristRestSources}>it's bad for you</Sources>. It applies pressure to the underside of your wrist which will compress the tissues, resulting in decreased blood flow. Blood flow is a common theme (rephrase) as you might have noticed. It's much easier to float type on a flat keyboard. When you are not typing rest your hands in a natural position.
+<b>Float your hands while typing</b>. Don't use a wrist rest,<Sources sources={wristRestSources}>it's bad for you</Sources>. It applies pressure to the underside of your wrist, compressing tissues and decreasing blood flow. It's much easier to float type on a flat keyboard. Rest your hands when you're not typing.
 
-<b>Put the keyboard on your lap</b>. Some people call it <Sources sources={russianStyleSources}>"Russian style"</Sources>. This is actually my favorite advice on this list, i program like this 95% of the time. Negative tilt improves your blood flow, you don't depend on having an ergonomic desk, you wont't have arm extension even if you try and your elbows are forced in the perfect ergonomic position. It is also the most comfortable way to float type. Compact keyboards feel best this way, if you have a keyboard with the numpad it would probably be too wide. I used HHKB this way for many years and it was amazing. My current setup is the ZSA Voyager on some random kitchen board with a soft towel on top. Peak ergonomics.
+<b>Put the keyboard on your lap</b>. Some people call this <Sources sources={russianStyleSources}>«Russian style»</Sources>. This is actually my favorite advice on this list—I program like this 95% of the time. Negative tilt improves blood flow, you don't depend on having an ergonomic desk, it makes arm extension impossible, and your elbows are forced into a good ergonomic position. It's also the most comfortable way to float-type. Compact keyboards work best this way—if your keyboard has a numpad, it's probably too wide. I used an HHKB this way for years and it was amazing. My current setup is the ZSA Voyager on a random kitchen board with a soft towel on top. Peak ergonomics.
 
-<ImageWithCaption src="/src/writing/notes/on-keyboard-ergonomics/voyager.jpeg" alt="ZSA Voyager on my lap" caption="ZSA Voyager on my lap" />
+<ImageWithCaption image={voyagerImage} alt="ZSA Voyager on my lap" caption="ZSA Voyager on my lap" />
 
-<b>Avoid working in the cold</b>. Don't work under the air conditioner. Cold reduces blood flow.
+<b>Avoid working in the cold</b>. Don't work under an air conditioner. Cold reduces blood flow.
 
-<b>Cut back on salt and sugar</b>. This is an uncommon one. My dentist gave me this advice (programmers are not the only ones suffering from RSI). High glucose levels directly stimulate inflammatory markers in tendon cells → RSI. Salt causes swelling, when tissues swell due to fluid retention, they can compress the median nerve as it passes through the narrow carpal tunnel in the wrist → RSI.
+<b>Cut back on salt and sugar</b>. This one's uncommon. My dentist gave me this advice (programmers aren't the only ones suffering from RSI). High glucose levels directly stimulate inflammatory markers in tendon cells, contributing to RSI. Salt can cause swelling. When tissues swell due to fluid retention, they can compress the median nerve as it passes through the narrow carpal tunnel in your wrist, leading to RSI.
 
 <figure>
 <blockquote>
-I spent three years unable to work as a programmer, and there’s a good chance I could have solved the problem just by wearing warmer clothing
+I spent three years unable to work as a programmer, and there's a good chance I could have solved the problem just by wearing warmer clothing.
 </blockquote>
-<p>Itamar Turner-Trauring —&nbsp;<cite><a href="https://codewithoutrules.com/2016/11/18/rsi-solution/">How I stopped the RSI pain that almost destroyed my programming career</a></cite></p>
+<p>Itamar Turner-Trauring —&nbsp;<cite><a href="https://codewithoutrules.com/2016/11/18/rsi-solution/">How I Stopped the RSI Pain That Almost Destroyed My Programming Career</a></cite></p>
 </figure>
 
-<b>Try using layers and home row mods</b>. Buy a keyboard from ZSA, they are great and support layers on firmware level through <a href="https://docs.qmk.fm">QMK</a>. Or you can try it with any keyboard with the help of software like <a href="https://github.com/jtroo/kanata">Kanata</a> or <a href="https://github.com/kmonad/kmonad">KMonad</a>. Remember that <a href="https://getreuer.info/posts/keyboards/faqs/index.html#home-row-mods-are-hard-to-use">home row mods are not for everyone</a>. And more layers ≠ more ergonomics, <a href="https://getreuer.info/posts/keyboards/thumb-ergo/index.html">you can actually overuse your thumbs</a>. I myself use ZSA Voyager <a href="https://configure.zsa.io/voyager/layouts/6JN7l/latest/0">with only one layer</a> and it's perfect for me.
+<b>Try using layers and home-row mods</b>. Buy a keyboard from ZSA, they're great and support layers at the firmware level through <a href="https://docs.qmk.fm">QMK</a>. Or try it with any keyboard using software like <a href="https://github.com/jtroo/kanata">Kanata</a> or <a href="https://github.com/kmonad/kmonad">KMonad</a>. Remember that <a href="https://getreuer.info/posts/keyboards/faqs/index.html#home-row-mods-are-hard-to-use">home-row mods aren't for everyone</a>. More layers ≠ more ergonomics—<a href="https://getreuer.info/posts/keyboards/thumb-ergo/index.html">you can actually overuse your thumbs</a>. I use a ZSA Voyager <a href="https://configure.zsa.io/voyager/layouts/6JN7l/latest/0">with only one layer</a>, and it's perfect.
 
-<b>Try an alternative layout</b>. Dvorak, Colemak, Workman, Sturdy... <Sources sources={alternativeLayoutSources}>There are a lot of them</Sources>
+<b>Try an alternative layout</b>. Dvorak, Colemak, Workman, Sturdy, <Sources sources={alternativeLayoutSources}>there are a lot of them</Sources>. Switch only as a last resort if you've tried the other options and still have problems.
 
-<b>Cut back on coffee</b>. Caffeine shrinks blood vessels and elevates stress, both of which can cause RSI.
+<b>Cut back on coffee</b>. Caffeine constricts blood vessels and elevates stress, both of which can contribute to RSI.

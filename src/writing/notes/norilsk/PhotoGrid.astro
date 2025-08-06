@@ -1,0 +1,57 @@
+---
+import { Image } from 'astro:assets'
+import photo1 from './1.jpeg'
+import photo2 from './2.jpg'
+import photo3 from './3.jpg'
+import photo4 from './4.jpg'
+import photo5 from './5.jpg'
+import photo6 from './6.jpg'
+import photo7 from './7.jpg'
+import photo8 from './8.jpg'
+import photo9 from './9.jpg'
+import photo10 from './10.jpg'
+import photo11 from './11.jpg'
+import photo12 from './12.jpg'
+import photo13 from './13.jpg'
+---
+
+<div class="photo-grid">
+  <Image src={photo1} alt="Photo of Norilsk 1" class="photo-grid-item" />
+  <Image src={photo2} alt="Photo of Norilsk 2" class="photo-grid-item" />
+  <Image src={photo10} alt="Photo of Norilsk 10" class="photo-grid-item" />
+  <Image src={photo6} alt="Photo of Norilsk 6" class="photo-grid-item" />
+  <Image src={photo5} alt="Photo of Norilsk 5" class="photo-grid-item" />
+  <Image src={photo4} alt="Photo of Norilsk 4" class="photo-grid-item" />
+  <Image src={photo9} alt="Photo of Norilsk 9" class="photo-grid-item" />
+  <Image src={photo7} alt="Photo of Norilsk 7" class="photo-grid-item" />
+  <Image src={photo8} alt="Photo of Norilsk 8" class="photo-grid-item" />
+  <Image src={photo3} alt="Photo of Norilsk 3" class="photo-grid-item" />
+  <Image src={photo12} alt="Photo of Norilsk 12" class="photo-grid-item" />
+  <Image src={photo13} alt="Photo of Norilsk 13" class="photo-grid-item" />
+</div>
+
+<style>
+  .photo-grid {
+    overflow: hidden;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5px;
+
+    border-radius: 20px;
+  }
+
+  .photo-grid-item {
+    aspect-ratio: 1/1;
+    width: calc(33.33% - 1px);
+    height: auto;
+    border-radius: 2px;
+
+    object-fit: cover;
+  }
+
+  @media (width <= 576px) {
+    .photo-grid {
+      border-radius: 0;
+    }
+  }
+</style>

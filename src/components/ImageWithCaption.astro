@@ -1,15 +1,18 @@
 ---
+import type { ImageMetadata } from 'astro'
+import { Image } from 'astro:assets'
+
 interface Props {
-  src: string
+  image: ImageMetadata
   alt: string
   caption: string
 }
 
-const { src, alt, caption } = Astro.props
+const { image, alt, caption } = Astro.props
 ---
 
 <figure>
-  <img src={src} alt={alt} />
+  <Image src={image} alt={alt} />
   <figcaption>{caption}</figcaption>
 </figure>
 
