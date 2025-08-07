@@ -188,14 +188,16 @@ const thoughts = (await getCollection('thoughts')).sort(
   }
 
   @media (pointer: coarse) {
-    .pointing-left-container {
-      animation-name: pointing-scroll-fade;
-      animation-fill-mode: both;
-      animation-timeline: --portrait-timeline;
-      view-timeline-name: --portrait-timeline;
-      view-timeline-axis: block;
+    @supports (animation-timeline: scroll()) {
+      .pointing-left-container {
+        animation-name: pointing-scroll-fade;
+        animation-fill-mode: both;
+        animation-timeline: --portrait-timeline;
+        view-timeline-name: --portrait-timeline;
+        view-timeline-axis: block;
 
-      animation-range: entry 0% exit 100%;
+        animation-range: entry 0% exit 100%;
+      }
     }
   }
 
