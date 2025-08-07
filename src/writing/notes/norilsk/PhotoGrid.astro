@@ -3,14 +3,13 @@ import { Image } from 'astro:assets'
 import photo1 from './1.jpeg'
 import photo2 from './2.jpg'
 import photo3 from './3.jpg'
-import photo4 from './4.jpg'
-import photo5 from './5.jpg'
-import photo6 from './6.jpg'
-import photo7 from './7.jpg'
-import photo8 from './8.jpg'
-import photo9 from './9.jpg'
-import photo10 from './10.jpg'
-import photo11 from './11.jpg'
+import photo4 from './4-full.jpg'
+import photo5 from './5-full.jpeg'
+import photo6 from './6-full.jpg'
+import photo7 from './7-full.jpg'
+import photo8 from './8-full.jpg'
+import photo9 from './9-full.jpg'
+import photo10 from './10-full.jpg'
 import photo12 from './12.jpg'
 import photo13 from './13.jpg'
 
@@ -109,7 +108,7 @@ const photos = [
 
     display: block;
 
-    width: 50%;
+    width: 55%;
     height: auto;
     margin: 0 auto;
     border-radius: 8px;
@@ -138,7 +137,9 @@ const photos = [
     background: rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(10px);
 
-    transition: all 0.2s ease;
+    transition:
+      transform 0.2s ease,
+      background 0.2s ease;
   }
 
   .nav-btn:active {
