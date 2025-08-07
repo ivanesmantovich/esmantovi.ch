@@ -85,10 +85,6 @@ const photos = [
     transition: filter 0.2s ease;
   }
 
-  .photo-grid-item:hover {
-    filter: blur(4px);
-  }
-
   /* Popover styles */
   .photo-popover {
     width: 100vw;
@@ -116,7 +112,11 @@ const photos = [
 
   /* Navigation buttons */
   .nav-btn {
+    /* Reduce double-tap zoom and improve tap responsiveness on mobile */
+    touch-action: manipulation;
     cursor: pointer;
+    -webkit-user-select: none;
+    user-select: none;
 
     position: absolute;
     z-index: 10;
@@ -135,11 +135,14 @@ const photos = [
     color: white;
 
     background: rgba(255, 255, 255, 0.2);
+    -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
 
     transition:
       transform 0.2s ease,
       background 0.2s ease;
+
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   }
 
   .nav-btn:active {
@@ -164,6 +167,18 @@ const photos = [
     margin: 0;
   }
 
+  /* CSS-only scroll lock while popover is open */
+  :global(body:has(#photo-popover:popover-open)),
+  :global(html:has(#photo-popover:popover-open)) {
+    overflow: hidden;
+  }
+
+  @media (pointer: fine) {
+    .photo-grid-item:hover {
+      filter: blur(4px);
+    }
+  }
+
   @media (pointer: fine) {
     .nav-btn:hover {
       transform: translateY(-50%) scale(1.1);
@@ -182,8 +197,8 @@ const photos = [
     }
 
     .nav-btn {
-      width: 40px;
-      height: 40px;
+      width: 46px;
+      height: 46px;
     }
 
     .prev-btn {
@@ -208,6 +223,18 @@ const photos = [
     if (!popover || !popoverImage || !prevBtn || !nextBtn) return
 
     let currentPhotoIndex = 0
+
+    // Fallback scroll lock management for mobile Safari and browsers with buggy :has() updates
+    const lockScroll = () => {
+      document.documentElement.style.overflow = 'hidden'
+      document.body.style.overflow = 'hidden'
+    }
+
+    const unlockScroll = () => {
+      // Use 'auto' to ensure inline style overrides any lingering stylesheet rules
+      document.documentElement.style.overflow = 'auto'
+      document.body.style.overflow = 'auto'
+    }
 
     // Get photo data from the images
     const photoData = Array.from(photos).map((img) => ({
@@ -240,6 +267,8 @@ const photos = [
       photo.addEventListener('click', function () {
         showPhoto(index)
         popover.showPopover()
+        // Ensure scroll is locked on open (robust across mobile browsers)
+        lockScroll()
       })
     })
 
@@ -258,6 +287,27 @@ const photos = [
     popover.addEventListener('click', function (event) {
       if (event.target === popover) {
         popover.hidePopover()
+      }
+    })
+
+    // Keep scroll state in sync with popover visibility
+    // beforetoggle provides newState: 'open' | 'closed' in modern browsers
+    popover.addEventListener('beforetoggle', function (evt) {
+      // @ts-ignore - newState is part of the Popover API event
+      const newState = evt?.newState
+      if (newState === 'open') {
+        lockScroll()
+      } else if (newState === 'closed') {
+        unlockScroll()
+      }
+    })
+
+    // Fallback: if only 'toggle' fires or states are unreliable, compute from selector
+    popover.addEventListener('toggle', function () {
+      if (popover.matches(':popover-open')) {
+        lockScroll()
+      } else {
+        unlockScroll()
       }
     })
 
