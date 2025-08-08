@@ -103,8 +103,10 @@ import CloudDownloadOutline from '../assets/cloud-download-outline.svg'
     transition: filter 0.2s ease;
   }
 
-  .resume-download-button:hover {
-    filter: contrast(95%);
+  @media (pointer: fine) {
+    .resume-download-button:hover {
+      filter: contrast(95%);
+    }
   }
 
   .resume-download-button:active {
@@ -130,10 +132,6 @@ import CloudDownloadOutline from '../assets/cloud-download-outline.svg'
   .cloud-download-icon {
     flex-shrink: 0;
     margin-left: 12px;
-  }
-
-  .resume-download-button:hover {
-    opacity: 0.7;
   }
 
   @media (width <= 768px) {
