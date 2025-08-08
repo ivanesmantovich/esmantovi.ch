@@ -21,19 +21,11 @@ const { previewOpened = false } = Astro.props
 
     padding: 12px 16px;
     background-color: #fafafa;
-    /* box-shadow:
-      inset 0px -0.6px 0.8px hsl(var(--shadow-color) / 0.11),
-      inset 0px -1px 1.4px -0.4px hsl(var(--shadow-color) / 0.27),
-      inset 0px -2.2px 3px -0.8px hsl(var(--shadow-color) / 0.42); */
     box-shadow:
       inset 0px -0.6px 0.8px hsl(var(--shadow-color) / 0.08),
       inset 0px -1px 1.4px -0.4px hsl(var(--shadow-color) / 0.2),
       inset 0px -2.2px 3px -0.8px hsl(var(--shadow-color) / 0.31);
     view-transition-name: header;
-  }
-
-  header.preview-opened {
-    view-transition-name: none;
   }
 
   nav {

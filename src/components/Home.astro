@@ -98,19 +98,6 @@ const thoughts = (await getCollection('thoughts')).sort(
 </main>
 
 <script>
-  // Save scroll position before navigation
-  document.addEventListener('astro:before-preparation', () => {
-    sessionStorage.setItem('homeScrollPosition', window.scrollY.toString())
-  })
-
-  // Restore scroll position after navigation
-  document.addEventListener('astro:after-swap', () => {
-    const savedPosition = sessionStorage.getItem('homeScrollPosition')
-    if (savedPosition) {
-      window.scrollTo({ top: parseInt(savedPosition), behavior: 'instant' })
-    }
-  })
-
   // Add click handler to hand
   const hand = document.getElementById('offering-hand')
   if (hand) {
