@@ -1,12 +1,4 @@
----
-interface Props {
-  previewOpened?: boolean
-}
-
-const { previewOpened = false } = Astro.props
----
-
-<header id="header" class={previewOpened ? 'preview-opened' : ''}>
+<header id="header">
   <nav>
     <a class="font-medium home-link" href="/">Ivan Esmantovich</a>
     <span class="separator"></span>
