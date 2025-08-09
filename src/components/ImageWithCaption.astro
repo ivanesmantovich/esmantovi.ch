@@ -11,10 +11,60 @@ interface Props {
 const { image, alt, caption } = Astro.props
 ---
 
-<figure>
-  <Image src={image} alt={alt} />
+<figure class="image-with-caption">
+  <button class="image-button" type="button" aria-label="Open image in full view">
+    <Image src={image} alt={alt} />
+  </button>
   <figcaption>{caption}</figcaption>
+
+  <div class="lightbox" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="lightbox-content" role="document">
+      <Image src={image} alt={alt} />
+    </div>
+  </div>
 </figure>
+
+<script>
+  const containers = document.querySelectorAll('.image-with-caption')
+  containers.forEach((container) => {
+    if (!(container instanceof HTMLElement)) return
+    if (container.dataset.enhanced === 'true') return
+    container.dataset.enhanced = 'true'
+
+    const openButton = container.querySelector('.image-button')
+    const lightbox = container.querySelector('.lightbox')
+    if (!(openButton instanceof HTMLElement) || !(lightbox instanceof HTMLElement)) return
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        close()
+      }
+    }
+
+    function open() {
+      if (!lightbox) return
+      lightbox.classList.add('is-open')
+      lightbox.setAttribute('aria-hidden', 'false')
+      document.addEventListener('keydown', onKeyDown)
+      document.body.style.overflow = 'hidden'
+    }
+
+    function close() {
+      if (!lightbox) return
+      lightbox.classList.remove('is-open')
+      lightbox.setAttribute('aria-hidden', 'true')
+      document.removeEventListener('keydown', onKeyDown)
+      document.body.style.overflow = ''
+    }
+
+    openButton.addEventListener('click', open)
+    lightbox.addEventListener('click', (event) => {
+      if (event.target === lightbox) {
+        close()
+      }
+    })
+  })
+</script>
 
 <style>
   figure {
@@ -23,10 +73,18 @@ const { image, alt, caption } = Astro.props
     align-items: center;
   }
 
-  figure img {
+  figure .image-button {
     width: 75%;
+  }
+
+  figure .image-button img {
+    display: block;
+
+    width: 100%;
     height: auto;
     border-radius: 16px;
+
+    transition: filter 0.2s ease;
   }
 
   figure:has(img) {
@@ -39,11 +97,86 @@ const { image, alt, caption } = Astro.props
   figcaption {
     margin-top: 0.5em;
     color: rgb(115, 115, 115);
+    opacity: 1;
+    transition: opacity 0.2s ease;
+  }
+
+  .image-button {
+    cursor: zoom-in;
+
+    display: block;
+
+    width: 75%;
+    padding: 0;
+    border: 0;
+
+    background: transparent;
+  }
+
+  @media (pointer: fine) {
+    .image-button:hover img {
+      filter: brightness(1.1);
+    }
+
+    .image-button:hover + figcaption {
+      opacity: 0;
+    }
+  }
+
+  .lightbox {
+    position: fixed;
+    z-index: 1000;
+    inset: 0;
+
+    display: none;
+    place-items: center;
+
+    padding: 4vw;
+
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(9px);
+  }
+
+  .lightbox.is-open {
+    display: grid;
+  }
+
+  .lightbox-content {
+    max-width: 55vw;
+    max-height: 90vh;
+  }
+
+  .lightbox-content img {
+    cursor: zoom-out;
+
+    width: 100%;
+    height: auto;
+    max-height: 90vh;
+    border-radius: 16px;
+
+    object-fit: contain;
+  }
+
+  @media (width <= 768px) {
+    .lightbox {
+      padding: 0;
+    }
+
+    .lightbox-content {
+      width: 100%;
+      max-width: initial;
+    }
+
+    .lightbox-content img {
+      border-radius: 0px;
+    }
   }
 
   @media (width < 576px) {
-    figure img {
+    figure .image-button {
       width: 90%;
+    }
+    figure .image-button img {
       border-radius: 0px;
     }
   }
