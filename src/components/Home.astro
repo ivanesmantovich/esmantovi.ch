@@ -267,7 +267,7 @@ const thoughts = (await getCollection('thoughts')).sort(
   .thoughts-list {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 20px;
   }
 
   .message {
@@ -347,6 +347,10 @@ const thoughts = (await getCollection('thoughts')).sort(
   @media (width >= 430px) {
     .grid {
       grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    .thoughts-list {
       gap: 8px;
     }
   }
