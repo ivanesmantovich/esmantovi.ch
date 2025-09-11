@@ -35,12 +35,20 @@
     color: #242426;
     text-decoration: none;
 
-    transition: background-color 0.1s ease-in-out;
+    transition:
+      background-color 0.1s ease-in-out,
+      transform 0.1s ease;
   }
 
   nav a:hover {
     opacity: initial;
     background-color: #e6e6e6;
+  }
+
+  @media (pointer: fine) {
+    nav a:active {
+      transform: scale(0.98);
+    }
   }
 
   nav a.home-link {

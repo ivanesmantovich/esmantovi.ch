@@ -8,6 +8,7 @@ import Sources from '../../../components/Sources.astro'
 import ImageWithCaption from '../../../components/ImageWithCaption.astro'
 import magicHhkbImage from './magic-hhkb.jpeg'
 import voyagerImage from './voyager.jpeg'
+import arrowKeys from './arrow-keys.jpeg'
 
 export const wristRestSources = [
   {
@@ -103,7 +104,11 @@ I spent three years unable to work as a programmer, and there's a good chance I 
 
 <b>Cut back on salt and sugar</b>. This one's uncommon. My <span class="highlight" data-hint="Programmers aren't the only ones suffering from RSI">dentist</span> gave me this advice. High glucose levels can stimulate inflammatory markers in tendon cells, contributing to RSI. Salt can cause swelling. When tissues swell from fluid retention, they can compress the median nerve as it passes through the narrow carpal tunnel in your wrist and trigger symptoms.
 
-<b>Try layers and home-row mods</b>. ZSA boards are great and support layers at the firmware level via <a href="https://docs.qmk.fm" target="_blank" rel="noopener noreferrer">QMK</a>. Or try it with any keyboard using software like <a href="https://github.com/jtroo/kanata" target="_blank" rel="noopener noreferrer">Kanata</a> or <a href="https://github.com/kmonad/kmonad" target="_blank" rel="noopener noreferrer">KMonad</a>. Remember: <a href="https://getreuer.info/posts/keyboards/faqs/index.html#home-row-mods-are-hard-to-use" target="_blank" rel="noopener noreferrer">home-row mods aren't for everyone</a>. More layers ≠ more ergonomics—<a href="https://getreuer.info/posts/keyboards/thumb-ergo/index.html" target="_blank" rel="noopener noreferrer">you can actually overuse your thumbs</a>. I use a ZSA Voyager <a href="https://configure.zsa.io/voyager/layouts/6JN7l/latest/0" target="_blank" rel="noopener noreferrer">with one layer</a>, and it's perfect.
+<b>Put arrow keys on the home row</b>. <a href="https://tonsky.me/blog/cursor-keys/" target="_blank" rel="noopener noreferrer">Great article</a> about this. If you do, you can go one step further and put Backspace to the left of the arrows and Enter to the right of the arrows. This reduces right-hand movement a lot. Backspace is the <a href="https://daniel.haxx.se/blog/2015/08/19/one-year-and-6-76-million-key-presses-later/" target="_blank" rel="noopener noreferrer">second most used key after space</a>, and Enter is in the top 10. I did this two years ago, and now I can't live without it. It feels so natural that when I was writing the first draft of this post, I forgot to mention it, though it was the default on every computer in the world.
+
+<ImageWithCaption image={arrowKeys} alt="Arrow keys on home row" caption="Arrow keys on home row" />
+
+<b>Try layers and home row mods</b>. ZSA boards are great and support layers at the firmware level via <a href="https://docs.qmk.fm" target="_blank" rel="noopener noreferrer">QMK</a>. Or try it with any keyboard using software like <a href="https://github.com/jtroo/kanata" target="_blank" rel="noopener noreferrer">Kanata</a> or <a href="https://github.com/kmonad/kmonad" target="_blank" rel="noopener noreferrer">KMonad</a>. Remember: <a href="https://getreuer.info/posts/keyboards/faqs/index.html#home-row-mods-are-hard-to-use" target="_blank" rel="noopener noreferrer">home row mods aren't for everyone</a>. More layers ≠ more ergonomics—<a href="https://getreuer.info/posts/keyboards/thumb-ergo/index.html" target="_blank" rel="noopener noreferrer">you can actually overuse your thumbs</a>. I use a ZSA Voyager <a href="https://configure.zsa.io/voyager/layouts/6JN7l/latest/0" target="_blank" rel="noopener noreferrer">with one layer</a>, and it's perfect.
 
 <b>Try an alternative layout</b>. Dvorak, Colemak, Workman, Sturdy, <Sources sources={alternativeLayoutSources}>there are a lot of them</Sources>. Switch only as a last resort after you've tried everything else and still have problems.
 
